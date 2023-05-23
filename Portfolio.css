@@ -1,3 +1,7 @@
+body {
+flex-wrap:wrap
+}
+
 nav {
   width: 100%;
 }

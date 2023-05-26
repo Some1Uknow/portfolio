@@ -233,16 +233,17 @@ footer {
 }
 
 @media (max-width: 480px) {
-  
   #one, #two, #three {
-  width: 100vw;
+    margin: 0;
+    padding: 0;
+    width: 101vw;
   }
-  
   nav {
     justify-content: flex-end;
-    height: 8vh;
+    height: 7vh;
     padding: 3px;
     position: static;
+    width: 100vw;
     
   }
   button {
@@ -264,9 +265,6 @@ footer {
     line-height: 1em;
   }
 
-  #two {
-    padding: 5px;
-  }
   #proj {
     margin: 30px;
     padding: 5px;
@@ -363,7 +361,6 @@ footer {
 
   #three {
     height: 100vh;
-    padding: 20px;
   }
   #main {
     font-size: 30px;
@@ -385,6 +382,7 @@ footer {
     justify-content: center;
     padding: 10px;
     align-items: center;
+    width: 101vw;
   }
 
   #socials {

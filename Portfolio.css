@@ -379,6 +379,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     padding: 0;
+    text-align: center;
     align-items: center;
     width: 100%;
   }
@@ -386,5 +387,9 @@ footer {
   #socials {
     display: flex;
     flex-wrap: wrap;
+  }
+  
+  html, body {
+  overflow-x: hidden;
   }
 }

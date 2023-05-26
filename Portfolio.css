@@ -1,7 +1,3 @@
-body {
-flex-wrap:wrap
-}
-
 nav {
   width: 100%;
 }
@@ -13,7 +9,7 @@ nav {
   background-color: rgb(191, 48, 68);
   margin: 0px;
   padding: 0px;
-  height: 70px;
+  height: 9.3vh;
   display: flex;
   justify-content: flex-end;
   position: fixed;
@@ -22,7 +18,7 @@ nav {
 button {
   border: none;
   width: max-content;
-  height: 70px;
+  height: 9.3vh;
   font-size: 22px;
   color: white;
   background-color: rgb(191, 48, 68);
@@ -41,7 +37,7 @@ button:hover {
 
 #second {
   background-color: rgb(28, 27, 30);
-  height: 750px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,7 +218,6 @@ span:hover {
 
 .social:hover {
   transform: translateY(10px);
- 
 }
 
 footer {
@@ -237,4 +232,158 @@ footer {
   padding: 15px;
 }
 
+@media (max-width: 480px) {
+  nav {
+    justify-content: flex-end;
+    height: 8vh;
+    padding: 3px;
+    position: static;
+    
+  }
+  button {
+    font-size: 18px;
+    padding: 10px;
+    margin-right: 5px;
+    height: 6vh;
+    margin: 3px;
+  }
+  #second {
+    background-image: none;
+    background-color: rgb(28, 27, 30);
+    padding: 20px;
+    text-align: center;
+  }
+  #h1 {
+    font-size: 40px;
+    word-spacing: 0.5px;
+    line-height: 1em;
+  }
 
+  #two {
+    padding: 5px;
+  }
+  #proj {
+    margin: 30px;
+    padding: 5px;
+    font-size: 30px;
+    line-height: 1.2em;
+  }
+
+  #sub {
+    font-size: 24px;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  #projects-section {
+    height: auto;
+  }
+  #project-heading {
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .project-tile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 30%;
+    margin-top: 10px;
+    height: 50vh;
+    width: 80vw;
+  }
+
+  #projrow1,
+  #projrow2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 43%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .proj-image {
+    height: 250px;
+    width: 250px;
+    margin-top: 10px;
+  }
+  a {
+    text-align: left;
+  }
+
+  .proj-name {
+    width: 100%;
+    margin: -5px 0;
+    height: 50px;
+  }
+  span:hover {
+    color: orange;
+    transition: color 0.3s ease-in;
+    visibility: visible;
+  }
+
+  .span {
+    color: rgb(48, 56, 65);
+    transition: color 0.3s ease-out;
+    margin: 2px;
+  }
+
+  #show-all {
+    margin: 5px;
+    padding: 5px;
+  }
+  .show-all {
+    background-color: rgb(48, 56, 65);
+    height: 50px;
+  }
+
+  #three {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 750px;
+    background-color: rgb(48, 56, 65);
+    border-bottom: 4px solid rgb(191, 48, 68);
+  }
+  .show-all {
+    height: 40px;
+  }
+
+  #three {
+    height: 100vh;
+    padding: 20px;
+  }
+  #main {
+    font-size: 30px;
+  }
+
+  #sub-main {
+    font-size: 10px;
+    margin-bottom: 20px;
+  }
+
+  .social {
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+  }
+
+  footer {
+    font-size: 12px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+  }
+
+  #socials {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

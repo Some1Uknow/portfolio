@@ -233,6 +233,11 @@ footer {
 }
 
 @media (max-width: 480px) {
+  
+  #one, #two, #three {
+  width: 100vw;
+  }
+  
   nav {
     justify-content: flex-end;
     height: 8vh;

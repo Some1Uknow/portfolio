@@ -1,14 +1,14 @@
-import { HireMeModal } from "@/components/hire-me-modal"
-import { ModeToggle } from "@/components/mode-toggle"
-import { ProjectCarousel } from "@/components/project-carousel"
-import { BlogCarousel } from "@/components/blog-carousel"
-import { SkillsMarquee } from "@/components/skills-marquee"
-import { ExperienceTimeline } from "@/components/experience-timeline"
-import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Twitter } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
-import { GithubActivity } from "@/components/github-activity"
+import { HireMeModal } from "@/components/hire-me-modal";
+import { ModeToggle } from "@/components/mode-toggle";
+import { ProjectCarousel } from "@/components/project-carousel";
+import { BlogCarousel } from "@/components/blog-carousel";
+import { SkillsMarquee } from "@/components/skills-marquee";
+import { ExperienceTimeline } from "@/components/experience-timeline";
+import { Button } from "@/components/ui/button";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { GithubActivity } from "@/components/github-activity";
 
 export default function Home() {
   return (
@@ -23,20 +23,37 @@ export default function Home() {
           {/* Profile Section */}
           <div className="bg-card rounded-lg border shadow-sm p-6 h-auto md:h-[180px] flex flex-col justify-center">
             <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
-                <Image src="/placeholder.svg?height=64&width=64" alt="Raghav Sharma" fill className="object-cover" />
+              <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-primary/20">
+                <Image
+                  src="/raghav.jpg"
+                  alt="Raghav Sharma"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div>
-                <h1 className="text-xl font-bold">Raghav Sharma</h1>
-                <p className="text-muted-foreground text-sm">Full Stack Dev.</p>
+                <h1 className="text-2xl font-bold">Raghav Sharma</h1>
+                <p className="text-muted-foreground text-md">Full Stack Dev.</p>
                 <div className="flex gap-3 mt-2">
-                  <Link href="https://github.com" target="_blank" aria-label="GitHub">
+                  <Link
+                    href="https://github.com"
+                    target="_blank"
+                    aria-label="GitHub"
+                  >
                     <Github className="h-4 w-4" />
                   </Link>
-                  <Link href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                  <Link
+                    href="https://linkedin.com"
+                    target="_blank"
+                    aria-label="LinkedIn"
+                  >
                     <Linkedin className="h-4 w-4" />
                   </Link>
-                  <Link href="https://twitter.com" target="_blank" aria-label="Twitter">
+                  <Link
+                    href="https://twitter.com"
+                    target="_blank"
+                    aria-label="Twitter"
+                  >
                     <Twitter className="h-4 w-4" />
                   </Link>
                 </div>
@@ -46,23 +63,6 @@ export default function Home() {
 
           {/* GitHub Activity */}
           <div className="bg-card rounded-lg border shadow-sm md:col-span-2 h-auto md:h-[180px] flex flex-col justify-center">
-            {/* <h2 className="text-xl font-bold text-center mb-4">GITHUB ACTIVITY</h2>
-            <div className="grid grid-cols-7 gap-2 mx-auto">
-              {Array.from({ length: 49 }).map((_, i) => (
-                <div
-                  key={i}
-                  className={`w-4 h-4 rounded-sm ${
-                    Math.random() > 0.7
-                      ? "bg-primary/80"
-                      : Math.random() > 0.5
-                        ? "bg-primary/50"
-                        : Math.random() > 0.3
-                          ? "bg-primary/30"
-                          : "bg-primary/10"
-                  }`}
-                />
-              ))}
-            </div> */}
             <GithubActivity />
           </div>
         </div>
@@ -84,7 +84,9 @@ export default function Home() {
           {/* Experience Section */}
           <div className="bg-card rounded-lg border shadow-sm p-6">
             <h2 className="text-xl font-bold mb-4">Experience</h2>
-            <p className="text-muted-foreground text-sm mb-4">In a timeline/stepper format</p>
+            <p className="text-muted-foreground text-sm mb-4">
+              In a timeline/stepper format
+            </p>
             <ExperienceTimeline />
           </div>
         </div>
@@ -97,72 +99,95 @@ export default function Home() {
             <BlogCarousel />
           </div>
 
-          {/* Buttons Section */}
-          <div className="bg-card rounded-lg border shadow-sm p-6 flex flex-col gap-4 justify-center">
-            <HireMeModal />
-            <Button asChild variant="outline" size="lg">
-              <Link href="/resume.pdf" target="_blank">
-                RESUME
-              </Link>
-            </Button>
-          </div>
-        </div>
-
-        {/* Education Section */}
-        <div className="bg-card rounded-lg border shadow-sm p-6">
-          <h2 className="text-xl font-bold mb-4">EDUCATION</h2>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div>
-              <h3 className="text-lg font-medium">Dronacharya College of Engineering</h3>
-              <p className="text-muted-foreground">Gurugram, Haryana, IN</p>
+          {/* Buttons and Minor Sections */}
+          <div className="flex flex-col gap-4">
+            {/* Buttons Section */}
+            <div className="bg-card rounded-lg border shadow-sm p-6 flex flex-col gap-4 justify-center">
+              <HireMeModal />
+              <Button asChild variant="outline" size="lg">
+                <Link href="/Raghav-Resume.pdf" target="_blank">
+                  RESUME
+                </Link>
+              </Button>
             </div>
-            <div>
-              <p className="font-medium">B.E in Computer Science</p>
-              <p className="text-muted-foreground">October 2022 - Present</p>
-            </div>
-          </div>
-        </div>
 
-        {/* Achievements Section */}
-        <div className="bg-card rounded-lg border shadow-sm p-6">
-          <h2 className="text-xl font-bold mb-4">ACHIEVEMENTS</h2>
-          <ul className="space-y-2">
-            <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">•</span>
-              <span>
-                Smart India Hackathon (SIH) 2024 Winner – <strong>1st Position</strong> as Team Leader
-              </span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-primary font-bold">•</span>
-              <span>Top 50 Project Ideas – NES Innovation Awards 2024 (Out of 800+ submissions)</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Contact Section */}
-        <div className="bg-card rounded-lg border shadow-sm p-6">
-          <h2 className="text-xl font-bold mb-4">CONTACT</h2>
-          <div className="flex flex-col md:flex-row justify-between gap-4">
-            <div>
-              <p className="font-medium">Subash Nagar, New Delhi, IN</p>
-              <p className="text-muted-foreground">raghu250407@gmail.com</p>
-              <p className="text-muted-foreground">+91 7042019181</p>
+            {/* Education Section */}
+            <div className="bg-card rounded-lg border shadow-sm p-6">
+              <h2 className="text-xl font-bold mb-4">EDUCATION</h2>
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                  <h3 className="text-lg font-medium">
+                    Dronacharya College of Engineering
+                  </h3>
+                  <p className="text-muted-foreground">Gurugram, Haryana, IN</p>
+                </div>
+                <div>
+                  <p className="font-medium">B.E in Computer Science</p>
+                  <p className="text-muted-foreground">
+                    October 2022 - Present
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="flex gap-4">
-              <Link href="https://github.com" target="_blank" aria-label="GitHub">
-                <Github className="h-5 w-5" />
-              </Link>
-              <Link href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
-                <Linkedin className="h-5 w-5" />
-              </Link>
-              <Link href="https://twitter.com" target="_blank" aria-label="Twitter">
-                <Twitter className="h-5 w-5" />
-              </Link>
+
+            {/* Achievements Section */}
+            <div className="bg-card rounded-lg border shadow-sm p-6">
+              <h2 className="text-xl font-bold mb-4">ACHIEVEMENTS</h2>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  <span>
+                    Smart India Hackathon (SIH) 2024 Winner –{" "}
+                    <strong>1st Position</strong> as Team Leader
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary font-bold">•</span>
+                  <span>
+                    Top 50 Project Ideas – NES Innovation Awards 2024 (Out of
+                    800+ submissions)
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact Section */}
+            <div className="bg-card rounded-lg border shadow-sm p-6">
+              <h2 className="text-xl font-bold mb-4">CONTACT</h2>
+              <div className="flex flex-col md:flex-row justify-between gap-4">
+                <div>
+                  <p className="font-medium">Subash Nagar, New Delhi, IN</p>
+                  <p className="text-muted-foreground">raghu250407@gmail.com</p>
+                  <p className="text-muted-foreground">+91 7042019181</p>
+                </div>
+                <div className="flex gap-4">
+                  <Link
+                    href="https://github.com"
+                    target="_blank"
+                    aria-label="GitHub"
+                  >
+                    <Github className="h-5 w-5" />
+                  </Link>
+                  <Link
+                    href="https://linkedin.com"
+                    target="_blank"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </Link>
+                  <Link
+                    href="https://twitter.com"
+                    target="_blank"
+                    aria-label="Twitter"
+                  >
+                    <Twitter className="h-5 w-5" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </main>
-  )
+  );
 }

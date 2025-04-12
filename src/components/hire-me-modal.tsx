@@ -1,8 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { useForm, ValidationError } from "@formspree/react"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -15,25 +15,12 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "sonner" // Updated import
 
 export function HireMeModal() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [state, handleSubmit] = useForm("mgvwvaye") 
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    toast("Message sent! Thank you for reaching out. I'll get back to you soon.") // Updated toast
-
-    setIsSubmitting(false)
-
-    // Reset form
-    const form = e.target as HTMLFormElement
-    form.reset()
+  if (state.succeeded) {
+    return <p className="text-green-500 mt-4">Thanks for your message!</p>
   }
 
   return (
@@ -52,10 +39,12 @@ export function HireMeModal() {
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
             <Input id="name" name="name" required />
+            <ValidationError prefix="Name" field="name" errors={state.errors} />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input id="email" name="email" type="email" required />
+            <ValidationError prefix="Email" field="email" errors={state.errors} />
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone">Phone</Label>
@@ -64,9 +53,10 @@ export function HireMeModal() {
           <div className="space-y-2">
             <Label htmlFor="message">Message</Label>
             <Textarea id="message" name="message" required className="min-h-[120px]" />
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
           </div>
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? "Sending..." : "Send Message"}
+          <Button type="submit" className="w-full" disabled={state.submitting}>
+            {state.submitting ? "Sending..." : "Send Message"}
           </Button>
         </form>
       </DialogContent>

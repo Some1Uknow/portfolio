@@ -1,11 +1,14 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, JSX } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { FaReact, FaNodeJs, FaDatabase } from "react-icons/fa" // Example icons
+import { SiExpress, SiTailwindcss, SiOpenai, SiNextdotjs, SiCloudflare } from "react-icons/si" // Additional icons
+import Marquee from "react-fast-marquee" // Marquee library
 
 type Project = {
   id: number
@@ -20,32 +23,44 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: "SmartDoc",
-    description: "Comprehensive Automated Document Verification system (SIH Winning Project)",
-    image: "/placeholder.svg?height=400&width=600",
-    projectLink: "https://smartdoc.vercel.app",
-    githubLink: "https://github.com/raghavsharma/smartdoc",
-    tech: ["Node.js", "Express.js", "MongoDB", "Solidity", "Hardhat", "IPFS (Pinata)"],
-  },
-  {
-    id: 2,
-    title: "VentOut",
-    description: "Social Media App for people struggling with mental health issues",
-    image: "/placeholder.svg?height=400&width=600",
-    projectLink: "https://ventout.vercel.app",
-    githubLink: "https://github.com/raghavsharma/ventout",
-    tech: ["Next.js", "Tailwind CSS", "MongoDB", "Mongoose", "NextAuth.js"],
-  },
-  {
-    id: 3,
     title: "ResumeMax",
     description: "AI Resume Optimizer and Builder",
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/resumemax.png",
     projectLink: "https://resumemax.vercel.app",
     githubLink: "https://github.com/raghavsharma/resumemax",
     tech: ["MongoDB", "React.js", "Express.js", "Node.js", "TailwindCSS", "OpenAI APIs"],
   },
+    {
+    id: 2,
+    title: "EasyGPT",
+    description: "Comprehensive AI platform for all your needs",
+    image: "/easygpt.png",
+    projectLink: "https://smartdoc.vercel.app",
+    githubLink: "https://github.com/raghavsharma/smartdoc",
+    tech: ["Next.js", "MongoDB", "Cloudflare AI", "TailwindCSS"],
+  },
+  {
+    id: 3,
+    title: "VentOut",
+    description: "Social Media App for people struggling with mental health issues",
+    image: "/ventout.png",
+    projectLink: "https://ventout.vercel.app",
+    githubLink: "https://github.com/raghavsharma/ventout",
+    tech: ["Next.js", "Tailwind CSS", "MongoDB", "NextAuth.js"],
+  },
+ 
 ]
+
+const techIcons: Record<string, JSX.Element> = {
+  "React.js": <FaReact className="mr-1" />,
+  "Node.js": <FaNodeJs className="mr-1" />,
+  "MongoDB": <FaDatabase className="mr-1" />,
+  "Express.js": <SiExpress className="mr-1" />,
+  "TailwindCSS": <SiTailwindcss className="mr-1" />,
+  "OpenAI APIs": <SiOpenai className="mr-1" />,
+  "Next.js": <SiNextdotjs className="mr-1" />,
+  "Cloudflare AI": <SiCloudflare className="mr-1" />,
+}
 
 export function ProjectCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -115,20 +130,18 @@ export function ProjectCarousel() {
                   <div className="flex flex-col p-3 pt-4">
                     <h3 className="text-lg font-bold mb-2">{project.title}</h3>
                     <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{project.description}</p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {project.tech.slice(0, 3).map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-2 py-1 bg-secondary text-secondary-foreground rounded-md text-xs"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.tech.length > 3 && (
-                        <span className="px-2 py-1 bg-secondary text-secondary-foreground rounded-md text-xs">
-                          +{project.tech.length - 3} more
-                        </span>
-                      )}
+                    <div className="mb-3">
+                      <Marquee gradient={false} speed={50}>
+                        {project.tech.map((tech, index) => (
+                          <span
+                            key={index}
+                            className="flex items-center px-2 py-1 bg-secondary text-secondary-foreground rounded-md text-xs mx-1"
+                          >
+                            {techIcons[tech] || null}
+                            {tech}
+                          </span>
+                        ))}
+                      </Marquee>
                     </div>
                     <div className="flex gap-2">
                       <Button asChild variant="outline" size="sm">

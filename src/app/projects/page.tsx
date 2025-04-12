@@ -25,7 +25,7 @@ export default function ProjectsPage() {
           <div className="max-w-md mx-auto space-y-4">
             <HireMeModal />
             <Button asChild variant="outline" size="lg" className="w-full">
-              <Link href="/resume.pdf" target="_blank">
+              <Link href="/Raghav-Resume.pdf" target="_blank">
                 RESUME
               </Link>
             </Button>

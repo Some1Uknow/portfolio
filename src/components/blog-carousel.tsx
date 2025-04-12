@@ -3,13 +3,14 @@
 import { useState, useEffect, useCallback } from "react"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
 type BlogPost = {
   id: number
   title: string
+  url: string
   excerpt: string
   date: string
   readTime: string
@@ -17,53 +18,48 @@ type BlogPost = {
   image: string
 }
 
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: "Building a Blockchain Document Verification System",
-    excerpt: "Learn how we built SmartDoc, a blockchain-based system for document verification that won SIH 2024.",
-    date: "April 2, 2025",
-    readTime: "8 min read",
-    slug: "blockchain-document-verification",
-    image: "/placeholder.svg?height=200&width=400",
-  },
-  {
-    id: 2,
-    title: "The Power of Next.js App Router",
-    excerpt: "Exploring the benefits and features of Next.js App Router for modern web applications.",
-    date: "March 15, 2025",
-    readTime: "5 min read",
-    slug: "nextjs-app-router",
-    image: "/placeholder.svg?height=200&width=400",
-  },
-  {
-    id: 3,
-    title: "Integrating AI with Web Applications",
-    excerpt: "A comprehensive guide to integrating AI capabilities into your web applications.",
-    date: "February 28, 2025",
-    readTime: "10 min read",
-    slug: "ai-web-integration",
-    image: "/placeholder.svg?height=200&width=400",
-  },
-]
-
 export function BlogCarousel() {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
   const [activeIndex, setActiveIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+
+  const fetchBlogPosts = useCallback(async () => {
+    try {
+      const response = await fetch("/api/blogs")
+      const data = await response.json()
+      const formattedPosts = data.map((post: any, index: number) => ({
+        id: index + 1,
+        title: post.title,
+        excerpt: post.brief,
+        url: post.url,
+        date: new Date(post.publishedAt).toLocaleDateString(),
+        readTime: "5 min read", // Placeholder, replace with actual read time if available
+        slug: post.slug,
+        image: post.coverImage?.url || "/placeholder.svg",
+      }))
+      setBlogPosts(formattedPosts)
+    } catch (error) {
+      console.error("Error fetching blog posts:", error)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchBlogPosts()
+  }, [fetchBlogPosts])
 
   const nextSlide = useCallback(() => {
     if (isAnimating) return
     setIsAnimating(true)
     setActiveIndex((prev) => (prev === blogPosts.length - 1 ? 0 : prev + 1))
     setTimeout(() => setIsAnimating(false), 500)
-  }, [isAnimating])
+  }, [isAnimating, blogPosts.length])
 
   const prevSlide = useCallback(() => {
     if (isAnimating) return
     setIsAnimating(true)
     setActiveIndex((prev) => (prev === 0 ? blogPosts.length - 1 : prev - 1))
     setTimeout(() => setIsAnimating(false), 500)
-  }, [isAnimating])
+  }, [isAnimating, blogPosts.length])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -71,6 +67,10 @@ export function BlogCarousel() {
     }, 6000)
     return () => clearInterval(interval)
   }, [nextSlide])
+
+  if (blogPosts.length === 0) {
+    return <div><Loader2/></div>
+  }
 
   return (
     <div className="relative overflow-hidden">
@@ -105,7 +105,7 @@ export function BlogCarousel() {
               <CardContent className="p-0">
                 <div className="flex flex-col">
                   <div className="relative aspect-video overflow-hidden rounded-lg">
-                    <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
+                    <Image src={post.image} alt={post.title} fill className="object-cover" />
                   </div>
                   <div className="p-3 pt-4">
                     <h3 className="text-lg font-bold mb-2 line-clamp-1">{post.title}</h3>
@@ -118,7 +118,7 @@ export function BlogCarousel() {
               </CardContent>
               <CardFooter className="p-3 pt-0">
                 <Button asChild variant="ghost" size="sm" className="px-0">
-                  <Link href={`/blog/${post.slug}`}>Read more</Link>
+                  <Link href={`${post.url}`}>Read more</Link>
                 </Button>
               </CardFooter>
             </Card>

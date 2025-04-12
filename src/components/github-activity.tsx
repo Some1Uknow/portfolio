@@ -1,15 +1,17 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+'use client'
 import GitHubCalendar from "react-github-calendar";
+import { useTheme } from "next-themes";
 
 export function GithubActivity() {
+  const { theme } = useTheme();
+
   return (
     <main className="flex justify-center items-center">
-      
       <GitHubCalendar
         username="some1uknow"
         blockSize={10}
         blockMargin={5}
-        colorScheme="light"
+        colorScheme={theme === "dark" ? "dark" : "light"}
       />
     </main>
   );

@@ -1,3 +1,7 @@
+import { JSX } from "react"
+import { FaReact, FaPython, FaDocker, FaGit } from "react-icons/fa"
+import { SiDjango, SiNextdotjs, SiTailwindcss, SiGithub } from "react-icons/si"
+
 type Experience = {
   id: number
   title: string
@@ -5,6 +9,7 @@ type Experience = {
   location: string
   period: string
   description: string[]
+  skills: JSX.Element[]
 }
 
 const experiences: Experience[] = [
@@ -13,8 +18,14 @@ const experiences: Experience[] = [
     title: "SWE Intern",
     company: "FOSSEE | IIT Bombay",
     location: "Remote",
-    period: "Feb 2025 - Present",
-    description: ["Working on Osdag, a tool used for designing CADs for civil engineering."],
+    period: "Feb 2025 - May 2025",
+    description: [
+      "Worked on Osdag, an open-source tool that helps design structures like beams and columns used in civil engineering.",
+      "Built backend APIs using Django to handle structural calculations for different design modules.",
+      "Created easy-to-use frontends in React to show the CAD model and its related calculations.",
+      "Added user session management so users can smoothly work on their designs without losing progress.",
+    ],
+    skills: [<FaGit />, <SiGithub />, <FaReact />, <FaPython />, <SiDjango />, <FaDocker />],
   },
   {
     id: 2,
@@ -26,7 +37,10 @@ const experiences: Experience[] = [
       "Developed dynamic pages that efficiently display AI-generated data, enhancing user engagement by 20%.",
       "Implemented session storage for chat history, improving user retention and multi-session continuity.",
       "Enhanced chatbot functionality by integrating product image display, increasing user interaction rates by 45%.",
+      "Built a feedback system for chatbot response rating, contributing to a 15% improvement in response accuracy.",
+      "Resolved critical bugs and reduced UI/UX inconsistencies to improve user satisfaction by 15%.",
     ],
+    skills: [<FaGit />, <SiGithub />, <SiNextdotjs />, <SiTailwindcss />],
   },
 ]
 
@@ -53,6 +67,13 @@ export function ExperienceTimeline() {
               <li key={index}>{item}</li>
             ))}
           </ul>
+          <div className="flex gap-2 mt-3">
+            {exp.skills.map((icon, index) => (
+              <span key={index} className="text-primary text-lg">
+                {icon}
+              </span>
+            ))}
+          </div>
         </li>
       ))}
     </ol>

@@ -9,6 +9,7 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { GithubActivity } from "@/components/github-activity";
+import { AchievementsSection } from "@/components/achievements-section";
 
 export default function Home() {
   return (
@@ -131,7 +132,7 @@ export default function Home() {
             </div>
 
             {/* Achievements Section */}
-            <div className="bg-card rounded-lg border shadow-sm p-6">
+            {/* <div className="bg-card rounded-lg border shadow-sm p-6">
               <h2 className="text-xl font-bold mb-4">ACHIEVEMENTS</h2>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
@@ -149,7 +150,8 @@ export default function Home() {
                   </span>
                 </li>
               </ul>
-            </div>
+            </div> */}
+            <AchievementsSection/>
 
             {/* Contact Section */}
             <div className="bg-card rounded-lg border shadow-sm p-6">

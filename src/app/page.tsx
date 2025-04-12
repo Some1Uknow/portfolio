@@ -1,103 +1,168 @@
-import Image from "next/image";
+import { HireMeModal } from "@/components/hire-me-modal"
+import { ModeToggle } from "@/components/mode-toggle"
+import { ProjectCarousel } from "@/components/project-carousel"
+import { BlogCarousel } from "@/components/blog-carousel"
+import { SkillsMarquee } from "@/components/skills-marquee"
+import { ExperienceTimeline } from "@/components/experience-timeline"
+import { Button } from "@/components/ui/button"
+import { Github, Linkedin, Twitter } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { GithubActivity } from "@/components/github-activity"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen p-4 md:p-8">
+      <div className="fixed top-4 right-4 z-50">
+        <ModeToggle />
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="grid grid-cols-1 gap-4 md:gap-6 max-w-7xl mx-auto">
+        {/* Top Section - Profile and GitHub */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {/* Profile Section */}
+          <div className="bg-card rounded-lg border shadow-sm p-6 h-auto md:h-[180px] flex flex-col justify-center">
+            <div className="flex items-center gap-4">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-primary/20">
+                <Image src="/placeholder.svg?height=64&width=64" alt="Raghav Sharma" fill className="object-cover" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold">Raghav Sharma</h1>
+                <p className="text-muted-foreground text-sm">Full Stack Dev.</p>
+                <div className="flex gap-3 mt-2">
+                  <Link href="https://github.com" target="_blank" aria-label="GitHub">
+                    <Github className="h-4 w-4" />
+                  </Link>
+                  <Link href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <Linkedin className="h-4 w-4" />
+                  </Link>
+                  <Link href="https://twitter.com" target="_blank" aria-label="Twitter">
+                    <Twitter className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* GitHub Activity */}
+          <div className="bg-card rounded-lg border shadow-sm md:col-span-2 h-auto md:h-[180px] flex flex-col justify-center">
+            {/* <h2 className="text-xl font-bold text-center mb-4">GITHUB ACTIVITY</h2>
+            <div className="grid grid-cols-7 gap-2 mx-auto">
+              {Array.from({ length: 49 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-4 h-4 rounded-sm ${
+                    Math.random() > 0.7
+                      ? "bg-primary/80"
+                      : Math.random() > 0.5
+                        ? "bg-primary/50"
+                        : Math.random() > 0.3
+                          ? "bg-primary/30"
+                          : "bg-primary/10"
+                  }`}
+                />
+              ))}
+            </div> */}
+            <GithubActivity />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+        {/* Skills Section */}
+        <div className="bg-card rounded-lg border shadow-sm p-6">
+          <h2 className="text-xl font-bold mb-4">SKILLS</h2>
+          <SkillsMarquee />
+        </div>
+
+        {/* Projects and Experience - Equal width */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          {/* Project Section */}
+          <div className="bg-card rounded-lg border shadow-sm p-6">
+            <h2 className="text-xl font-bold mb-4">PROJECTS</h2>
+            <ProjectCarousel />
+          </div>
+
+          {/* Experience Section */}
+          <div className="bg-card rounded-lg border shadow-sm p-6">
+            <h2 className="text-xl font-bold mb-4">Experience</h2>
+            <p className="text-muted-foreground text-sm mb-4">In a timeline/stepper format</p>
+            <ExperienceTimeline />
+          </div>
+        </div>
+
+        {/* Blog, Hire Me/Resume Section - Blog takes half page width */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+          {/* Blog Section */}
+          <div className="bg-card rounded-lg border shadow-sm p-6">
+            <h2 className="text-xl font-bold mb-4">Blogs carousel</h2>
+            <BlogCarousel />
+          </div>
+
+          {/* Buttons Section */}
+          <div className="bg-card rounded-lg border shadow-sm p-6 flex flex-col gap-4 justify-center">
+            <HireMeModal />
+            <Button asChild variant="outline" size="lg">
+              <Link href="/resume.pdf" target="_blank">
+                RESUME
+              </Link>
+            </Button>
+          </div>
+        </div>
+
+        {/* Education Section */}
+        <div className="bg-card rounded-lg border shadow-sm p-6">
+          <h2 className="text-xl font-bold mb-4">EDUCATION</h2>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+              <h3 className="text-lg font-medium">Dronacharya College of Engineering</h3>
+              <p className="text-muted-foreground">Gurugram, Haryana, IN</p>
+            </div>
+            <div>
+              <p className="font-medium">B.E in Computer Science</p>
+              <p className="text-muted-foreground">October 2022 - Present</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Achievements Section */}
+        <div className="bg-card rounded-lg border shadow-sm p-6">
+          <h2 className="text-xl font-bold mb-4">ACHIEVEMENTS</h2>
+          <ul className="space-y-2">
+            <li className="flex items-start gap-2">
+              <span className="text-primary font-bold">•</span>
+              <span>
+                Smart India Hackathon (SIH) 2024 Winner – <strong>1st Position</strong> as Team Leader
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-primary font-bold">•</span>
+              <span>Top 50 Project Ideas – NES Innovation Awards 2024 (Out of 800+ submissions)</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact Section */}
+        <div className="bg-card rounded-lg border shadow-sm p-6">
+          <h2 className="text-xl font-bold mb-4">CONTACT</h2>
+          <div className="flex flex-col md:flex-row justify-between gap-4">
+            <div>
+              <p className="font-medium">Subash Nagar, New Delhi, IN</p>
+              <p className="text-muted-foreground">raghu250407@gmail.com</p>
+              <p className="text-muted-foreground">+91 7042019181</p>
+            </div>
+            <div className="flex gap-4">
+              <Link href="https://github.com" target="_blank" aria-label="GitHub">
+                <Github className="h-5 w-5" />
+              </Link>
+              <Link href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                <Linkedin className="h-5 w-5" />
+              </Link>
+              <Link href="https://twitter.com" target="_blank" aria-label="Twitter">
+                <Twitter className="h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  )
 }

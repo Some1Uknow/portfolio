@@ -16,6 +16,8 @@ type BlogPost = {
   readTime: string
   slug: string
   image: string
+  publishedAt: string
+  coverImage?: { url: string } // Added this property to fix the error
 }
 
 export function BlogCarousel() {

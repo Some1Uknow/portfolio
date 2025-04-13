@@ -37,21 +37,21 @@ export default function Home() {
                 <p className="text-muted-foreground text-md">Full Stack Dev.</p>
                 <div className="flex gap-3 mt-2">
                   <Link
-                    href="https://github.com"
+                    href="https://github.com/some1uknow"
                     target="_blank"
                     aria-label="GitHub"
                   >
                     <Github className="h-4 w-4" />
                   </Link>
                   <Link
-                    href="https://linkedin.com"
+                    href="https://linkedin.com/in/raghavsharmaweb3"
                     target="_blank"
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="h-4 w-4" />
                   </Link>
                   <Link
-                    href="https://twitter.com"
+                    href="https://x.com/some1uknow25"
                     target="_blank"
                     aria-label="Twitter"
                   >
@@ -70,7 +70,7 @@ export default function Home() {
 
         {/* Skills Section */}
         <div className="bg-card rounded-lg border shadow-sm p-6">
-          <h2 className="text-xl font-bold mb-4">SKILLS</h2>
+          <h2 className="text-xl font-bold mb-4">Skills</h2>
           <SkillsMarquee />
         </div>
 
@@ -78,7 +78,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {/* Project Section */}
           <div className="bg-card rounded-lg border shadow-sm p-6">
-            <h2 className="text-xl font-bold mb-4">PROJECTS</h2>
+            <h2 className="text-xl font-bold mb-4">Projects</h2>
             <ProjectCarousel />
           </div>
 
@@ -96,7 +96,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {/* Blog Section */}
           <div className="bg-card rounded-lg border shadow-sm p-6">
-            <h2 className="text-xl font-bold mb-4">Blogs carousel</h2>
+            <h2 className="text-xl font-bold mb-4">Blogs</h2>
             <BlogCarousel />
           </div>
 
@@ -151,34 +151,32 @@ export default function Home() {
                 </li>
               </ul>
             </div> */}
-            <AchievementsSection/>
+            <AchievementsSection />
 
             {/* Contact Section */}
             <div className="bg-card rounded-lg border shadow-sm p-6">
               <h2 className="text-xl font-bold mb-4">CONTACT</h2>
               <div className="flex flex-col md:flex-row justify-between gap-4">
                 <div>
-                  <p className="font-medium">Subash Nagar, New Delhi, IN</p>
                   <p className="text-muted-foreground">raghu250407@gmail.com</p>
-                  <p className="text-muted-foreground">+91 7042019181</p>
                 </div>
                 <div className="flex gap-4">
                   <Link
-                    href="https://github.com"
+                    href="https://github.com/some1uknow"
                     target="_blank"
                     aria-label="GitHub"
                   >
                     <Github className="h-5 w-5" />
                   </Link>
                   <Link
-                    href="https://linkedin.com"
+                    href="https://linkedin.com/in/raghavsharmaweb3"
                     target="_blank"
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="h-5 w-5" />
                   </Link>
                   <Link
-                    href="https://twitter.com"
+                    href="https://x.com/some1uknow25"
                     target="_blank"
                     aria-label="Twitter"
                   >

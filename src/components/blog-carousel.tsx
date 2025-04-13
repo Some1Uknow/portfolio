@@ -11,7 +11,7 @@ type BlogPost = {
   id: number
   title: string
   url: string
-  excerpt: string
+  brief: string
   date: string
   readTime: string
   slug: string
@@ -27,10 +27,10 @@ export function BlogCarousel() {
     try {
       const response = await fetch("/api/blogs")
       const data = await response.json()
-      const formattedPosts = data.map((post: any, index: number) => ({
+      const formattedPosts = data.map((post : BlogPost, index: number) => ({
         id: index + 1,
         title: post.title,
-        excerpt: post.brief,
+        brief: post.brief,
         url: post.url,
         date: new Date(post.publishedAt).toLocaleDateString(),
         readTime: "5 min read", // Placeholder, replace with actual read time if available
@@ -109,7 +109,7 @@ export function BlogCarousel() {
                   </div>
                   <div className="p-3 pt-4">
                     <h3 className="text-lg font-bold mb-2 line-clamp-1">{post.title}</h3>
-                    <p className="text-muted-foreground text-sm mb-2 line-clamp-2">{post.excerpt}</p>
+                    <p className="text-muted-foreground text-sm mb-2 line-clamp-2">{post.brief}</p>
                     <p className="text-xs text-muted-foreground">
                       {post.date} • {post.readTime}
                     </p>

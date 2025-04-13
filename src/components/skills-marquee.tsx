@@ -2,25 +2,33 @@
 
 import { useEffect, useRef } from "react"
 import { FaJs, FaPython, FaReact, FaNodeJs, FaDocker, FaGit, FaAws } from "react-icons/fa"
-import { SiTypescript, SiCplusplus, SiNextdotjs, SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiIpfs, SiCloudflare, SiVercel, SiPostman, SiAxios, SiTermius } from "react-icons/si"
+import { SiTypescript, SiCplusplus, SiNextdotjs, SiTailwindcss, SiExpress, SiMongodb, SiPostgresql, SiCloudflare, SiVercel, SiPostman, SiAxios, SiTermius } from "react-icons/si"
 
 const skills = [
+  // Programming Languages
   { name: "JavaScript", icon: <FaJs /> },
   { name: "TypeScript", icon: <SiTypescript /> },
-  { name: "C++", icon: <SiCplusplus /> },
   { name: "Python", icon: <FaPython /> },
+  { name: "C++", icon: <SiCplusplus /> },
+
+  // Frameworks and Libraries
   { name: "React.js", icon: <FaReact /> },
   { name: "Next.js", icon: <SiNextdotjs /> },
-  { name: "TailwindCSS", icon: <SiTailwindcss /> },
   { name: "Node.js", icon: <FaNodeJs /> },
   { name: "Express.js", icon: <SiExpress /> },
+  { name: "TailwindCSS", icon: <SiTailwindcss /> },
+
+  // Databases
   { name: "MongoDB", icon: <SiMongodb /> },
   { name: "PostgreSQL", icon: <SiPostgresql /> },
-  { name: "IPFS (Pinata)", icon: <SiIpfs /> },
+
+  // Cloud and Deployment
   { name: "AWS", icon: <FaAws /> },
-  { name: "Cloudflare", icon: <SiCloudflare /> },
   { name: "Vercel", icon: <SiVercel /> },
+  { name: "Cloudflare", icon: <SiCloudflare /> },
   { name: "Docker", icon: <FaDocker /> },
+
+  // Tools
   { name: "Git", icon: <FaGit /> },
   { name: "GitHub", icon: <FaGit /> },
   { name: "Postman", icon: <SiPostman /> },

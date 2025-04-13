@@ -1,11 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, EB_Garamond, GFS_Didot } from "next/font/google"
+import {  GFS_Didot } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"] })
-const ebGaramond = EB_Garamond({ subsets: ["latin"] })
 const gfsDidot = GFS_Didot({ subsets: ["greek"], weight: "400" })
 
 export const metadata: Metadata = {

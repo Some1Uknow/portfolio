@@ -64,12 +64,12 @@ export function ExperienceTimeline() {
           </p>
           <ul className="list-disc pl-5 mt-2 space-y-1 text-base font-normal text-gray-500 dark:text-gray-400">
             {exp.description.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li key={`description-${exp.id}-${index}`}>{item}</li>
             ))}
           </ul>
           <div className="flex gap-2 mt-3">
             {exp.skills.map((icon, index) => (
-              <span key={index} className="text-primary text-lg">
+              <span key={`skill-${exp.id}-${index}`} className="text-primary text-lg">
                 {icon}
               </span>
             ))}

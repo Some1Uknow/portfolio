@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
 import { useForm, ValidationError } from "@formspree/react"
 import { Button } from "@/components/ui/button"
 import {
@@ -33,7 +32,7 @@ export function HireMeModal() {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Get in touch</DialogTitle>
-          <DialogDescription>Fill out the form below and I'll get back to you as soon as possible.</DialogDescription>
+          <DialogDescription>Fill out the form below and I&apos;ll get back to you as soon as possible.</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">

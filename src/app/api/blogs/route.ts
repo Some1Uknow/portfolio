@@ -43,10 +43,10 @@ export async function GET() {
     const result = await response.json();
 
     if (result.errors) {
-      throw new Error(result.errors.map((e: any) => e.message).join(', '));
+      throw new Error(result.errors.map((e: Error) => e.message).join(', '));
     }
 
-    const posts = result.data.publication.posts.edges.map((edge: any) => edge.node);
+    const posts = result.data.publication.posts.edges.map((edge: { node: { title: string; brief: string; url: string; slug: string; coverImage: { url: string }; publishedAt: string } }) => edge.node);
 
     return NextResponse.json(posts);
   } catch (err) {

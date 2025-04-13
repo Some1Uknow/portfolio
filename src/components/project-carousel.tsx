@@ -13,7 +13,7 @@ import Marquee from "react-fast-marquee" // Marquee library
 type Project = {
   id: number
   title: string
-  description: string
+  description: string[]
   image: string
   projectLink: string
   githubLink: string
@@ -24,31 +24,48 @@ const projects: Project[] = [
   {
     id: 1,
     title: "ResumeMax",
-    description: "AI Resume Optimizer and Builder",
+    description: [
+      "AI-powered resume creation to generate resumes using existing data and AI.",
+      "Multi-version resume management for users to store and customize resumes for different job profiles.",
+      "AI-driven cover letter generator to create personalized cover letters for each application.",
+      "Integrated professional ATS-friendly templates for structured and visually appealing resumes.",
+      "Tech Stack: MongoDB, React.js, Express.js, Node.js, TailwindCSS, REST APIs, OpenAI APIs.",
+    ],
     image: "/resumemax.png",
     projectLink: "https://resumemax.vercel.app",
-    githubLink: "https://github.com/raghavsharma/resumemax",
+    githubLink: "https://github.com/some1uknow/resumemax",
     tech: ["MongoDB", "React.js", "Express.js", "Node.js", "TailwindCSS", "OpenAI APIs"],
   },
-    {
+  {
     id: 2,
-    title: "EasyGPT",
-    description: "Comprehensive AI platform for all your needs",
+    title: "SmartDoc",
+    description: [
+      "Blockchain-based system to issue and verify digital certificates with Solidity smart contracts.",
+      "Integrated IPFS storage using Pinata for decentralized and tamper-proof document management.",
+      "AI-driven verification via Ovis AI OCR for metadata extraction and validation.",
+      "Developed RESTful APIs for seamless document request, issuance, and verification workflows.",
+      "Tech Stack: Node.js, Express.js, MongoDB, Solidity, Hardhat, IPFS (Pinata), REST APIs.",
+    ],
     image: "/easygpt.png",
     projectLink: "https://smartdoc.vercel.app",
-    githubLink: "https://github.com/raghavsharma/smartdoc",
+    githubLink: "https://github.com/some1uknow/smartdoc",
     tech: ["Next.js", "MongoDB", "Cloudflare AI", "TailwindCSS"],
   },
   {
     id: 3,
     title: "VentOut",
-    description: "Social Media App for people struggling with mental health issues",
+    description: [
+      "Integrated NextAuth.js for secure authentication and user management.",
+      "Implemented Google Auth Service using Google Cloud to ensure seamless user login.",
+      "Designed and developed the frontend with Next.js and Tailwind CSS for a responsive and intuitive user experience.",
+      "Utilized MongoDB and Mongoose for efficient data storage and management.",
+      "Tech Stack: Next.js, Tailwind CSS, MongoDB, Mongoose, NextAuth.js, REST APIs, Git, GitHub.",
+    ],
     image: "/ventout.png",
     projectLink: "https://ventout.vercel.app",
-    githubLink: "https://github.com/raghavsharma/ventout",
+    githubLink: "https://github.com/some1uknow/ventout",
     tech: ["Next.js", "Tailwind CSS", "MongoDB", "NextAuth.js"],
   },
- 
 ]
 
 const techIcons: Record<string, JSX.Element> = {
@@ -89,7 +106,7 @@ export function ProjectCarousel() {
 
   return (
     <div className="relative overflow-hidden">
-      <div className="flex justify-between absolute top-1/2 left-2 right-2 z-10 -translate-y-1/2 pointer-events-none">
+      <div className="flex justify-between absolute top-1/2 left-1 right-1 gap-2 z-10 -translate-y-1/2 pointer-events-none">
         <Button
           variant="outline"
           size="icon"
@@ -117,47 +134,50 @@ export function ProjectCarousel() {
         {projects.map((project) => (
           <div key={project.id} className="min-w-full">
             <Card className="border-0 shadow-none overflow-hidden">
-              <CardContent className="p-0">
-                <div className="flex flex-col">
-                  <div className="relative aspect-video overflow-hidden rounded-lg">
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col p-3 pt-4">
-                    <h3 className="text-lg font-bold mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{project.description}</p>
-                    <div className="mb-3">
-                      <Marquee gradient={false} speed={50}>
-                        {project.tech.map((tech, index) => (
-                          <span
-                            key={index}
-                            className="flex items-center px-2 py-1 bg-secondary text-secondary-foreground rounded-md text-xs mx-1"
-                          >
-                            {techIcons[tech] || null}
-                            {tech}
-                          </span>
-                        ))}
-                      </Marquee>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button asChild variant="outline" size="sm">
-                        <Link href={project.projectLink} target="_blank">
-                          <ExternalLink className="h-3 w-3 mr-1" />
-                          Project Link
-                        </Link>
-                      </Button>
-                      <Button asChild variant="outline" size="sm">
-                        <Link href={project.githubLink} target="_blank">
-                          <Github className="h-3 w-3 mr-1" />
-                          Github Link
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
+              <CardContent className="p-4 flex flex-col gap-4">
+                <div className="relative aspect-video overflow-hidden rounded-lg">
+                  <Image
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-center">{project.title}</h3>
+                <div className="text-muted-foreground text-sm space-y-2">
+                  {project.description.map((point, index) => (
+                    <p key={index} className="flex items-start">
+                      <span className="mr-2">•</span>
+                      {point}
+                    </p>
+                  ))}
+                </div>
+                <div className="mb-3">
+                  <Marquee gradient={false} speed={50}>
+                    {project.tech.map((tech, index) => (
+                      <span
+                        key={index}
+                        className="flex items-center px-2 py-1 bg-secondary text-secondary-foreground rounded-md text-xs mx-1"
+                      >
+                        {techIcons[tech] || null}
+                        {tech}
+                      </span>
+                    ))}
+                  </Marquee>
+                </div>
+                <div className="flex justify-center gap-4">
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={project.projectLink} target="_blank">
+                      <ExternalLink className="h-3 w-3 mr-1" />
+                      Project Link
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={project.githubLink} target="_blank">
+                      <Github className="h-3 w-3 mr-1" />
+                      Github Link
+                    </Link>
+                  </Button>
                 </div>
               </CardContent>
             </Card>

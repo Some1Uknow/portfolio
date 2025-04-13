@@ -6,7 +6,7 @@ export function GithubActivity() {
   const { theme } = useTheme();
 
   return (
-    <main className="flex justify-center items-center">
+    <main className="flex justify-center items-center p-3">
       <GitHubCalendar
         username="some1uknow"
         blockSize={10}

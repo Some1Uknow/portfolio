@@ -14,7 +14,7 @@ import { AchievementsSection } from "@/components/achievements-section";
 export default function Home() {
   return (
     <main className="min-h-screen p-4 md:p-8">
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-4 z-50 md:top-4 md:right-4 sm:top-2 sm:right-2">
         <ModeToggle />
       </div>
 
@@ -132,26 +132,9 @@ export default function Home() {
             </div>
 
             {/* Achievements Section */}
-            {/* <div className="bg-card rounded-lg border shadow-sm p-6">
-              <h2 className="text-xl font-bold mb-4">ACHIEVEMENTS</h2>
-              <ul className="space-y-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span>
-                    Smart India Hackathon (SIH) 2024 Winner –{" "}
-                    <strong>1st Position</strong> as Team Leader
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary font-bold">•</span>
-                  <span>
-                    Top 50 Project Ideas – NES Innovation Awards 2024 (Out of
-                    800+ submissions)
-                  </span>
-                </li>
-              </ul>
-            </div> */}
-            <AchievementsSection />
+            <div className="p-1">
+              <AchievementsSection />
+            </div>
 
             {/* Contact Section */}
             <div className="bg-card rounded-lg border shadow-sm p-6">

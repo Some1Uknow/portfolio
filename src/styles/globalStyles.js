@@ -29,5 +29,27 @@ export const globalStyles = `
     .skills-grid { grid-template-columns: 1fr !important; }
     .writing-row { grid-template-columns: 1fr !important; }
     .writing-row > *:last-child { display: none; }
+    .footer-shell {
+      align-items: flex-start !important;
+      gap: 22px !important;
+      padding-top: 36px !important;
+      padding-bottom: 36px !important;
+    }
+    .footer-meta {
+      width: 100%;
+      align-items: flex-start !important;
+      text-align: left !important;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      line-height: 1.7 !important;
+    }
+    .footer-link { display: inline-block !important; }
+    .footer-note {
+      max-width: 18rem;
+      line-height: 1.6;
+    }
   }
 `

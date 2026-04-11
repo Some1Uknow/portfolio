@@ -1,9 +1,18 @@
 {
   "links": [
     { "label": "email", "href": "mailto:raghu250407@gmail.com" },
-    { "label": "github", "href": "https://github.com/some1uknow", "external": true },
-    { "label": "linkedin", "href": "https://linkedin.com/in/raghavsharmaweb3", "external": true },
-    { "label": "x", "href": "https://x.com/raghavdotsol", "external": true }  ],
+    {
+      "label": "github",
+      "href": "https://github.com/some1uknow",
+      "external": true
+    },
+    {
+      "label": "linkedin",
+      "href": "https://linkedin.com/in/raghavsharmaweb3",
+      "external": true
+    },
+    { "label": "x", "href": "https://x.com/raghavdotsol", "external": true }
+  ],
   "aboutParagraphs": [
     "hey, i'm raghav. i build on solana across the stack, from on-chain programs and rust tooling to developer education that helps people ship faster.",
     "right now i'm focused on rust, systems, protocol design, and understanding how solana works under the hood. member at superteam india."
@@ -31,7 +40,7 @@
         "RAG pipeline over 100+ docs via pgvector · live Rust/Anchor compilation sandbox",
         "1,100+ exercises completed in production, zero bugs"
       ],
-      "stack": ["Next.js","Rust", "Anchor", "pgvector", "TypeScript", "AI"]
+      "stack": ["Next.js", "Rust", "Anchor", "pgvector", "TypeScript", "AI"]
     },
     {
       "company": "FOSSEE, IIT Bombay",
@@ -39,10 +48,10 @@
       "date": "Feb – Jun 2025",
       "location": "Remote",
       "bullets": [
-      "Built 4+ full-stack structural design modules using React, Django, and REST APIs", 
-      "Developed 2 steel design modules from scratch based on IS 800:2007 with 15+ validation checks",
-      "Resolved critical CAD generation and session workflow bugs across 7+ modules",
-      "Reduced debugging time by 60%+ through logging, error isolation, and API refactoring"
+        "Built 4+ full-stack structural design modules using React, Django, and REST APIs",
+        "Developed 2 steel design modules from scratch based on IS 800:2007 with 15+ validation checks",
+        "Resolved critical CAD generation and session workflow bugs across 7+ modules",
+        "Reduced debugging time by 60%+ through logging, error isolation, and API refactoring"
       ],
       "stack": ["Django", "Docker", "React"]
     },
@@ -52,10 +61,10 @@
       "date": "Jul – Sep 2024",
       "location": "Katy, Texas (Remote)",
       "bullets": [
-      "Built a session-based chat persistence layer handling 500+ daily conversations with no data loss.",
-      "Built a user feedback pipeline that collected 1,200+ ratings and drove a 15% improvement in model accuracy",
-      "Fixed critical bugs affecting 5,000+ users, pushing satisfaction scores from 3.5 to 4.2/5",
-      "Cut image load times by 20% by moving delivery to a CDN"
+        "Built a session-based chat persistence layer handling 500+ daily conversations with no data loss.",
+        "Built a user feedback pipeline that collected 1,200+ ratings and drove a 15% improvement in model accuracy",
+        "Fixed critical bugs affecting 5,000+ users, pushing satisfaction scores from 3.5 to 4.2/5",
+        "Cut image load times by 20% by moving delivery to a CDN"
       ],
       "stack": ["TypeScript", "Next.js", "Postgres", "AWS"]
     }
@@ -114,10 +123,30 @@
   ],
   "writing": [],
   "awards": [
-    { "num": "01", "title": "Solana Foundation Grant — $5,000", "desc": "Top 2% from 250+ submissions. Funded LearnSolana.", "year": "2025" },
-    { "num": "02", "title": "Colosseum Codex Feature", "desc": "Highlighted in official Solana newsletter for developer education impact.", "year": "2025" },
-    { "num": "03", "title": "Smart India Hackathon — 1st Place (₹100,000)", "desc": "Team Leader. Top 0.375% from 80,000+ teams nationwide.", "year": "2024" },
-    { "num": "06", "title": "Superteam India Member", "desc": "Active contributor to Solana ecosystem and developer community.", "year": "Ongoing" }
+    {
+      "num": "01",
+      "title": "Solana Foundation Grant — $5,000",
+      "desc": "Top 2% from 250+ submissions. Funded LearnSolana.",
+      "year": "2025"
+    },
+    {
+      "num": "02",
+      "title": "Colosseum Codex Feature",
+      "desc": "Highlighted in official Solana newsletter for developer education impact.",
+      "year": "2025"
+    },
+    {
+      "num": "03",
+      "title": "Smart India Hackathon — 1st Place (₹100,000)",
+      "desc": "Team Leader. Top 0.375% from 80,000+ teams nationwide.",
+      "year": "2024"
+    },
+    {
+      "num": "06",
+      "title": "Superteam India Member",
+      "desc": "Active contributor to Solana ecosystem and developer community.",
+      "year": "Ongoing"
+    }
   ],
   "footerLinks": [
     { "label": "email", "href": "mailto:raghu250407@gmail.com" },

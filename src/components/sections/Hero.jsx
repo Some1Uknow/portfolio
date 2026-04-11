@@ -77,8 +77,8 @@ export default function Hero() {
           ...heroItems[2].style,
         }}
       >
-        Rust systems, Solana on-chain programs, and open developer tooling. I also build education infrastructure that
-        gets developers unstuck. Solana Foundation grantee. Superteam India.
+        Solana on-chain programs and Rust developer tooling. I also build education infrastructure that
+        gets developers unstuck. Solana Foundation grantee. Superteam India Member.
       </p>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0 0", ...heroItems[3].style }}>

@@ -118,7 +118,7 @@
   "awards": [
     { "num": "01", "title": "Solana Foundation Grant — $5,000", "desc": "Top 2% from 250+ submissions. Funded LearnSolana.", "year": "2025" },
     { "num": "02", "title": "Colosseum Codex Feature", "desc": "Highlighted in official Solana newsletter for developer education impact.", "year": "2025" },
-    { "num": "03", "title": "Smart India Hackathon — 1st Place", "desc": "Team Leader. Top 0.375% from 80,000+ teams nationwide.", "year": "2024" },
+    { "num": "03", "title": "Smart India Hackathon — 1st Place (₹100,000)", "desc": "Team Leader. Top 0.375% from 80,000+ teams nationwide.", "year": "2024" },
     { "num": "06", "title": "Superteam India Member", "desc": "Active contributor to Solana ecosystem and developer community.", "year": "Ongoing" }
   ],
   "footerLinks": [

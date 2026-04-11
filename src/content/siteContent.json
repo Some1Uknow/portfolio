@@ -3,7 +3,7 @@
     { "label": "email", "href": "mailto:raghu250407@gmail.com" },
     { "label": "github", "href": "https://github.com/some1uknow", "external": true },
     { "label": "linkedin", "href": "https://linkedin.com/in/raghavsharmaweb3", "external": true },
-    { "label": "x / twitter", "href": "https://x.com/some1uknow", "external": true },
+    { "label": "x", "href": "https://x.com/raghavdotsol", "external": true },
     { "label": "raghav.codes", "href": "https://raghav.codes", "external": true }
   ],
   "aboutParagraphs": [
@@ -33,19 +33,20 @@
         "RAG pipeline over 100+ docs via pgvector · live Rust/Anchor compilation sandbox",
         "1,100+ exercises completed in production, zero bugs"
       ],
-      "stack": ["Rust", "Anchor", "pgvector", "TypeScript", "AI"]
+      "stack": ["Next.js","Rust", "Anchor", "pgvector", "TypeScript", "AI"]
     },
     {
       "company": "FOSSEE, IIT Bombay",
       "role": "Software Engineering Intern",
       "date": "Feb – Jun 2025",
       "location": "Remote",
-      "badge": "Top 5% of 3,000+ applicants",
       "bullets": [
-        "Built Django REST APIs for Osdag, structural steel calculations for 2,000+ engineers",
-        "Added Session persistence for 50+ step engineering workflows"
+      "Built 4+ full-stack structural design modules using React, Django, and REST APIs", 
+      "Developed 2 steel design modules from scratch based on IS 800:2007 with 15+ validation checks",
+      "Resolved critical CAD generation and session workflow bugs across 7+ modules",
+      "Reduced debugging time by 60%+ through logging, error isolation, and API refactoring"
       ],
-      "stack": ["Django", "Docker", "CI/CD", "React"]
+      "stack": ["Django", "Docker", "React"]
     },
     {
       "company": "Debales AI",
@@ -58,7 +59,7 @@
       "Fixed critical bugs affecting 5,000+ users, pushing satisfaction scores from 3.5 to 4.2/5",
       "Cut image load times by 20% by moving delivery to a CDN"
       ],
-      "stack": ["TypeScript", "React", "CDN"]
+      "stack": ["TypeScript", "Next.js", "Postgres", "AWS"]
     }
   ],
   "projects": [
@@ -121,9 +122,9 @@
     { "num": "06", "title": "Superteam India Member", "desc": "Active contributor to Solana ecosystem and developer community.", "year": "Ongoing" }
   ],
   "footerLinks": [
-    { "label": "raghu250407@gmail.com", "href": "mailto:raghu250407@gmail.com" },
-    { "label": "+91 7042019181", "href": "tel:+917042019181" },
-    { "label": "github.com/some1uknow", "href": "https://github.com/some1uknow" },
-    { "label": "raghav.codes", "href": "https://raghav.codes" }
+    { "label": "email", "href": "mailto:raghu250407@gmail.com" },
+    { "label": "github", "href": "https://github.com/some1uknow" },
+    { "label": "linkedin", "href": "https://linkedin.com/in/raghavsharmaweb3" },
+    { "label": "x", "href": "https://x.com/raghavdotsol" }
   ]
 }

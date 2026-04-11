@@ -1,4 +1,4 @@
-export const PAD = "clamp(40px, 10vw, 160px)"
+export const PAD = "clamp(52px, 12vw, 220px)"
 
 export const globalStyles = `
   @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap');

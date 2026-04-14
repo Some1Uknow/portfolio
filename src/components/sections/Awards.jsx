@@ -18,25 +18,27 @@ export default function Awards() {
                 gap: 24,
                 alignItems: "start",
                 padding: "22px 0",
-                borderTop: index === 0 ? "1px solid #f5f5f5" : "none",
-                borderBottom: "1px solid #f5f5f5",
+                borderTop: index === 0 ? "1px solid var(--color-border-soft)" : "none",
+                borderBottom: "1px solid var(--color-border-soft)",
               }}
             >
               <span
                 style={{
                   fontFamily: "'Instrument Serif', Georgia, serif",
                   fontSize: 18,
-                  color: "#ccc",
+                  color: "var(--color-faint)",
                   fontStyle: "italic",
                 }}
               >
                 {award.num}
               </span>
               <div>
-                <div style={{ fontSize: 13, color: "#0a0a0a", marginBottom: 3 }}>{award.title}</div>
-                <div style={{ fontSize: 12, color: "#666", lineHeight: 1.6 }}>{award.desc}</div>
+                <div style={{ fontSize: 13, color: "var(--color-text)", marginBottom: 3 }}>{award.title}</div>
+                <div style={{ fontSize: 12, color: "var(--color-muted)", lineHeight: 1.6 }}>{award.desc}</div>
               </div>
-              <div style={{ fontSize: 11, color: "#999", whiteSpace: "nowrap", paddingTop: 2 }}>{award.year}</div>
+              <div style={{ fontSize: 11, color: "var(--color-soft)", whiteSpace: "nowrap", paddingTop: 2 }}>
+                {award.year}
+              </div>
             </div>
           </FadeIn>
         ))}

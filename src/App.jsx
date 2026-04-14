@@ -5,14 +5,17 @@ import Experience from "./components/sections/Experience.jsx"
 import Footer from "./components/sections/Footer.jsx"
 import Hero from "./components/sections/Hero.jsx"
 import Projects from "./components/sections/Projects.jsx"
+import ThemeToggle from "./components/ui/ThemeToggle.jsx"
 import { globalStyles, PAD } from "./styles/globalStyles.js"
+import { ThemeProvider } from "./theme/ThemeProvider.jsx"
 
 export default function App() {
   return (
-    <>
+    <ThemeProvider>
       <style>{globalStyles}</style>
 
       <Cursor />
+      <ThemeToggle />
 
       <div style={{ padding: `0 ${PAD}` }}>
         <Hero />
@@ -27,6 +30,6 @@ export default function App() {
       </div>
 
       <Footer />
-    </>
+    </ThemeProvider>
   )
 }

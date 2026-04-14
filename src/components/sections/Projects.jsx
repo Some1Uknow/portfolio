@@ -20,7 +20,7 @@ function ProjectCard({ project, index }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hovered ? "#f5f5f5" : "#fff",
+        background: hovered ? "var(--color-surface-hover)" : "var(--color-surface)",
         padding: "36px clamp(20px, 3vw, 40px)",
         position: "relative",
         overflow: "hidden",
@@ -37,7 +37,7 @@ function ProjectCard({ project, index }) {
           left: 0,
           right: 0,
           height: 1,
-          background: "#0a0a0a",
+          background: "var(--color-text)",
           transform: hovered ? "scaleX(1)" : "scaleX(0)",
           transformOrigin: "left",
           transition: "transform 0.4s ease",
@@ -45,27 +45,19 @@ function ProjectCard({ project, index }) {
       />
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
-        <span style={{ fontSize: 10, color: "#ccc", letterSpacing: "0.08em" }}>{project.num}</span>
+        <span style={{ fontSize: 10, color: "var(--color-faint)", letterSpacing: "0.08em" }}>{project.num}</span>
         <div style={{ display: "flex", gap: 12 }}>
           {project.live ? (
             <a
               href={project.live}
               target="_blank"
               rel="noreferrer"
+              className="muted-link"
               style={{
                 fontSize: 11,
-                color: "#999",
-                textDecoration: "none",
                 display: "flex",
                 alignItems: "center",
                 gap: 3,
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(event) => {
-                event.currentTarget.style.color = "#0a0a0a"
-              }}
-              onMouseLeave={(event) => {
-                event.currentTarget.style.color = "#999"
               }}
             >
               {project.liveLabel || "live"}{" "}
@@ -85,20 +77,12 @@ function ProjectCard({ project, index }) {
             href={project.github}
             target="_blank"
             rel="noreferrer"
+            className="muted-link"
             style={{
               fontSize: 11,
-              color: "#999",
-              textDecoration: "none",
               display: "flex",
               alignItems: "center",
               gap: 3,
-              transition: "color 0.2s",
-            }}
-            onMouseEnter={(event) => {
-              event.currentTarget.style.color = "#0a0a0a"
-            }}
-            onMouseLeave={(event) => {
-              event.currentTarget.style.color = "#999"
             }}
           >
             github{" "}
@@ -120,7 +104,7 @@ function ProjectCard({ project, index }) {
           fontFamily: "'Instrument Serif', Georgia, serif",
           fontSize: 22,
           letterSpacing: "-0.02em",
-          color: "#0a0a0a",
+          color: "var(--color-text)",
           marginBottom: 10,
           lineHeight: 1.2,
         }}
@@ -128,7 +112,9 @@ function ProjectCard({ project, index }) {
         {project.name}
       </div>
 
-      <div style={{ fontSize: 12, color: "#666", lineHeight: 1.7, marginBottom: 16 }}>{project.desc}</div>
+      <div style={{ fontSize: 12, color: "var(--color-muted)", lineHeight: 1.7, marginBottom: 16 }}>
+        {project.desc}
+      </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 12 }}>
         {project.stack.map((item) => (
@@ -136,7 +122,7 @@ function ProjectCard({ project, index }) {
         ))}
       </div>
 
-      <div style={{ fontSize: 11, color: "#999" }}>{project.meta}</div>
+      <div style={{ fontSize: 11, color: "var(--color-soft)" }}>{project.meta}</div>
     </div>
   )
 }
@@ -151,7 +137,7 @@ export default function Projects() {
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",
           gap: 1,
-          background: "#e5e5e5",
+          background: "var(--color-border)",
           marginBottom: 96,
         }}
         className="projects-grid"

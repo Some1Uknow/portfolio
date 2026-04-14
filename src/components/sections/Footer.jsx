@@ -7,7 +7,7 @@ export default function Footer() {
     <footer
       className="footer-shell"
       style={{
-        borderTop: "1px solid #e5e5e5",
+        borderTop: "1px solid var(--color-border)",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "flex-end",
@@ -25,7 +25,7 @@ export default function Footer() {
           letterSpacing: "-0.02em",
           fontStyle: "italic",
           textTransform: "lowercase",
-          color: "#0a0a0a",
+          color: "var(--color-text)",
         }}
       >
         raghav sharma
@@ -41,21 +41,15 @@ export default function Footer() {
           minWidth: 0,
         }}
       >
-        <div className="footer-links" style={{ fontSize: 11, color: "#666", lineHeight: 2.2 }}>
+        <div className="footer-links" style={{ fontSize: 11, color: "var(--color-muted)", lineHeight: 2.2 }}>
           {footerLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
-              className="footer-link"
-              style={{ display: "block", color: "#666", textDecoration: "none" }}
-              onMouseEnter={(event) => {
-                event.currentTarget.style.color = "#0a0a0a"
-              }}
-              onMouseLeave={(event) => {
-                event.currentTarget.style.color = "#666"
-              }}
+              className="footer-link muted-link"
+              style={{ display: "block" }}
             >
               {link.label}
             </a>
@@ -63,7 +57,7 @@ export default function Footer() {
         </div>
         <div
           className="footer-note"
-          style={{ fontSize: 10, color: "#ccc", marginTop: 12, letterSpacing: "0.06em" }}
+          style={{ fontSize: 10, color: "var(--color-faint)", marginTop: 12, letterSpacing: "0.06em" }}
         >
           New Delhi, IN — Available worldwide
         </div>

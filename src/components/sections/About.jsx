@@ -17,7 +17,7 @@ export default function About() {
                 key={paragraph}
                 style={{
                   fontSize: 13,
-                  color: "#666",
+                  color: "var(--color-muted)",
                   lineHeight: 1.9,
                   marginBottom: 18,
                 }}
@@ -29,13 +29,13 @@ export default function About() {
         </FadeIn>
 
         <FadeIn delay={80} y={8}>
-          <div style={{ paddingTop: 18, marginTop: 10, borderTop: "1px solid #f5f5f5" }}>
+          <div style={{ paddingTop: 18, marginTop: 10, borderTop: "1px solid var(--color-border-soft)" }}>
             <div
               style={{
                 fontSize: 10,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "#999",
+                color: "var(--color-soft)",
                 marginBottom: 14,
               }}
             >

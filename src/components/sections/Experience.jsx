@@ -18,21 +18,21 @@ export default function Experience() {
                 gridTemplateColumns: "180px 1fr 160px",
                 gap: 32,
                 padding: "32px 0",
-                borderTop: index === 0 ? "1px solid #f5f5f5" : "none",
-                borderBottom: "1px solid #f5f5f5",
+                borderTop: index === 0 ? "1px solid var(--color-border-soft)" : "none",
+                borderBottom: "1px solid var(--color-border-soft)",
               }}
               className="exp-row"
             >
               <div>
-                <div style={{ fontSize: 13, fontWeight: 500, color: "#0a0a0a" }}>{item.company}</div>
-                <div style={{ fontSize: 11, color: "#999", marginTop: 3 }}>{item.location}</div>
+                <div style={{ fontSize: 13, fontWeight: 500, color: "var(--color-text)" }}>{item.company}</div>
+                <div style={{ fontSize: 11, color: "var(--color-soft)", marginTop: 3 }}>{item.location}</div>
                 {item.badge ? (
                   <span
                     style={{
                       display: "inline-block",
                       fontSize: 10,
-                      color: "#666",
-                      border: "1px solid #ccc",
+                      color: "var(--color-muted)",
+                      border: "1px solid var(--color-faint)",
                       padding: "2px 7px",
                       borderRadius: 2,
                       marginTop: 8,
@@ -44,21 +44,21 @@ export default function Experience() {
               </div>
 
               <div>
-                <div style={{ fontSize: 13, color: "#0a0a0a", marginBottom: 10 }}>{item.role}</div>
+                <div style={{ fontSize: 13, color: "var(--color-text)", marginBottom: 10 }}>{item.role}</div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {item.bullets.map((bullet) => (
                     <li
                       key={bullet}
                       style={{
                         fontSize: 12,
-                        color: "#666",
+                        color: "var(--color-muted)",
                         paddingLeft: 14,
                         position: "relative",
                         marginBottom: 4,
                         lineHeight: 1.6,
                       }}
                     >
-                      <span style={{ position: "absolute", left: 0, color: "#ccc", fontSize: 10, top: 3 }}>—</span>
+                      <span style={{ position: "absolute", left: 0, color: "var(--color-faint)", fontSize: 10, top: 3 }}>—</span>
                       {bullet}
                     </li>
                   ))}
@@ -70,7 +70,15 @@ export default function Experience() {
                 </div>
               </div>
 
-              <div style={{ fontSize: 11, color: "#999", textAlign: "right", paddingTop: 2, whiteSpace: "nowrap" }}>
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "var(--color-soft)",
+                  textAlign: "right",
+                  paddingTop: 2,
+                  whiteSpace: "nowrap",
+                }}
+              >
                 {item.date}
               </div>
             </div>

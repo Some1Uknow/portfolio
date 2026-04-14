@@ -48,7 +48,7 @@ export default function Cursor() {
         zIndex: 9999,
         width: expanded ? 30 : 6,
         height: expanded ? 30 : 6,
-        background: "#0a0a0a",
+        background: "var(--color-text)",
         borderRadius: "50%",
         transform: "translate(-50%,-50%)",
         transition: "width 0.2s ease, height 0.2s ease, opacity 0.2s ease",

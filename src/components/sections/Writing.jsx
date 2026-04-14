@@ -25,8 +25,8 @@ export default function Writing() {
                 gap: 24,
                 alignItems: "start",
                 padding: "24px 0",
-                borderBottom: "1px solid #f5f5f5",
-                borderTop: index === 0 ? "1px solid #f5f5f5" : "none",
+                borderBottom: "1px solid var(--color-border-soft)",
+                borderTop: index === 0 ? "1px solid var(--color-border-soft)" : "none",
                 cursor: "pointer",
                 textDecoration: "none",
               }}
@@ -38,20 +38,20 @@ export default function Writing() {
                     fontFamily: "'Instrument Serif', Georgia, serif",
                     fontSize: 18,
                     letterSpacing: "-0.01em",
-                    color: "#0a0a0a",
+                    color: "var(--color-text)",
                     marginBottom: 5,
                   }}
                 >
                   {entry.title}
                 </div>
-                <div style={{ fontSize: 11, color: "#999" }}>{entry.tags}</div>
+                <div style={{ fontSize: 11, color: "var(--color-soft)" }}>{entry.tags}</div>
               </div>
               <div
                 style={{
                   fontSize: 10,
                   letterSpacing: "0.07em",
                   textTransform: "uppercase",
-                  color: "#999",
+                  color: "var(--color-soft)",
                   paddingTop: 4,
                   whiteSpace: "nowrap",
                 }}

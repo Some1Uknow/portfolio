@@ -8,13 +8,13 @@ export default function SectionLabel({ children, paddingTop = 96 }) {
         fontSize: 10,
         letterSpacing: "0.14em",
         textTransform: "uppercase",
-        color: "#999",
+        color: "var(--color-soft)",
         marginBottom: 48,
         paddingTop,
       }}
     >
       {children}
-      <div style={{ flex: 1, height: 1, background: "#e5e5e5" }} />
+      <div style={{ flex: 1, height: 1, background: "var(--color-border)" }} />
     </div>
   )
 }

@@ -27,7 +27,7 @@ export default function Hero() {
           fontSize: 11,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          color: "#666",
+          color: "var(--color-muted)",
           marginBottom: 20,
           display: "flex",
           alignItems: "flex-start",
@@ -39,12 +39,13 @@ export default function Hero() {
           style={{
             width: 6,
             height: 6,
-            background: "#22c55e",
+            background: "var(--color-accent)",
             borderRadius: "50%",
             display: "inline-block",
             animation: "pulseGreen 2s infinite",
             flexShrink: 0,
             marginTop: 4,
+            boxShadow: "0 0 0 6px var(--color-accent-glow)",
           }}
         />
         <span>Protocol Engineer & Developer Relations — New Delhi, IN</span>
@@ -57,7 +58,7 @@ export default function Hero() {
           fontWeight: 400,
           lineHeight: 1,
           letterSpacing: "-0.03em",
-          color: "#0a0a0a",
+          color: "var(--color-text)",
           textTransform: "lowercase",
           marginBottom: 28,
           whiteSpace: "nowrap",
@@ -71,7 +72,7 @@ export default function Hero() {
         style={{
           maxWidth: 480,
           fontSize: 13,
-          color: "#666",
+          color: "var(--color-muted)",
           lineHeight: 1.8,
           marginBottom: 40,
           ...heroItems[2].style,
@@ -92,7 +93,7 @@ export default function Hero() {
               fontSize: 11,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
-              color: "#0a0a0a",
+              color: "var(--color-text)",
               textDecoration: "none",
               padding: "10px 0",
               marginRight: 24,

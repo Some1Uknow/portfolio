@@ -11,7 +11,7 @@ import {
 import { FaAws } from "react-icons/fa"
 
 const techIconMap = {
-  rust: { Icon: SiRust, color: "#000000" },
+  rust: { Icon: SiRust, color: "var(--color-text)" },
   solana: { Icon: SiSolana, color: "#14f195" },
   "solana rpc": { Icon: SiSolana, color: "#14f195" },
   typescript: { Icon: SiTypescript, color: "#3178c6" },
@@ -20,7 +20,7 @@ const techIconMap = {
   pgvector: { Icon: SiPostgresql, color: "#336791" },
   docker: { Icon: SiDocker, color: "#2496ed" },
   react: { Icon: SiReact, color: "#61dafb" },
-  "next.js": { Icon: SiNextdotjs, color: "#0a0a0a" },
+  "next.js": { Icon: SiNextdotjs, color: "var(--color-text)" },
   django: { Icon: SiDjango, color: "#092e20" },
   aws: { Icon: FaAws, color: "#ff9900" },
 }

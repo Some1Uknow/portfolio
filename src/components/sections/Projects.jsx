@@ -7,6 +7,23 @@ import Pill from "../ui/Pill.jsx"
 import SectionLabel from "../ui/SectionLabel.jsx"
 
 const { projects } = siteContent
+const PROJECT_SECTIONS = [
+  {
+    key: "protocols",
+    title: "Protocols",
+    blurb: "On-chain systems, market primitives, and Solana program work.",
+  },
+  {
+    key: "rust",
+    title: "Rust",
+    blurb: "Systems work, tooling, indexers, and operator-grade backends.",
+  },
+  {
+    key: "dapps",
+    title: "Dapps / Others",
+    blurb: "User-facing products, explorers, and full-stack application work.",
+  },
+]
 
 function ProjectCard({ project, index }) {
   const ref = useRef(null)
@@ -58,9 +75,10 @@ function ProjectCard({ project, index }) {
                 display: "flex",
                 alignItems: "center",
                 gap: 3,
+                minHeight: 40,
               }}
             >
-              {project.liveLabel || "live"}{" "}
+              {project.liveLabel || "demo"}{" "}
               <span
                 style={{
                   display: "inline-block",
@@ -83,6 +101,7 @@ function ProjectCard({ project, index }) {
               display: "flex",
               alignItems: "center",
               gap: 3,
+              minHeight: 40,
             }}
           >
             github{" "}
@@ -128,22 +147,69 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
+  const groupedProjects = PROJECT_SECTIONS.map((section) => ({
+    ...section,
+    items: projects.filter((project) => project.category === section.key),
+  }))
+
   return (
     <section id="projects" style={{ padding: `0 ${PAD}` }}>
       <SectionLabel>Proof of Work</SectionLabel>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 1,
-          background: "var(--color-border)",
-          marginBottom: 96,
-        }}
-        className="projects-grid"
-      >
-        {projects.map((project, index) => (
-          <ProjectCard key={project.num} project={project} index={index} />
+      <div style={{ display: "grid", gap: 40, marginBottom: 96 }}>
+        {groupedProjects.map((section) => (
+          <div
+            key={section.key}
+            style={{
+              borderTop: "1px solid var(--color-border)",
+              paddingTop: 18,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 16,
+                alignItems: "flex-end",
+                marginBottom: 18,
+                flexWrap: "wrap",
+              }}
+            >
+              <div>
+                <h3
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: "clamp(24px, 3vw, 32px)",
+                    letterSpacing: "-0.03em",
+                    lineHeight: 1,
+                    color: "var(--color-text)",
+                    marginBottom: 8,
+                  }}
+                >
+                  {section.title}
+                </h3>
+                <p style={{ color: "var(--color-muted)", maxWidth: 520 }}>{section.blurb}</p>
+              </div>
+
+              <div style={{ fontSize: 11, color: "var(--color-soft)", letterSpacing: "0.08em" }}>
+                {String(section.items.length).padStart(2, "0")} projects
+              </div>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: 1,
+                background: "var(--color-border)",
+              }}
+              className="projects-grid"
+            >
+              {section.items.map((project, index) => (
+                <ProjectCard key={project.num} project={project} index={index} />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>

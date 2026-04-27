@@ -72,6 +72,34 @@
   "projects": [
     {
       "num": "01",
+      "category": "protocols",
+      "name": "CPMM",
+      "desc": "On-chain constant product market maker on Solana. x·y=k for token swaps and liquidity provision. PDA-controlled token vaults. Deposit, swap, withdraw — atomic.",
+      "stack": ["Rust", "Anchor", "Solana", "DeFi"],
+      "meta": "On-chain AMM · SPL tokens · PDA vaults",
+      "github": "https://github.com/Some1Uknow/cpmm"
+    },
+    {
+      "num": "02",
+      "category": "protocols",
+      "name": "Escrow",
+      "desc": "Trustless on-chain escrow in Anchor/Rust. Deposit, refund, take — secured via PDA-controlled SPL token vaults. Atomic settlement, no off-chain intermediaries.",
+      "stack": ["Rust", "Anchor", "Solana"],
+      "meta": "Trustless · PDA vaults · Atomic settlement",
+      "github": "https://github.com/Some1Uknow/escrow"
+    },
+    {
+      "num": "03",
+      "category": "protocols",
+      "name": "Flash Loan",
+      "desc": "Anchor flash loan program scaffold in Rust with a dedicated program module, initialize flow, and Rust test harness for core lending logic.",
+      "stack": ["Rust", "Anchor", "Solana"],
+      "meta": "Program scaffold · initialize instruction · Rust tests",
+      "github": "https://github.com/Some1Uknow/flash-loan"
+    },
+    {
+      "num": "04",
+      "category": "rust",
       "name": "MPMC Queue",
       "desc": "Bounded multi-producer multi-consumer queue in Rust. Mutex/Condvar, blocking + non-blocking modes. 72.3M ops/sec. 13 integration tests. Zero unsafe code.",
       "stack": ["Rust", "Concurrency"],
@@ -79,7 +107,8 @@
       "github": "https://github.com/Some1Uknow/mpmc-queue-rust"
     },
     {
-      "num": "02",
+      "num": "05",
+      "category": "rust",
       "name": "solana-txn-tui",
       "desc": "Published Rust crate for exploring Solana transactions and accounts in the terminal. cargo install, Homebrew, or curl. Fee breakdown, instruction details, token transfers. Mainnet / Devnet / Testnet.",
       "stack": ["Rust", "Ratatui", "Solana RPC"],
@@ -89,36 +118,71 @@
       "liveLabel": "crates.io"
     },
     {
-      "num": "03",
-      "name": "CPMM",
-      "desc": "On-chain constant product market maker on Solana. x·y=k for token swaps and liquidity provision. PDA-controlled token vaults. Deposit, swap, withdraw — atomic.",
-      "stack": ["Rust", "Anchor", "Solana", "DeFi"],
-      "meta": "On-chain AMM · SPL tokens · PDA vaults",
-      "github": "https://github.com/Some1Uknow/cpmm"
-    },
-    {
-      "num": "04",
-      "name": "EzDeploy",
-      "desc": "Self-hosted deployment platform. Push to GitHub, get a live URL on a unique subdomain. Isolated Docker build container per deploy, real-time log streaming.",
-      "stack": ["TypeScript", "Docker", "CI/CD"],
-      "meta": "Zero-config deploys · Real-time logs · Unique subdomains",
-      "github": "https://github.com/Some1Uknow/ezdeploy"
-    },
-    {
-      "num": "05",
-      "name": "Escrow Program",
-      "desc": "Trustless on-chain escrow in Anchor/Rust. Deposit, refund, take — secured via PDA-controlled SPL token vaults. Atomic settlement, no off-chain intermediaries.",
-      "stack": ["Rust", "Anchor", "Solana"],
-      "meta": "Trustless · PDA vaults · Atomic settlement",
-      "github": "https://github.com/Some1Uknow/escrow"
-    },
-    {
       "num": "06",
+      "category": "rust",
       "name": "Observer",
       "desc": "Self-hosted Solana observability indexer in Rust. Uses WebSocket slot updates plus RPC block fetches, Postgres upserts, and a persisted cursor for crash-safe resume. Built for near real-time network health and protocol risk monitoring.",
       "stack": ["Rust", "Solana RPC", "WebSockets", "Postgres"],
       "meta": "Crash-safe resume · Idempotent upserts · Protocol risk monitoring",
       "github": "https://github.com/Some1UKnow/observer"
+    },
+    {
+      "num": "07",
+      "category": "rust",
+      "name": "Omniscanner",
+      "desc": "Rust borrower-risk scanner for Omnipair with local scoring, pool stress tracking, liquidation alerts, PostgreSQL persistence, and a small operator dashboard served from the app.",
+      "stack": ["Rust", "Axum", "Postgres", "Risk Engine"],
+      "meta": "Borrower risk alerts · Axum API · Built-in dashboard",
+      "github": "https://github.com/Some1Uknow/omniscanner"
+    },
+    {
+      "num": "08",
+      "category": "dapps",
+      "name": "Rayscan",
+      "desc": "Search-first Solana explorer with live transaction visibility, token pages, network stats, and an indexed backend built with Fastify, WebSockets, and Postgres.",
+      "stack": ["Next.js", "Fastify", "Postgres", "Solana RPC"],
+      "meta": "Explorer UI · Live tx feed · Indexed chain data",
+      "github": "https://github.com/Some1Uknow/rayscan"
+    },
+      {
+      "num": "09",
+      "category": "dapps",
+      "name": "PixelMart",
+      "desc": "NFT marketplace on Solana with a Next.js frontend and an Anchor marketplace program for listings, buys, marketplace state, and wallet-signed flows.",
+      "stack": ["Rust", "Anchor", "Next.js", "Solana", "NFTs"],
+      "meta": "NFT marketplace · Next.js + Anchor · Live demo",
+      "github": "https://github.com/Some1Uknow/pixelmart",
+      "live": "https://pixelmart.raghav.codes",
+      "liveLabel": "demo"
+    },
+    {
+      "num": "10",
+      "category": "dapps",
+      "name": "Loopscale Borrow Shopper",
+      "desc": "Consumer-facing Next.js app for finding fixed-rate borrow routes on Loopscale, reviewing the best visible route, and signing the final loan transaction.",
+      "stack": ["Next.js", "TypeScript", "Solana", "Loopscale API"],
+      "meta": "Fixed-rate borrow flow · Route review · Wallet signing",
+      "github": "https://github.com/Some1Uknow/loopscale"
+    },
+    {
+      "num": "11",
+      "category": "dapps",
+      "name": "Pigeon",
+      "desc": "Privacy-focused Solana wallet superapp with encrypted wallet-to-wallet chat live on devnet, on-chain message history, and private transfer/swap research routes in progress.",
+      "stack": ["React", "TypeScript", "Anchor", "Solana", "Privacy"],
+      "meta": "Encrypted chat · Privacy lab · Devnet demo",
+      "github": "https://github.com/Some1Uknow/pigeon",
+      "live": "https://pigeon.raghav.codes",
+      "liveLabel": "demo"
+    },
+    {
+      "num": "12",
+      "category": "dapps",
+      "name": "EzDeploy",
+      "desc": "Self-hosted deployment platform. Push to GitHub, get a live URL on a unique subdomain. Isolated Docker build container per deploy, real-time log streaming.",
+      "stack": ["TypeScript", "Docker", "CI/CD"],
+      "meta": "Zero-config deploys · Real-time logs · Unique subdomains",
+      "github": "https://github.com/Some1Uknow/ezdeploy"
     }
   ],
   "writing": [],

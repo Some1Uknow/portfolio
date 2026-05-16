@@ -145,6 +145,7 @@ export const globalStyles = `
     .exp-row { grid-template-columns: 1fr !important; gap: 10px !important; }
     .exp-row > *:last-child { text-align: left !important; }
     .projects-grid { grid-template-columns: 1fr !important; }
+    .oss-row { grid-template-columns: 1fr !important; }
     .skills-grid { grid-template-columns: 1fr !important; }
     .writing-row { grid-template-columns: 1fr !important; }
     .writing-row > *:last-child { display: none; }

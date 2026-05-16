@@ -68,21 +68,7 @@ export default function Hero() {
         raghav sharma
       </h1>
 
-      <p
-        style={{
-          maxWidth: 480,
-          fontSize: 13,
-          color: "var(--color-muted)",
-          lineHeight: 1.8,
-          marginBottom: 40,
-          ...heroItems[2].style,
-        }}
-      >
-        Solana on-chain programs and Rust developer tooling. I also build education infrastructure that
-        gets developers unstuck. Solana Foundation grantee. Superteam India Member.
-      </p>
-
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0 0", ...heroItems[3].style }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0 0", marginBottom: 16, ...heroItems[2].style }}>
         {links.map((link) => (
           <a
             key={link.label}

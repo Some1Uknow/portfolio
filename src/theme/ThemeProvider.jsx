@@ -1,10 +1,10 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+
+import { ThemeContext } from "./themeContext.js"
 
 const STORAGE_KEY = "portfolio-theme"
 const LIGHT_THEME_COLOR = "#f5efe5"
 const DARK_THEME_COLOR = "#0d1110"
-
-const ThemeContext = createContext(null)
 
 function getStoredTheme() {
   if (typeof window === "undefined") {
@@ -95,14 +95,4 @@ export function ThemeProvider({ children }) {
       {children}
     </ThemeContext.Provider>
   )
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext)
-
-  if (!context) {
-    throw new Error("useTheme must be used within ThemeProvider")
-  }
-
-  return context
 }

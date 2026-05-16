@@ -4,6 +4,7 @@ import Awards from "./components/sections/Awards.jsx"
 import Experience from "./components/sections/Experience.jsx"
 import Footer from "./components/sections/Footer.jsx"
 import Hero from "./components/sections/Hero.jsx"
+import Oss from "./components/sections/Oss.jsx"
 import Projects from "./components/sections/Projects.jsx"
 import ThemeToggle from "./components/ui/ThemeToggle.jsx"
 import { globalStyles, PAD } from "./styles/globalStyles.js"
@@ -24,6 +25,7 @@ export default function App() {
       </div>
 
       <Projects />
+      <Oss />
 
       <div style={{ padding: `0 ${PAD}` }}>
         <Awards />

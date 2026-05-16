@@ -92,13 +92,22 @@
       "num": "03",
       "category": "protocols",
       "name": "Flash Loan",
-      "desc": "Anchor flash loan program scaffold in Rust with a dedicated program module, initialize flow, and Rust test harness for core lending logic.",
-      "stack": ["Rust", "Anchor", "Solana"],
-      "meta": "Program scaffold · initialize instruction · Rust tests",
+      "desc": "Flash loan protocol in Anchor that lends from a PDA-controlled vault, enforces same-transaction repayment through instructions-sysvar introspection, and charges a fixed fee on atomic repay.",
+      "stack": ["Rust", "Anchor", "Solana", "SPL Tokens"],
+      "meta": "Atomic repay checks · PDA vault authority · LiteSVM tests",
       "github": "https://github.com/Some1Uknow/flash-loan"
     },
     {
       "num": "04",
+      "category": "protocols",
+      "name": "Pinocchio Vault",
+      "desc": "Single-asset tokenized vault in Pinocchio. Deposits SPL tokens into PDA custody, mints proportional vault shares, burns shares on withdraw, and enforces pause plus two-step admin controls.",
+      "stack": ["Rust", "Pinocchio", "Solana", "SPL Tokens"],
+      "meta": "Tokenized vault · PDA custody · LiteSVM-tested SBF",
+      "github": "https://github.com/Some1Uknow/pinocchio-vault"
+    },
+    {
+      "num": "05",
       "category": "rust",
       "name": "MPMC Queue",
       "desc": "Bounded multi-producer multi-consumer queue in Rust. Mutex/Condvar, blocking + non-blocking modes. 72.3M ops/sec. 13 integration tests. Zero unsafe code.",
@@ -107,7 +116,7 @@
       "github": "https://github.com/Some1Uknow/mpmc-queue-rust"
     },
     {
-      "num": "05",
+      "num": "06",
       "category": "rust",
       "name": "solana-txn-tui",
       "desc": "Published Rust crate for exploring Solana transactions and accounts in the terminal. cargo install, Homebrew, or curl. Fee breakdown, instruction details, token transfers. Mainnet / Devnet / Testnet.",
@@ -118,7 +127,7 @@
       "liveLabel": "crates.io"
     },
     {
-      "num": "06",
+      "num": "07",
       "category": "rust",
       "name": "Observer",
       "desc": "Self-hosted Solana observability indexer in Rust. Uses WebSocket slot updates plus RPC block fetches, Postgres upserts, and a persisted cursor for crash-safe resume. Built for near real-time network health and protocol risk monitoring.",
@@ -127,7 +136,7 @@
       "github": "https://github.com/Some1UKnow/observer"
     },
     {
-      "num": "07",
+      "num": "08",
       "category": "rust",
       "name": "Omniscanner",
       "desc": "Rust borrower-risk scanner for Omnipair with local scoring, pool stress tracking, liquidation alerts, PostgreSQL persistence, and a small operator dashboard served from the app.",
@@ -136,7 +145,7 @@
       "github": "https://github.com/Some1Uknow/omniscanner"
     },
     {
-      "num": "08",
+      "num": "09",
       "category": "dapps",
       "name": "Rayscan",
       "desc": "Search-first Solana explorer with live transaction visibility, token pages, network stats, and an indexed backend built with Fastify, WebSockets, and Postgres.",
@@ -145,7 +154,7 @@
       "github": "https://github.com/Some1Uknow/rayscan"
     },
       {
-      "num": "09",
+      "num": "10",
       "category": "dapps",
       "name": "PixelMart",
       "desc": "NFT marketplace on Solana with a Next.js frontend and an Anchor marketplace program for listings, buys, marketplace state, and wallet-signed flows.",
@@ -156,7 +165,7 @@
       "liveLabel": "demo"
     },
     {
-      "num": "10",
+      "num": "11",
       "category": "dapps",
       "name": "Loopscale Borrow Shopper",
       "desc": "Consumer-facing Next.js app for finding fixed-rate borrow routes on Loopscale, reviewing the best visible route, and signing the final loan transaction.",
@@ -165,7 +174,7 @@
       "github": "https://github.com/Some1Uknow/loopscale"
     },
     {
-      "num": "11",
+      "num": "12",
       "category": "dapps",
       "name": "Pigeon",
       "desc": "Privacy-focused Solana wallet superapp with encrypted wallet-to-wallet chat live on devnet, on-chain message history, and private transfer/swap research routes in progress.",
@@ -176,7 +185,7 @@
       "liveLabel": "demo"
     },
     {
-      "num": "12",
+      "num": "13",
       "category": "dapps",
       "name": "EzDeploy",
       "desc": "Self-hosted deployment platform. Push to GitHub, get a live URL on a unique subdomain. Isolated Docker build container per deploy, real-time log streaming.",

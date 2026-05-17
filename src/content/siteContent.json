@@ -36,9 +36,10 @@
       "badge": "Solana Foundation Grant — $5,000",
       "bullets": [
         "Received $5K Solana Foundation grant",
-        "1,200+ users · AI assistant at 96% accuracy on Solana/Rust/Anchor queries",
+        "2,200+ users · AI assistant at 96% accuracy on Solana/Rust/Anchor queries",
         "RAG pipeline over 100+ docs via pgvector · live Rust/Anchor compilation sandbox",
-        "1,100+ exercises completed in production, zero bugs"
+        "1,100+ exercises completed in production, zero bugs",
+        "50+ github stars · featured in Colosseum newsletter for ecosystem impact"
       ],
       "stack": ["Next.js", "Rust", "Anchor", "pgvector", "TypeScript", "AI"]
     },

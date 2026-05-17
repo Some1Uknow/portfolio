@@ -246,10 +246,10 @@ export default function Oss() {
                   marginBottom: 8,
                 }}
               >
-                Open Source Pull Requests
+                Ecosystem contribution
               </h2>
               <p style={{ color: "var(--color-muted)", maxWidth: 560 }}>
-                2026 authored pull requests only. Filtered to external repositories and linked straight to the review thread.
+                Pull requests and fixes across external projects, developer tools, and the broader ecosystem.
               </p>
             </div>
 

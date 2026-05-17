@@ -193,6 +193,28 @@
       "stack": ["TypeScript", "Docker", "CI/CD"],
       "meta": "Zero-config deploys · Real-time logs · Unique subdomains",
       "github": "https://github.com/Some1Uknow/ezdeploy"
+    },
+    {
+      "num": "14",
+      "category": "dapps",
+      "name": "One Click Indexer",
+      "desc": "Turn a Solana program ID into a runnable SQD indexer in one flow. Paste a program ID, inspect live Portal samples, generate a starter indexer, preview the files, and export the whole project as a ZIP.",
+      "stack": ["Next.js 16", "React 19", "SQD Portal", "SQD Pipes", "Vercel Blob"],
+      "meta": "SQD indexer generator · Live data sampling · ZIP export",
+      "github": "https://github.com/Some1Uknow/one-click-indexer",
+      "live": "https://one-click-indexer.raghav.codes",
+      "liveLabel": "demo"
+    },
+    {
+      "num": "15",
+      "category": "dapps",
+      "name": "yield.sol",
+      "desc": "Earn yield on your USD stablecoins, right from your wallet. A non-custodial frontend for earning APY on USDC, USDT, PYUSD, and USDS through marginfi on Solana.",
+      "stack": ["Next.js", "Solana", "marginfi SDK", "TypeScript"],
+      "meta": "Stablecoin yield · Non-custodial · Multi-wallet support",
+      "github": "https://github.com/Some1Uknow/yield-sol",
+      "live": "https://yield-sol.raghav.codes",
+      "liveLabel": "demo"
     }
   ],
   "writing": [],

@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react"
 import {
   FiAlertCircle,
   FiArrowUpRight,
@@ -6,6 +7,7 @@ import {
   FiGitMerge,
   FiGitPullRequest,
   FiGithub,
+  FiX,
 } from "react-icons/fi"
 
 import { githubOssConfig } from "../../content/githubOssConfig.js"
@@ -78,22 +80,44 @@ function StatusPill({ status }) {
 
 function OssSkeleton() {
   return (
-    <div style={{ borderTop: "1px solid var(--color-border-soft)" }}>
-      {Array.from({ length: 4 }).map((_, index) => (
+    <div
+      className="oss-org-grid"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+        gap: 16,
+      }}
+    >
+      {Array.from({ length: 6 }).map((_, index) => (
         <div
           key={index}
           style={{
-            padding: "20px 0",
-            borderBottom: "1px solid var(--color-border-soft)",
+            minHeight: 164,
+            border: "1px solid var(--color-border-soft)",
+            background: "var(--color-surface)",
+            padding: 20,
+            display: "grid",
+            alignContent: "space-between",
+            gap: 18,
           }}
         >
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) auto", gap: 16, alignItems: "start" }} className="oss-row">
-            <div>
-              <div style={{ width: 110, height: 10, background: "var(--color-border-soft)", marginBottom: 12 }} />
-              <div style={{ width: "72%", height: 20, background: "var(--color-border-soft)", marginBottom: 10 }} />
-              <div style={{ width: "88%", height: 10, background: "var(--color-border-soft)" }} />
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <div
+              style={{
+                width: 54,
+                height: 54,
+                borderRadius: 14,
+                background: "var(--color-border-soft)",
+              }}
+            />
+            <div style={{ display: "grid", gap: 8, minWidth: 0, flex: 1 }}>
+              <div style={{ width: "55%", height: 12, background: "var(--color-border-soft)" }} />
+              <div style={{ width: "34%", height: 10, background: "var(--color-border-soft)" }} />
             </div>
-            <div style={{ width: 110, height: 22, background: "var(--color-border-soft)" }} />
+          </div>
+          <div style={{ display: "grid", gap: 10 }}>
+            <div style={{ width: "80%", height: 10, background: "var(--color-border-soft)" }} />
+            <div style={{ width: "100%", height: 10, background: "var(--color-border-soft)" }} />
           </div>
         </div>
       ))}
@@ -219,57 +243,328 @@ function OssRow({ pullRequest, index }) {
   )
 }
 
-export default function Oss() {
-  const { pullRequests, loading, error } = useGithubPullRequests()
+function OrganizationCard({ organization, index, onOpen }) {
+  const mergedCount = organization.pullRequests.filter((item) => item.status === "merged").length
+  const repoCount = new Set(organization.pullRequests.map((item) => item.repo.fullName)).size
 
   return (
-    <section id="oss" style={{ padding: `0 ${PAD}` }}>
-      <SectionLabel>OSS</SectionLabel>
+    <FadeIn delay={index * 45}>
+      <button
+        type="button"
+        onClick={onOpen}
+        aria-label={`Open ${organization.login} contributions`}
+        style={{
+          width: "100%",
+          minHeight: 164,
+          border: "1px solid var(--color-border)",
+          background: "var(--color-surface)",
+          padding: 20,
+          display: "grid",
+          alignContent: "space-between",
+          gap: 18,
+          textAlign: "left",
+          cursor: "pointer",
+          transition: "transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease",
+          boxShadow: "var(--shadow-soft)",
+        }}
+        className="oss-org-card"
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 14, minWidth: 0 }}>
+          <img
+            src={organization.avatarUrl}
+            alt={`${organization.login} icon`}
+            style={{
+              width: 54,
+              height: 54,
+              borderRadius: 14,
+              border: "1px solid var(--color-border-soft)",
+              objectFit: "cover",
+              flexShrink: 0,
+              background: "var(--color-surface-elevated)",
+            }}
+          />
 
-      <div style={{ marginBottom: 96 }}>
-        <div
-          style={{
-            borderTop: "1px solid var(--color-border)",
-            paddingTop: 18,
-            marginBottom: 18,
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-end", flexWrap: "wrap" }}>
-            <div>
-              <h2
-                style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
-                  fontSize: "clamp(24px, 3vw, 32px)",
-                  letterSpacing: "-0.03em",
-                  lineHeight: 1,
-                  color: "var(--color-text)",
-                  marginBottom: 8,
-                }}
-              >
-                Ecosystem contribution
-              </h2>
-              <p style={{ color: "var(--color-muted)", maxWidth: 560 }}>
-                Pull requests and fixes across external projects, developer tools, and the broader ecosystem.
-              </p>
+          <div style={{ minWidth: 0 }}>
+            <div
+              style={{
+                color: "var(--color-text)",
+                fontSize: 16,
+                lineHeight: 1.2,
+                marginBottom: 6,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {organization.login}
             </div>
-
-            <div style={{ fontSize: 11, color: "var(--color-soft)", letterSpacing: "0.08em" }}>
-              {loading ? "SYNCING" : `${String(pullRequests.length).padStart(2, "0")} PULL REQUESTS`}
-            </div>
+            <div style={{ color: "var(--color-soft)", fontSize: 11, letterSpacing: "0.08em" }}>ORGANIZATION</div>
           </div>
         </div>
 
-        {loading ? <OssSkeleton /> : null}
-        {!loading && error ? <OssErrorState error={error} /> : null}
-        {!loading && !error && pullRequests.length === 0 ? <OssEmptyState /> : null}
-        {!loading && !error && pullRequests.length > 0 ? (
+        <div style={{ display: "grid", gap: 12 }}>
+          <div style={{ display: "flex", gap: 18, flexWrap: "wrap", color: "var(--color-muted)", fontSize: 12 }}>
+            <span>{String(organization.pullRequests.length).padStart(2, "0")} PRs</span>
+            <span>{String(repoCount).padStart(2, "0")} repos</span>
+            <span>{String(mergedCount).padStart(2, "0")} merged</span>
+          </div>
+          <div style={{ color: "var(--color-soft)", fontSize: 12, lineHeight: 1.6 }}>
+            {organization.pullRequests
+              .slice(0, 2)
+              .map((item) => item.repo.fullName)
+              .filter((value, currentIndex, values) => values.indexOf(value) === currentIndex)
+              .join(" + ")}
+          </div>
+        </div>
+      </button>
+    </FadeIn>
+  )
+}
+
+function OssModal({ organization, onClose }) {
+  useEffect(() => {
+    if (!organization) {
+      return undefined
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        onClose()
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [organization, onClose])
+
+  if (!organization) {
+    return null
+  }
+
+  return (
+    <div
+      role="presentation"
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 80,
+        background: "rgba(10, 10, 10, 0.56)",
+        backdropFilter: "blur(10px)",
+        padding: "min(5vw, 32px)",
+        display: "grid",
+        placeItems: "center",
+      }}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="oss-modal-title"
+        onClick={(event) => event.stopPropagation()}
+        style={{
+          width: "min(1080px, 100%)",
+          maxHeight: "min(88vh, 960px)",
+          overflow: "auto",
+          border: "1px solid var(--color-border)",
+          background: "var(--color-bg)",
+          boxShadow: "var(--shadow-soft)",
+        }}
+      >
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            zIndex: 1,
+            display: "flex",
+            justifyContent: "space-between",
+            gap: 16,
+            alignItems: "flex-start",
+            padding: 24,
+            borderBottom: "1px solid var(--color-border-soft)",
+            background: "var(--color-surface-elevated)",
+            backdropFilter: "blur(12px)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 16, minWidth: 0 }}>
+            <img
+              src={organization.avatarUrl}
+              alt={`${organization.login} icon`}
+              style={{
+                width: 58,
+                height: 58,
+                borderRadius: 16,
+                border: "1px solid var(--color-border-soft)",
+                objectFit: "cover",
+                flexShrink: 0,
+              }}
+            />
+            <div style={{ minWidth: 0 }}>
+              <h3
+                id="oss-modal-title"
+                style={{
+                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontSize: "clamp(24px, 3vw, 34px)",
+                  lineHeight: 1,
+                  marginBottom: 8,
+                  color: "var(--color-text)",
+                }}
+              >
+                {organization.login}
+              </h3>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", color: "var(--color-soft)", fontSize: 12 }}>
+                <a
+                  href={organization.profileUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="muted-link"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 8, minHeight: 40 }}
+                >
+                  View organization
+                  <FiArrowUpRight aria-hidden="true" size={14} />
+                </a>
+                <span>{String(organization.pullRequests.length).padStart(2, "0")} pull requests</span>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close contributions modal"
+            style={{
+              width: 42,
+              height: 42,
+              display: "grid",
+              placeItems: "center",
+              border: "1px solid var(--color-border)",
+              color: "var(--color-text)",
+              cursor: "pointer",
+              flexShrink: 0,
+            }}
+          >
+            <FiX aria-hidden="true" size={18} />
+          </button>
+        </div>
+
+        <div style={{ padding: "0 24px 8px" }}>
           <div style={{ borderTop: "1px solid var(--color-border-soft)" }}>
-            {pullRequests.map((pullRequest, index) => (
+            {organization.pullRequests.map((pullRequest, index) => (
               <OssRow key={pullRequest.id} pullRequest={pullRequest} index={index} />
             ))}
           </div>
-        ) : null}
+        </div>
       </div>
-    </section>
+    </div>
+  )
+}
+
+export default function Oss() {
+  const { pullRequests, loading, error } = useGithubPullRequests()
+  const organizations = useMemo(() => {
+    const grouped = new Map()
+
+    for (const pullRequest of pullRequests) {
+      const key = pullRequest.organization.login
+
+      if (!grouped.has(key)) {
+        grouped.set(key, {
+          ...pullRequest.organization,
+          pullRequests: [],
+        })
+      }
+
+      grouped.get(key).pullRequests.push(pullRequest)
+    }
+
+    return Array.from(grouped.values()).sort((left, right) => right.pullRequests.length - left.pullRequests.length)
+  }, [pullRequests])
+  const [selectedOrganizationLogin, setSelectedOrganizationLogin] = useState(null)
+
+  const selectedOrganization = useMemo(
+    () => organizations.find((organization) => organization.login === selectedOrganizationLogin) || null,
+    [organizations, selectedOrganizationLogin],
+  )
+
+  useEffect(() => {
+    if (!selectedOrganizationLogin) {
+      return
+    }
+
+    if (!organizations.some((organization) => organization.login === selectedOrganizationLogin)) {
+      setSelectedOrganizationLogin(null)
+    }
+  }, [organizations, selectedOrganizationLogin])
+
+  return (
+    <>
+      <section id="oss" style={{ padding: `0 ${PAD}` }}>
+        <SectionLabel>OSS</SectionLabel>
+
+        <div style={{ marginBottom: 96 }}>
+          <div
+            style={{
+              borderTop: "1px solid var(--color-border)",
+              paddingTop: 18,
+              marginBottom: 18,
+            }}
+          >
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-end", flexWrap: "wrap" }}>
+              <div>
+                <h2
+                  style={{
+                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontSize: "clamp(24px, 3vw, 32px)",
+                    letterSpacing: "-0.03em",
+                    lineHeight: 1,
+                    color: "var(--color-text)",
+                    marginBottom: 8,
+                  }}
+                >
+                  Ecosystem contribution
+                </h2>
+                <p style={{ color: "var(--color-muted)", maxWidth: 560 }}>
+                  External organizations first. Open any card to inspect the pull requests behind the work.
+                </p>
+              </div>
+
+              <div style={{ fontSize: 11, color: "var(--color-soft)", letterSpacing: "0.08em" }}>
+                {loading ? "SYNCING" : `${String(organizations.length).padStart(2, "0")} ORGANIZATIONS`}
+              </div>
+            </div>
+          </div>
+
+          {loading ? <OssSkeleton /> : null}
+          {!loading && error ? <OssErrorState error={error} /> : null}
+          {!loading && !error && pullRequests.length === 0 ? <OssEmptyState /> : null}
+          {!loading && !error && organizations.length > 0 ? (
+            <div
+              className="oss-org-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                gap: 16,
+              }}
+            >
+              {organizations.map((organization, index) => (
+                <OrganizationCard
+                  key={organization.login}
+                  organization={organization}
+                  index={index}
+                  onOpen={() => setSelectedOrganizationLogin(organization.login)}
+                />
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </section>
+
+      <OssModal organization={selectedOrganization} onClose={() => setSelectedOrganizationLogin(null)} />
+    </>
   )
 }

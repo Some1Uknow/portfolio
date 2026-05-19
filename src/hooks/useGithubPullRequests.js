@@ -86,6 +86,7 @@ function buildSummary(item, detail, repo) {
 
 function normalizePullRequest(item, detail) {
   const repo = parseRepository(item.repository_url)
+  const owner = detail?.base?.repo?.owner
   const mergedAt = detail?.merged_at || null
   const isMerged = Boolean(mergedAt)
   const status = isMerged ? "merged" : item.state === "open" ? "open" : "closed"
@@ -101,6 +102,11 @@ function normalizePullRequest(item, detail) {
     updatedAt: item.updated_at,
     mergedAt,
     commentCount: item.comments,
+    organization: {
+      login: owner?.login || repo.owner,
+      avatarUrl: owner?.avatar_url || `https://github.com/${repo.owner}.png?size=160`,
+      profileUrl: owner?.html_url || `https://github.com/${repo.owner}`,
+    },
     contributionType: inferContributionType(item, detail),
     summary: buildSummary(item, detail, repo),
   }

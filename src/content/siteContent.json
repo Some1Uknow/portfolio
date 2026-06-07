@@ -73,6 +73,38 @@
   "projects": [
     {
       "num": "01",
+      "category": "products",
+      "name": "LearnSol",
+      "desc": "Free, open-source Solana learning platform with project-based lessons, interactive exercises, gamified challenges, and built-in AI help.",
+      "stack": ["Next.js", "Solana", "Rust", "pgvector", "AI"],
+      "tags": ["$5k grant"],
+      "meta": "2.2K+ users · $5K Solana Foundation grant",
+      "github": "https://github.com/Some1Uknow/learn-solana"
+    },
+    {
+      "num": "02",
+      "category": "products",
+      "name": "CipherPay",
+      "desc": "Private payroll and payout workspace for Solana with single-pay and batch payroll flows, durable payout-run state, and a shielded private payout rail.",
+      "stack": ["Next.js", "TypeScript", "Postgres", "Anchor", "Solana"],
+      "tags": [],
+      "meta": "Private payouts · batch payroll · ZK rail",
+      "github": "https://github.com/Some1Uknow/cipherpay",
+      "videoUrl": "https://youtu.be/fvXI8MYA4t0"
+    },
+    {
+      "num": "03",
+      "category": "products",
+      "name": "AvaLaunch",
+      "desc": "AI agent for end-to-end L1 launch and management, turning plain English into a working Avalanche network with a deterministic launch plan.",
+      "stack": ["Next.js", "TypeScript", "Go", "Avalanche"],
+      "tags": ["Frontier Hackathon"],
+      "meta": "LLM-driven launch flow · runner service · approval gate",
+      "github": "https://github.com/Some1Uknow/avalaunch",
+      "videoUrl": "https://youtu.be/pjHCG2Lso0A"
+    },
+    {
+      "num": "01",
       "category": "protocols",
       "name": "CPMM",
       "desc": "On-chain constant product market maker on Solana. x·y=k for token swaps and liquidity provision. PDA-controlled token vaults. Deposit, swap, withdraw — atomic.",

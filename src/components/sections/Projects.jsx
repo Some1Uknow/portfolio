@@ -12,19 +12,19 @@ const PROJECT_SECTIONS = [
   {
     key: "products",
     title: "Products",
-    blurb: "User-facing launches, AI workflows, and product work with a demo-first presentation.",
+    blurb: "On-chain products built end to end by me",
     categories: ["products"],
   },
   {
     key: "protocols",
     title: "Protocols",
-    blurb: "On-chain systems, market primitives, and Solana program work.",
+    blurb: "On-chain Defi Protocols and Solana programs.",
     categories: ["protocols"],
   },
   {
     key: "rustOthers",
     title: "Rust / Others",
-    blurb: "Systems work, tooling, dapps, and the rest of the portfolio outside core protocol work.",
+    blurb: "Rust projects and other technical proof of work.",
     categories: ["rust", "dapps"],
   },
 ]

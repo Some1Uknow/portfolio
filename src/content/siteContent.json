@@ -79,7 +79,8 @@
       "stack": ["Next.js", "Solana", "Rust", "pgvector", "AI"],
       "tags": ["$5k grant"],
       "meta": "2.2K+ users · $5K Solana Foundation grant",
-      "github": "https://github.com/Some1Uknow/learn-solana"
+      "github": "https://github.com/Some1Uknow/learn-solana",
+      "live": "https://learnsol.site"
     },
     {
       "num": "02",
@@ -87,9 +88,10 @@
       "name": "CipherPay",
       "desc": "Private payroll and payout workspace for Solana with single-pay and batch payroll flows, durable payout-run state, and a shielded private payout rail.",
       "stack": ["Next.js", "TypeScript", "Postgres", "Anchor", "Solana"],
-      "tags": [],
+      "tags": ["Frontier Hackathon"],
       "meta": "Private payouts · batch payroll · ZK rail",
       "github": "https://github.com/Some1Uknow/cipherpay",
+      "live": "https://cipherpay.raghav.codes",
       "videoUrl": "https://youtu.be/fvXI8MYA4t0"
     },
     {
@@ -98,10 +100,23 @@
       "name": "AvaLaunch",
       "desc": "AI agent for end-to-end L1 launch and management, turning plain English into a working Avalanche network with a deterministic launch plan.",
       "stack": ["Next.js", "TypeScript", "Go", "Avalanche"],
-      "tags": ["Frontier Hackathon"],
-      "meta": "LLM-driven launch flow · runner service · approval gate",
+      "tags": [],
+      "meta": "AI agent · L1 deployment · Avalanche",
       "github": "https://github.com/Some1Uknow/avalaunch",
+      "live": "https://avalaunch.raghav.codes",
       "videoUrl": "https://youtu.be/pjHCG2Lso0A"
+    },
+     {
+      "num": "4",
+      "category": "products",
+      "name": "Pigeon",
+      "desc": "Privacy-focused Solana wallet superapp with encrypted wallet-to-wallet chat live on devnet, on-chain message history, and private transfer/swap research routes in progress.",
+      "stack": ["React", "TypeScript", "Anchor", "Solana", "Privacy"],
+      "tags": ["CypherPunk Hackathon"],
+      "meta": "Encrypted chat · Privacy · Live on Devnet",
+      "github": "https://github.com/Some1Uknow/pigeon",
+      "live": "https://pigeon.raghav.codes",
+      "liveLabel": "demo"
     },
     {
       "num": "01",
@@ -186,7 +201,7 @@
       "meta": "Explorer UI · Live tx feed · Indexed chain data",
       "github": "https://github.com/Some1Uknow/rayscan"
     },
-      {
+    {
       "num": "10",
       "category": "dapps",
       "name": "PixelMart",
@@ -206,19 +221,9 @@
       "meta": "Fixed-rate borrow flow · Route review · Wallet signing",
       "github": "https://github.com/Some1Uknow/loopscale"
     },
+   
     {
       "num": "12",
-      "category": "dapps",
-      "name": "Pigeon",
-      "desc": "Privacy-focused Solana wallet superapp with encrypted wallet-to-wallet chat live on devnet, on-chain message history, and private transfer/swap research routes in progress.",
-      "stack": ["React", "TypeScript", "Anchor", "Solana", "Privacy"],
-      "meta": "Encrypted chat · Privacy lab · Devnet demo",
-      "github": "https://github.com/Some1Uknow/pigeon",
-      "live": "https://pigeon.raghav.codes",
-      "liveLabel": "demo"
-    },
-    {
-      "num": "13",
       "category": "dapps",
       "name": "EzDeploy",
       "desc": "Self-hosted deployment platform. Push to GitHub, get a live URL on a unique subdomain. Isolated Docker build container per deploy, real-time log streaming.",
@@ -227,18 +232,24 @@
       "github": "https://github.com/Some1Uknow/ezdeploy"
     },
     {
-      "num": "14",
+      "num": "13",
       "category": "dapps",
       "name": "One Click Indexer",
       "desc": "Turn a Solana program ID into a runnable SQD indexer in one flow. Paste a program ID, inspect live Portal samples, generate a starter indexer, preview the files, and export the whole project as a ZIP.",
-      "stack": ["Next.js 16", "React 19", "SQD Portal", "SQD Pipes", "Vercel Blob"],
+      "stack": [
+        "Next.js 16",
+        "React 19",
+        "SQD Portal",
+        "SQD Pipes",
+        "Vercel Blob"
+      ],
       "meta": "SQD indexer generator · Live data sampling · ZIP export",
       "github": "https://github.com/Some1Uknow/one-click-indexer",
       "live": "https://one-click-indexer.raghav.codes",
       "liveLabel": "demo"
     },
     {
-      "num": "15",
+      "num": "14",
       "category": "dapps",
       "name": "yield.sol",
       "desc": "Earn yield on your USD stablecoins, right from your wallet. A non-custodial frontend for earning APY on USDC, USDT, PYUSD, and USDS through marginfi on Solana.",

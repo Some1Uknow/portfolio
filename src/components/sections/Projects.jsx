@@ -164,16 +164,33 @@ function ProjectTitle({ project, tags }) {
         marginBottom: 10,
       }}
     >
-      <div
-        style={{
-          fontFamily: "'Instrument Serif', Georgia, serif",
-          fontSize: 22,
-          letterSpacing: "-0.02em",
-          color: "var(--color-text)",
-          lineHeight: 1.2,
-        }}
-      >
-        {project.name}
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+        {project.icon ? (
+          <img
+            src={project.icon}
+            alt={`${project.name} icon`}
+            loading="lazy"
+            style={{
+              width: 28,
+              height: 28,
+              objectFit: "cover",
+              borderRadius: 4,
+              flex: "0 0 28px",
+            }}
+          />
+        ) : null}
+
+        <div
+          style={{
+            fontFamily: "'Instrument Serif', Georgia, serif",
+            fontSize: 22,
+            letterSpacing: "-0.02em",
+            color: "var(--color-text)",
+            lineHeight: 1.2,
+          }}
+        >
+          {project.name}
+        </div>
       </div>
       <ProjectTags tags={tags} align="flex-end" />
     </div>

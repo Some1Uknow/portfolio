@@ -78,8 +78,9 @@
       "desc": "Free, open-source Solana learning platform with project-based lessons, interactive exercises, gamified challenges, and built-in AI help.",
       "stack": ["Next.js", "Solana", "Rust", "pgvector", "AI"],
       "tags": ["$5k grant"],
-      "meta": "2.2K+ users · $5K Solana Foundation grant",
+      "meta": "2K+ users · 50+ github stars",
       "github": "https://github.com/Some1Uknow/learn-solana",
+      "icon": "https://learnsol.site/icon.png",
       "live": "https://learnsol.site"
     },
     {
@@ -91,6 +92,7 @@
       "tags": ["Frontier Hackathon"],
       "meta": "Private payouts · batch payroll · ZK rail",
       "github": "https://github.com/Some1Uknow/cipherpay",
+      "icon": "https://cipherpay.raghav.codes/favicon.ico",
       "live": "https://cipherpay.raghav.codes",
       "videoUrl": "https://youtu.be/fvXI8MYA4t0"
     },
@@ -104,6 +106,7 @@
       "meta": "AI agent · L1 deployment · Avalanche",
       "github": "https://github.com/Some1Uknow/avalaunch",
       "live": "https://avalaunch.raghav.codes",
+      "icon": "https://avalaunch.raghav.codes/favicon.png",
       "videoUrl": "https://youtu.be/pjHCG2Lso0A"
     },
      {
@@ -115,6 +118,7 @@
       "tags": ["CypherPunk Hackathon"],
       "meta": "Encrypted chat · Privacy · Live on Devnet",
       "github": "https://github.com/Some1Uknow/pigeon",
+      "icon": "https://pigeon.raghav.codes/favicon.png",
       "live": "https://pigeon.raghav.codes",
       "liveLabel": "demo"
     },

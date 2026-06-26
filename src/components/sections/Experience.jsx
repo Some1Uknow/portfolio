@@ -1,4 +1,4 @@
-import siteContent from "../../content/siteContent.json"
+import siteContent from "../../content/siteContent.js"
 import FadeIn from "../ui/FadeIn.jsx"
 import Pill from "../ui/Pill.jsx"
 import SectionLabel from "../ui/SectionLabel.jsx"

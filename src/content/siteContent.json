@@ -1,4 +1,10 @@
 {
+  "hero": {
+    "eyebrow": "Blockchain Engineer Across SVM + EVM",
+    "location": "New Delhi, IN",
+    "availability": "Building across Solana, Avalanche, 0G, and Stellar.",
+    "name": "raghav sharma"
+  },
   "links": [
     { "label": "email", "href": "mailto:raghu250407@gmail.com" },
     {
@@ -14,92 +20,159 @@
     { "label": "x", "href": "https://x.com/raghavdotsol", "external": true }
   ],
   "aboutParagraphs": [
-    "hey, i'm raghav. i build on solana across the stack, from on-chain programs and rust tooling to full stack engineering",
-    "right now i'm focused on rust, systems, protocol design, and product engineering. member at superteam india."
+    "I build blockchain products across SVM and EVM stacks, from protocol logic and chain-aware backend systems to polished product surfaces that users can actually ship with.",
+    "Most of my work today sits at the intersection of product engineering, protocol design, and developer tooling. I mainly build on Solana, Avalanche, 0G, and Stellar, and I care about making complex chain workflows feel operationally simple."
   ],
   "aboutStack": [
-    "Rust",
     "Solana",
-    "Anchor",
-    "Next.js",
-    "Postgres",
+    "Avalanche",
+    "0G",
+    "Stellar",
+    "Rust",
+    "Go",
     "TypeScript",
-    "Protocol Engineering",
+    "Next.js",
+    "Protocol Design",
     "Product Engineering"
   ],
   "experience": [
     {
       "company": "LearnSol",
-      "role": "Founder & Lead Developer",
-      "date": "Oct 2025 – March 2026",
+      "role": "Founder & Lead Engineer",
+      "date": "Oct 2025 – Mar 2026",
       "location": "Remote",
       "badge": "Solana Foundation Grant — $5,000",
       "bullets": [
-        "Received $5K Solana Foundation grant",
-        "2,200+ users · AI assistant at 96% accuracy on Solana/Rust/Anchor queries",
-        "RAG pipeline over 100+ docs via pgvector · live Rust/Anchor compilation sandbox",
-        "1,100+ exercises completed in production, zero bugs",
-        "50+ github stars · featured in Colosseum newsletter for ecosystem impact"
+        "Shipped a learning product used by 2,200+ developers with AI-assisted Solana and Rust support.",
+        "Built the content, RAG, sandbox, and production app stack end to end across product, infra, and data.",
+        "Reached 1,100+ completed exercises in production with zero critical learning-flow bugs.",
+        "Grew to 50+ GitHub stars and ecosystem recognition through focused developer education."
       ],
       "stack": ["Next.js", "Rust", "Anchor", "pgvector", "TypeScript", "AI"]
     },
     {
       "company": "FOSSEE, IIT Bombay",
       "role": "Software Engineering Intern",
-      "date": "Feb – Jun 2025",
+      "date": "Feb 2025 – Jun 2025",
       "location": "Remote",
       "bullets": [
-        "Built 4+ full-stack structural design modules using React, Django, and REST APIs",
-        "Developed 2 steel design modules from scratch based on IS 800:2007 with 15+ validation checks",
-        "Resolved critical CAD generation and session workflow bugs across 7+ modules",
-        "Reduced debugging time by 60%+ through logging, error isolation, and API refactoring"
+        "Built structural design modules across React, Django, and REST APIs for engineering users.",
+        "Implemented steel-design workflows with extensive validation logic based on IS 800:2007.",
+        "Resolved CAD-generation and session-state issues across multiple production modules.",
+        "Reduced debugging time materially through better logging, fault isolation, and API cleanup."
       ],
       "stack": ["Django", "Docker", "React"]
     },
     {
       "company": "Debales AI",
       "role": "Software Engineering Intern",
-      "date": "Jul – Sep 2024",
+      "date": "Jul 2024 – Sep 2024",
       "location": "Katy, Texas (Remote)",
       "bullets": [
-        "Built a session-based chat persistence layer handling 500+ daily conversations with no data loss.",
-        "Built a user feedback pipeline that collected 1,200+ ratings and drove a 15% improvement in model accuracy",
-        "Fixed critical bugs affecting 5,000+ users, pushing satisfaction scores from 3.5 to 4.2/5",
-        "Cut image load times by 20% by moving delivery to a CDN"
+        "Built session-based persistence for a chat product handling 500+ daily conversations.",
+        "Created a feedback pipeline that captured 1,200+ ratings and improved model quality.",
+        "Fixed bugs affecting 5,000+ users and improved user satisfaction across the product.",
+        "Cut image delivery latency by moving media distribution onto CDN infrastructure."
       ],
       "stack": ["TypeScript", "Next.js", "Postgres", "AWS"]
     }
   ],
   "projects": [
     {
+      "slug": "learnsol",
       "num": "01",
+      "featured": true,
       "category": "products",
       "name": "LearnSol",
+      "shortDescription": "Open-source learning platform for Solana developers with lessons, exercises, and embedded AI help.",
       "desc": "Free, open-source Solana learning platform with project-based lessons, interactive exercises, gamified challenges, and built-in AI help.",
       "stack": ["Next.js", "Solana", "Rust", "pgvector", "AI"],
       "tags": ["$5k grant"],
-      "meta": "2K+ users · 50+ github stars",
+      "meta": "2K+ users · 50+ GitHub stars",
       "github": "https://github.com/Some1Uknow/learn-solana",
       "icon": "https://learnsol.site/icon.png",
-      "live": "https://learnsol.site"
+      "live": "https://learnsol.site",
+      "chains": ["Solana"],
+      "summary": "Developer education product built from curriculum and app UX down to eval pipelines and a live code sandbox.",
+      "overview": "LearnSol packages structured lessons, runnable examples, AI support, and progressive exercises into a single developer learning product for Solana builders.",
+      "problem": "Solana education is often fragmented across docs, repos, and one-off tutorials, which slows down developers who need applied guidance and fast feedback.",
+      "solution": "I built a guided learning environment that combines curriculum, interactive exercises, AI-assisted explanation, and a Rust/Anchor execution workflow in one place.",
+      "role": "Founder, product engineer, and platform architect.",
+      "features": [
+        "Structured lesson progression with project-based learning",
+        "AI assistant tuned for Solana, Rust, and Anchor help",
+        "RAG-backed documentation and code-grounded support",
+        "Live coding and execution workflows for hands-on practice"
+      ],
+      "architecture": [
+        "Next.js frontend with server-side product flows",
+        "Retrieval pipeline over Solana and Rust documentation using pgvector",
+        "Sandboxed code execution path for practical exercises",
+        "Analytics and progression tracking to monitor learner outcomes"
+      ],
+      "challenges": [
+        "Keeping AI responses precise enough for technical education",
+        "Designing exercise flows that feel practical rather than toy examples",
+        "Balancing curriculum authoring with product and infra work"
+      ],
+      "outcomes": [
+        "2,200+ users",
+        "1,100+ exercises completed",
+        "Solana Foundation grant recipient",
+        "Featured in Colosseum newsletter"
+      ]
     },
     {
+      "slug": "cipherpay",
       "num": "02",
+      "featured": true,
       "category": "products",
       "name": "CipherPay",
+      "shortDescription": "Private payroll and payout workspace for crypto teams running single or batch disbursements on Solana.",
       "desc": "Private payroll and payout workspace for Solana with single-pay and batch payroll flows, durable payout-run state, and a shielded private payout rail.",
       "stack": ["Next.js", "TypeScript", "Postgres", "Anchor", "Solana"],
       "tags": ["Frontier Hackathon"],
-      "meta": "Private payouts · batch payroll · ZK rail",
+      "meta": "Private payouts · Batch payroll · ZK rail",
       "github": "https://github.com/Some1Uknow/cipherpay",
       "icon": "https://cipherpay.raghav.codes/favicon.ico",
       "live": "https://cipherpay.raghav.codes",
-      "videoUrl": "https://youtu.be/fvXI8MYA4t0"
+      "videoUrl": "https://youtu.be/fvXI8MYA4t0",
+      "chains": ["Solana"],
+      "summary": "Operations-heavy payout product combining UX, persistence, payroll orchestration, and privacy-focused rails.",
+      "overview": "CipherPay is a payroll and treasury workflow product for teams that need to run crypto payouts without exposing every compensation flow in a brittle manual process.",
+      "problem": "Crypto-native teams often stitch together wallets, spreadsheets, and one-off scripts to manage payouts, with weak privacy and little operational reliability.",
+      "solution": "I built a single workspace for one-off and batch payouts with durable payout state, auditability, and a private settlement path for sensitive disbursements.",
+      "role": "Product engineer across app architecture, backend workflows, and on-chain integration.",
+      "features": [
+        "Single-pay and batch payroll flows",
+        "Durable payout-run persistence",
+        "Wallet-connected operator experience",
+        "Shielded payout rail research and integration work"
+      ],
+      "architecture": [
+        "Next.js product layer with authenticated operator workflows",
+        "Postgres-backed payout state and job orchestration",
+        "Anchor and Solana integrations for transaction flows",
+        "Video demo support for hackathon and external review"
+      ],
+      "challenges": [
+        "Designing payout UX that remains fast under operational complexity",
+        "Persisting batch-run state safely across retries and failures",
+        "Bridging normal payroll expectations with crypto settlement constraints"
+      ],
+      "outcomes": [
+        "Hackathon-ready payout product",
+        "Private payouts and batch payroll in one surface",
+        "Case study for combining product UX with on-chain rails"
+      ]
     },
     {
+      "slug": "avalaunch",
       "num": "03",
+      "featured": true,
       "category": "products",
       "name": "AvaLaunch",
+      "shortDescription": "AI agent that turns plain-English intent into a deterministic Avalanche L1 launch and management workflow.",
       "desc": "AI agent for end-to-end L1 launch and management, turning plain English into a working Avalanche network with a deterministic launch plan.",
       "stack": ["Next.js", "TypeScript", "Go", "Avalanche"],
       "tags": [],
@@ -107,12 +180,129 @@
       "github": "https://github.com/Some1Uknow/avalaunch",
       "live": "https://avalaunch.raghav.codes",
       "icon": "https://avalaunch.raghav.codes/favicon.png",
-      "videoUrl": "https://youtu.be/pjHCG2Lso0A"
+      "videoUrl": "https://youtu.be/pjHCG2Lso0A",
+      "chains": ["Avalanche"],
+      "summary": "Multichain positioning anchor: productized infrastructure for launching Avalanche L1s through an AI workflow.",
+      "overview": "AvaLaunch is an AI-assisted control surface for bootstrapping and managing Avalanche L1 networks through guided inputs and deterministic execution planning.",
+      "problem": "Launching an Avalanche L1 usually requires fragmented docs, careful infra sequencing, and operator experience that most product teams do not have in-house.",
+      "solution": "I translated launch intent into a structured execution plan, then built the product and backend flow needed to guide builders from idea to configured network.",
+      "role": "End-to-end builder across product UX, orchestration logic, and infrastructure-facing backend work.",
+      "features": [
+        "Plain-English launch intent capture",
+        "Deterministic launch-plan generation",
+        "Avalanche-specific network configuration workflows",
+        "Operator-facing status and management surface"
+      ],
+      "architecture": [
+        "Next.js frontend for operator workflows",
+        "TypeScript orchestration layer for action planning",
+        "Go services for infra-facing logic",
+        "Avalanche-specific configuration and execution pipeline"
+      ],
+      "challenges": [
+        "Making a complex infra flow understandable for product teams",
+        "Reducing ambiguity in AI-assisted launch planning",
+        "Mapping chain-specific launch requirements into reliable product steps"
+      ],
+      "outcomes": [
+        "Production-style Avalanche workflow demo",
+        "Clear proof of EVM-side product engineering depth",
+        "Reusable model for chain-specific operator tooling"
+      ]
     },
-     {
-      "num": "4",
+    {
+      "slug": "agentpay",
+      "num": "04",
+      "featured": true,
+      "category": "products",
+      "name": "AgentPay",
+      "shortDescription": "Agent-payment control surface that lets AI agents buy paid APIs with guardrails and onchain proof on Avalanche Fuji.",
+      "desc": "Agent-payment workspace for AI agents to buy paid APIs through x402, enforce policy-controlled spend, and write reputation proof on Avalanche Fuji.",
+      "stack": ["Next.js", "OpenAI", "x402", "Solidity", "Avalanche"],
+      "tags": [],
+      "meta": "Paid APIs · Spend guardrails · Fuji proof",
+      "github": "https://github.com/Some1Uknow/AgentPay",
+      "icon": "https://agentpay-mcp.vercel.app/favicon.ico",
+      "live": "https://agentpay-mcp.vercel.app",
+      "chains": ["Avalanche"],
+      "summary": "Avalanche-side agent commerce product where policy checks, x402 payments, and reputation writes turn API spend into a controllable workflow.",
+      "overview": "AgentPay gives AI agents a way to discover paid APIs, request payment safely, execute paid tool calls, and leave a verifiable onchain trust trail on Avalanche Fuji.",
+      "problem": "Agents need access to live and specialized APIs, but direct wallet access without policy limits creates obvious overspend and trust problems.",
+      "solution": "I built a workflow where the model chooses tools, deterministic policy checks gate spend, x402 settles payment, and successful calls write validation and reputation proof onchain.",
+      "role": "Product engineer across frontend, agent workflow, payment integration, and smart-contract-backed trust primitives.",
+      "features": [
+        "Model-driven paid API selection with allowance policy checks",
+        "x402-protected API purchase flow",
+        "Avalanche Fuji reputation and validation proof writes",
+        "Operator-visible receipts, rejected providers, and spend trace"
+      ],
+      "architecture": [
+        "Next.js app with agent console, registry views, and API routes",
+        "OpenAI-powered agent loop for paid tool selection",
+        "x402 payment integration for API unlocking",
+        "Solidity registries on Avalanche Fuji for identity, reputation, and validation"
+      ],
+      "challenges": [
+        "Keeping agent autonomy while preventing uncontrolled spend",
+        "Making paid API calls observable and explainable to operators",
+        "Bridging offchain inference and onchain trust proof cleanly"
+      ],
+      "outcomes": [
+        "Working Avalanche Fuji prototype",
+        "Paid API agent loop with policy-gated spend",
+        "Onchain receipts and reputation proof tied to successful calls"
+      ]
+    },
+    {
+      "slug": "buy-me-some-tokens",
+      "num": "05",
+      "featured": true,
+      "category": "products",
+      "name": "Buy Me Some Tokens",
+      "shortDescription": "Tipping and identity layer for AI agents on 0G with agent-owned wallets, profiles, and direct onchain tips.",
+      "desc": "Tipping and identity layer for AI agents on 0G where profiles live on 0G Storage, registration settles on 0G Galileo EVM, and agents receive direct tips into self-managed wallets.",
+      "stack": ["Next.js 16", "React 19", "PostgreSQL", "Solidity", "0G Storage SDK"],
+      "tags": [],
+      "meta": "Agent tipping · 0G Storage · Galileo EVM",
+      "github": "https://github.com/Some1Uknow/buymesometokens",
+      "icon": "https://buymesometokens.vercel.app/favicon.ico",
+      "live": "https://buymesometokens.vercel.app",
+      "chains": ["0G"],
+      "summary": "0G-native agent identity and tipping product that treats agents as economic actors with self-managed wallets and operator-linked dashboards.",
+      "overview": "Buy Me Some Tokens is an identity and tipping layer for AI agents built on the 0G stack, combining storage-backed profiles, direct tipping, and durable operator access.",
+      "problem": "AI agents are usually treated like temporary chat sessions rather than persistent economic actors that can own identity, receive value, and manage relationships.",
+      "solution": "I built a product where agents onboard with their own wallets, register onchain, publish profiles through 0G Storage, receive direct tips, and expose a durable dashboard path for operators.",
+      "role": "Full-stack blockchain product engineer across app flows, storage integration, database projection, and smart-contract-backed agent registration.",
+      "features": [
+        "Agent registration and profile claims on 0G Galileo EVM",
+        "0G Storage-backed agent profiles and public tip messages",
+        "Self-managed agent wallets with direct tip reception",
+        "Dashboard claim-link flow for human operators"
+      ],
+      "architecture": [
+        "Next.js 16 app with UI, API routes, and hosted skill endpoints",
+        "PostgreSQL projection layer for feeds, links, and dashboard state",
+        "0G Storage for profile and message blobs",
+        "Solidity contracts for registration and tipping on 0G Galileo EVM"
+      ],
+      "challenges": [
+        "Separating agent wallet ownership from operator dashboard access safely",
+        "Blending storage-backed identity with EVM-settled registration and tipping",
+        "Keeping the onboarding flow workable for both humans and agent runtimes"
+      ],
+      "outcomes": [
+        "Working 0G-native tipping and identity prototype",
+        "Clear multichain proof beyond Solana and Avalanche",
+        "Strong case study for agent wallets and chain-backed agent profiles"
+      ]
+    },
+    {
+      "slug": "pigeon",
+      "num": "06",
+      "featured": false,
       "category": "products",
       "name": "Pigeon",
+      "shortDescription": "Privacy-focused wallet superapp with encrypted chat and on-chain message history for Solana users.",
       "desc": "Privacy-focused Solana wallet superapp with encrypted wallet-to-wallet chat live on devnet, on-chain message history, and private transfer/swap research routes in progress.",
       "stack": ["React", "TypeScript", "Anchor", "Solana", "Privacy"],
       "tags": ["CypherPunk Hackathon"],
@@ -120,148 +310,591 @@
       "github": "https://github.com/Some1Uknow/pigeon",
       "icon": "https://pigeon.raghav.codes/favicon.png",
       "live": "https://pigeon.raghav.codes",
-      "liveLabel": "demo"
+      "liveLabel": "demo",
+      "chains": ["Solana"],
+      "summary": "Wallet-native communication product exploring privacy and identity primitives on Solana.",
+      "overview": "Pigeon explores what a crypto wallet becomes when messaging, social context, and privacy-preserving transfers live inside the same user surface.",
+      "problem": "Wallets still feel transactional and contextless, while private communication and asset actions remain split across unrelated tools.",
+      "solution": "I built a wallet-oriented product with encrypted chat, wallet-linked identity, and research paths for private transfers and swaps.",
+      "role": "Product engineer for the app experience and Solana integration flow.",
+      "features": [
+        "Encrypted wallet-to-wallet chat",
+        "On-chain message history experiments",
+        "Wallet-connected product UX",
+        "Privacy-focused transfer and swap exploration"
+      ],
+      "architecture": [
+        "React frontend for wallet-native workflows",
+        "Anchor program integration on Solana devnet",
+        "Privacy-oriented messaging and state design",
+        "Hackathon-oriented product packaging"
+      ],
+      "challenges": [
+        "Balancing privacy ambitions with hackathon delivery scope",
+        "Keeping user flows understandable in a wallet-native environment",
+        "Designing around on-chain history and encrypted communication tradeoffs"
+      ],
+      "outcomes": [
+        "Working devnet prototype",
+        "Encrypted messaging demonstrated in product form",
+        "Privacy-focused wallet direction validated through hackathon build"
+      ]
     },
     {
-      "num": "01",
+      "slug": "cpmm",
+      "num": "07",
+      "featured": false,
       "category": "protocols",
       "name": "CPMM",
+      "shortDescription": "Constant-product market maker on Solana with PDA-controlled vaults for swaps and liquidity.",
       "desc": "On-chain constant product market maker on Solana. x·y=k for token swaps and liquidity provision. PDA-controlled token vaults. Deposit, swap, withdraw — atomic.",
       "stack": ["Rust", "Anchor", "Solana", "DeFi"],
       "meta": "On-chain AMM · SPL tokens · PDA vaults",
-      "github": "https://github.com/Some1Uknow/cpmm"
+      "github": "https://github.com/Some1Uknow/cpmm",
+      "chains": ["Solana"],
+      "summary": "Protocol-level Solana AMM implementation focused on core swap and liquidity mechanics.",
+      "overview": "CPMM is a direct implementation of a constant-product AMM with atomic swap and liquidity flows on Solana.",
+      "problem": "AMM mechanics are simple conceptually but require careful token-vault, PDA, and instruction design to be safe and composable on-chain.",
+      "solution": "I implemented the core x*y=k protocol path with explicit vault ownership, liquidity operations, and atomic execution guarantees.",
+      "role": "Protocol engineer implementing the program logic and testing approach.",
+      "features": [
+        "Token swaps against a constant-product curve",
+        "Liquidity deposit and withdrawal flows",
+        "PDA-controlled token vault custody",
+        "Atomic on-chain state transitions"
+      ],
+      "architecture": [
+        "Rust + Anchor Solana program",
+        "PDA authority model for vault ownership",
+        "SPL token vault integrations",
+        "Instruction-level invariant enforcement"
+      ],
+      "challenges": [
+        "Maintaining pricing invariants during swap execution",
+        "Designing safe token-vault authority patterns",
+        "Keeping protocol flows minimal but testable"
+      ],
+      "outcomes": [
+        "Complete AMM proof of work",
+        "Clear demonstration of DeFi protocol fundamentals",
+        "Strong supporting artifact for protocol engineering depth"
+      ]
     },
     {
-      "num": "02",
+      "slug": "escrow",
+      "num": "08",
+      "featured": false,
       "category": "protocols",
       "name": "Escrow",
+      "shortDescription": "Trustless escrow program with PDA-controlled SPL vaults and atomic settlement paths.",
       "desc": "Trustless on-chain escrow in Anchor/Rust. Deposit, refund, take — secured via PDA-controlled SPL token vaults. Atomic settlement, no off-chain intermediaries.",
       "stack": ["Rust", "Anchor", "Solana"],
       "meta": "Trustless · PDA vaults · Atomic settlement",
-      "github": "https://github.com/Some1Uknow/escrow"
+      "github": "https://github.com/Some1Uknow/escrow",
+      "chains": ["Solana"],
+      "summary": "Minimal but concrete Solana escrow implementation focused on custody and settlement correctness.",
+      "overview": "Escrow implements a trustless deposit, refund, and take flow using PDA-managed custody on Solana.",
+      "problem": "Escrow is a classic primitive, but secure vault authority and clean settlement semantics still need careful program design.",
+      "solution": "I used PDA-controlled token custody and explicit instruction paths to make settlement atomic without relying on off-chain operators.",
+      "role": "Program author and tester.",
+      "features": [
+        "Deposit into program-controlled custody",
+        "Refund path for failed deals",
+        "Take path for settlement completion",
+        "Atomic SPL token movement"
+      ],
+      "architecture": [
+        "Anchor-based Solana program",
+        "PDA-controlled token vaults",
+        "Explicit instruction account validation",
+        "Focused protocol test coverage"
+      ],
+      "challenges": [
+        "Ensuring safe authority transfer semantics",
+        "Keeping the protocol minimal without weakening correctness",
+        "Mapping a familiar financial primitive into Solana account patterns"
+      ],
+      "outcomes": [
+        "Clean escrow proof of work",
+        "Foundational protocol example reusable for larger systems"
+      ]
     },
     {
-      "num": "03",
+      "slug": "flash-loan",
+      "num": "09",
+      "featured": false,
       "category": "protocols",
       "name": "Flash Loan",
+      "shortDescription": "Flash loan protocol enforcing same-transaction repayment through instruction introspection.",
       "desc": "Flash loan protocol in Anchor that lends from a PDA-controlled vault, enforces same-transaction repayment through instructions-sysvar introspection, and charges a fixed fee on atomic repay.",
       "stack": ["Rust", "Anchor", "Solana", "SPL Tokens"],
       "meta": "Atomic repay checks · PDA vault authority · LiteSVM tests",
-      "github": "https://github.com/Some1Uknow/flash-loan"
+      "github": "https://github.com/Some1Uknow/flash-loan",
+      "chains": ["Solana"],
+      "summary": "Protocol implementation focused on instruction-sysvar validation and atomic loan repayment guarantees.",
+      "overview": "This flash-loan program lends from a controlled vault and validates same-transaction repayment before completion.",
+      "problem": "Flash loans are only safe if repayment conditions are enforced atomically and instruction flow cannot be bypassed.",
+      "solution": "I used Solana instruction introspection and PDA custody to enforce repay-in-transaction guarantees with a fixed fee model.",
+      "role": "Protocol engineer building and testing the program.",
+      "features": [
+        "Loan from PDA-controlled vault",
+        "Instruction-sysvar introspection",
+        "Atomic same-transaction repay enforcement",
+        "Fixed-fee settlement"
+      ],
+      "architecture": [
+        "Rust + Anchor program design",
+        "PDA vault authority",
+        "Instructions sysvar validation path",
+        "LiteSVM-backed tests"
+      ],
+      "challenges": [
+        "Using sysvar introspection safely",
+        "Avoiding false assumptions about transaction ordering",
+        "Testing atomic protocol guarantees rigorously"
+      ],
+      "outcomes": [
+        "DeFi primitive implemented with explicit safety checks",
+        "Good evidence of low-level Solana protocol familiarity"
+      ]
     },
     {
-      "num": "04",
+      "slug": "pinocchio-vault",
+      "num": "10",
+      "featured": false,
       "category": "protocols",
       "name": "Pinocchio Vault",
+      "shortDescription": "Single-asset tokenized vault in Pinocchio with share minting, pause controls, and admin safeguards.",
       "desc": "Single-asset tokenized vault in Pinocchio. Deposits SPL tokens into PDA custody, mints proportional vault shares, burns shares on withdraw, and enforces pause plus two-step admin controls.",
       "stack": ["Rust", "Pinocchio", "Solana", "SPL Tokens"],
       "meta": "Tokenized vault · PDA custody · LiteSVM-tested SBF",
-      "github": "https://github.com/Some1Uknow/pinocchio-vault"
+      "github": "https://github.com/Some1Uknow/pinocchio-vault",
+      "chains": ["Solana"],
+      "summary": "Vault system built outside the usual Anchor path to show lower-level Solana program fluency.",
+      "overview": "Pinocchio Vault implements a single-asset tokenized vault with minted share accounting and admin controls.",
+      "problem": "Tokenized vaults need clear proportional accounting, custody design, and administrative safety rails without overcomplicating the model.",
+      "solution": "I implemented custody, share minting, withdrawal, pause control, and two-step admin operations in a more bare-metal Solana framework.",
+      "role": "Program engineer using Pinocchio instead of Anchor.",
+      "features": [
+        "Single-asset vault deposits and withdrawals",
+        "Proportional share minting and burning",
+        "PDA custody model",
+        "Pause and two-step admin controls"
+      ],
+      "architecture": [
+        "Pinocchio-based Solana program",
+        "SPL token custody and share mint logic",
+        "Admin state and operational controls",
+        "LiteSVM-tested SBF flow"
+      ],
+      "challenges": [
+        "Managing correctness with less framework abstraction",
+        "Handling share accounting safely",
+        "Designing admin controls without creating operational confusion"
+      ],
+      "outcomes": [
+        "Clear proof of lower-level Solana program capability",
+        "Vault primitive usable as a base for broader protocol work"
+      ]
     },
     {
-      "num": "05",
-      "category": "rust",
+      "slug": "mpmc-queue",
+      "num": "11",
+      "featured": false,
+      "category": "rust-infra",
       "name": "MPMC Queue",
+      "shortDescription": "Bounded Rust multi-producer multi-consumer queue focused on correctness, throughput, and clean concurrency.",
       "desc": "Bounded multi-producer multi-consumer queue in Rust. Mutex/Condvar, blocking + non-blocking modes. 72.3M ops/sec. 13 integration tests. Zero unsafe code.",
       "stack": ["Rust", "Concurrency"],
       "meta": "72.3M ops/sec · 13 tests · 0 unsafe",
-      "github": "https://github.com/Some1Uknow/mpmc-queue-rust"
+      "github": "https://github.com/Some1Uknow/mpmc-queue-rust",
+      "chains": ["Infra"],
+      "summary": "Systems-level Rust artifact demonstrating concurrency and performance fundamentals beyond blockchain-specific code.",
+      "overview": "This project implements a bounded MPMC queue with both blocking and non-blocking modes using safe Rust concurrency primitives.",
+      "problem": "Concurrency-heavy components require strong correctness guarantees under pressure, especially when avoiding unsafe shortcuts.",
+      "solution": "I built a high-throughput queue around Mutex and Condvar coordination, then benchmarked and tested it thoroughly.",
+      "role": "Rust systems engineer.",
+      "features": [
+        "Blocking and non-blocking queue operations",
+        "Safe Rust only, no unsafe code",
+        "High-throughput benchmark profile",
+        "Integration-focused test coverage"
+      ],
+      "architecture": [
+        "Mutex/Condvar synchronization model",
+        "Bounded capacity enforcement",
+        "Benchmark and test harness",
+        "Safe Rust implementation path"
+      ],
+      "challenges": [
+        "Balancing throughput with clean coordination semantics",
+        "Avoiding deadlocks and starvation conditions",
+        "Preserving ergonomic API behavior"
+      ],
+      "outcomes": [
+        "72.3M ops/sec benchmark",
+        "13 integration tests",
+        "Strong supporting proof of systems depth"
+      ]
     },
     {
-      "num": "06",
-      "category": "rust",
+      "slug": "solana-txn-tui",
+      "num": "12",
+      "featured": false,
+      "category": "rust-infra",
       "name": "solana-txn-tui",
+      "shortDescription": "Published Rust terminal tool for exploring Solana transactions, accounts, fees, and token movements.",
       "desc": "Published Rust crate for exploring Solana transactions and accounts in the terminal. cargo install, Homebrew, or curl. Fee breakdown, instruction details, token transfers. Mainnet / Devnet / Testnet.",
       "stack": ["Rust", "Ratatui", "Solana RPC"],
       "meta": "crates.io · Homebrew · Windows binary · 4 releases",
       "github": "https://github.com/Some1Uknow/solana-txn-tui",
       "live": "https://crates.io/crates/solana-txn-tui",
-      "liveLabel": "crates.io"
+      "liveLabel": "crates.io",
+      "chains": ["Solana"],
+      "summary": "Developer tooling project turning raw RPC data into a usable terminal-native inspection flow.",
+      "overview": "solana-txn-tui is a published CLI and terminal UI for inspecting Solana transactions and account-level detail without leaving the terminal.",
+      "problem": "Raw RPC responses and explorer interfaces are often too noisy or too slow when developers need to inspect transaction behavior quickly.",
+      "solution": "I built a TUI that surfaces fees, instructions, token transfers, and account detail in a compact developer-focused workflow.",
+      "role": "Tooling engineer and crate maintainer.",
+      "features": [
+        "Transaction and account inspection",
+        "Fee and instruction breakdowns",
+        "Token transfer visibility",
+        "Installable via cargo, Homebrew, and direct binary workflows"
+      ],
+      "architecture": [
+        "Rust CLI and TUI stack",
+        "Ratatui rendering layer",
+        "Solana RPC integration across clusters",
+        "Multi-release distribution workflow"
+      ],
+      "challenges": [
+        "Presenting dense blockchain data clearly inside a terminal surface",
+        "Supporting multiple install paths",
+        "Keeping the tool fast for everyday developer usage"
+      ],
+      "outcomes": [
+        "Published crate and release pipeline",
+        "Practical developer utility for Solana debugging and inspection"
+      ]
     },
     {
-      "num": "07",
-      "category": "rust",
+      "slug": "observer",
+      "num": "13",
+      "featured": false,
+      "category": "rust-infra",
       "name": "Observer",
+      "shortDescription": "Crash-safe Solana observability indexer with WebSocket slot updates, block fetches, and Postgres persistence.",
       "desc": "Self-hosted Solana observability indexer in Rust. Uses WebSocket slot updates plus RPC block fetches, Postgres upserts, and a persisted cursor for crash-safe resume. Built for near real-time network health and protocol risk monitoring.",
       "stack": ["Rust", "Solana RPC", "WebSockets", "Postgres"],
       "meta": "Crash-safe resume · Idempotent upserts · Protocol risk monitoring",
-      "github": "https://github.com/Some1UKnow/observer"
+      "github": "https://github.com/Some1UKnow/observer",
+      "chains": ["Solana"],
+      "summary": "Data infrastructure project for monitoring Solana network and protocol activity with durable ingestion semantics.",
+      "overview": "Observer ingests Solana chain activity through a crash-safe indexing flow designed for near-real-time monitoring and analysis.",
+      "problem": "Network and protocol monitoring needs durable ingestion, resumability, and enough structure to support downstream risk analysis.",
+      "solution": "I paired WebSocket slot updates with RPC block fetches, then wrote state into Postgres using idempotent persistence and a saved cursor.",
+      "role": "Infra engineer for ingestion, storage, and monitoring-oriented architecture.",
+      "features": [
+        "WebSocket-driven slot updates",
+        "RPC block ingestion",
+        "Crash-safe resume cursor",
+        "Postgres-backed monitoring data"
+      ],
+      "architecture": [
+        "Rust indexer service",
+        "Hybrid WebSocket + RPC fetch flow",
+        "Persistent cursor and idempotent writes",
+        "Monitoring-oriented storage model"
+      ],
+      "challenges": [
+        "Maintaining resumability without duplicate corruption",
+        "Bridging live feeds and historical fetches reliably",
+        "Keeping latency low enough for monitoring use cases"
+      ],
+      "outcomes": [
+        "Operationally credible observability indexer",
+        "Strong evidence of backend and data pipeline depth"
+      ]
     },
     {
-      "num": "08",
-      "category": "rust",
+      "slug": "omniscanner",
+      "num": "14",
+      "featured": false,
+      "category": "rust-infra",
       "name": "Omniscanner",
+      "shortDescription": "Borrower-risk scanner with local scoring, stress tracking, alerts, and a compact operator dashboard.",
       "desc": "Rust borrower-risk scanner for Omnipair with local scoring, pool stress tracking, liquidation alerts, PostgreSQL persistence, and a small operator dashboard served from the app.",
       "stack": ["Rust", "Axum", "Postgres", "Risk Engine"],
       "meta": "Borrower risk alerts · Axum API · Built-in dashboard",
-      "github": "https://github.com/Some1Uknow/omniscanner"
+      "github": "https://github.com/Some1Uknow/omniscanner",
+      "chains": ["Solana"],
+      "summary": "Risk monitoring product blending chain data, scoring logic, and a small operator-facing UI.",
+      "overview": "Omniscanner tracks borrower positions, pool stress, and liquidation risk through a backend scanner and lightweight dashboard.",
+      "problem": "DeFi risk monitoring needs more than raw chain ingestion; it needs local scoring and actionable operator views.",
+      "solution": "I built a scanner that computes borrower risk locally, persists state, raises alerts, and exposes an internal dashboard surface.",
+      "role": "Builder across backend scanner, scoring logic, persistence, and dashboard delivery.",
+      "features": [
+        "Borrower-risk scoring",
+        "Pool stress tracking",
+        "Liquidation alerts",
+        "Served operator dashboard"
+      ],
+      "architecture": [
+        "Rust backend scanner",
+        "Axum API and dashboard serving",
+        "Postgres persistence",
+        "Local scoring engine for monitoring"
+      ],
+      "challenges": [
+        "Translating market state into actionable local risk scores",
+        "Keeping operator UX lightweight but useful",
+        "Persisting monitoring data cleanly for alerts and history"
+      ],
+      "outcomes": [
+        "End-to-end risk monitoring artifact",
+        "Good example of productized chain-data infrastructure"
+      ]
     },
     {
-      "num": "09",
-      "category": "dapps",
+      "slug": "rayscan",
+      "num": "15",
+      "featured": false,
+      "category": "products",
       "name": "Rayscan",
+      "shortDescription": "Search-first explorer with live transaction visibility, token pages, and indexed Solana backend data.",
       "desc": "Search-first Solana explorer with live transaction visibility, token pages, network stats, and an indexed backend built with Fastify, WebSockets, and Postgres.",
       "stack": ["Next.js", "Fastify", "Postgres", "Solana RPC"],
       "meta": "Explorer UI · Live tx feed · Indexed chain data",
-      "github": "https://github.com/Some1Uknow/rayscan"
+      "github": "https://github.com/Some1Uknow/rayscan",
+      "chains": ["Solana"],
+      "summary": "Explorer product centered on indexed data, live feeds, and search-oriented UX.",
+      "overview": "Rayscan is a search-first blockchain explorer built to make transaction, token, and network information easier to browse and monitor.",
+      "problem": "Generic explorers often overload users with information while still making important views harder to reach.",
+      "solution": "I built a cleaner search-driven explorer backed by indexed data, live transaction feeds, and focused token/network surfaces.",
+      "role": "Full-stack builder across frontend, backend, and chain-data indexing.",
+      "features": [
+        "Search-first explorer flow",
+        "Live transaction feed",
+        "Token and network pages",
+        "Indexed backend with WebSocket support"
+      ],
+      "architecture": [
+        "Next.js frontend",
+        "Fastify backend",
+        "Postgres indexed storage",
+        "Solana RPC + WebSocket ingestion"
+      ],
+      "challenges": [
+        "Structuring explorer data for fast retrieval",
+        "Designing search UX that feels direct",
+        "Keeping live transaction surfaces responsive"
+      ],
+      "outcomes": [
+        "Complete explorer proof of work",
+        "Strong full-stack chain-data product example"
+      ]
     },
     {
-      "num": "10",
-      "category": "dapps",
+      "slug": "pixelmart",
+      "num": "16",
+      "featured": false,
+      "category": "products",
       "name": "PixelMart",
+      "shortDescription": "NFT marketplace with listings, buys, wallet flows, and Anchor-backed marketplace logic.",
       "desc": "NFT marketplace on Solana with a Next.js frontend and an Anchor marketplace program for listings, buys, marketplace state, and wallet-signed flows.",
       "stack": ["Rust", "Anchor", "Next.js", "Solana", "NFTs"],
       "meta": "NFT marketplace · Next.js + Anchor · Live demo",
       "github": "https://github.com/Some1Uknow/pixelmart",
       "live": "https://pixelmart.raghav.codes",
-      "liveLabel": "demo"
+      "liveLabel": "demo",
+      "chains": ["Solana"],
+      "summary": "Marketplace build connecting consumer-facing UI with Solana NFT transaction logic.",
+      "overview": "PixelMart is an NFT marketplace with listing, buying, and state-management flows spanning frontend UX and on-chain program work.",
+      "problem": "NFT products require coherent wallet flows and marketplace logic, but many implementations feel fragmented or prototype-grade.",
+      "solution": "I built both the product layer and the marketplace program to support listings, purchases, and wallet-signed interactions end to end.",
+      "role": "Full-stack + on-chain engineer.",
+      "features": [
+        "NFT listing and buying flows",
+        "Wallet-signed interactions",
+        "Marketplace state handling",
+        "Live demo surface"
+      ],
+      "architecture": [
+        "Next.js frontend",
+        "Anchor marketplace program",
+        "Wallet interaction flow",
+        "NFT-centric product views"
+      ],
+      "challenges": [
+        "Keeping marketplace UX understandable",
+        "Mapping user actions cleanly into on-chain flows",
+        "Balancing demo readiness with protocol correctness"
+      ],
+      "outcomes": [
+        "End-to-end NFT marketplace proof of work",
+        "Clear example of consumer-facing blockchain product engineering"
+      ]
     },
     {
-      "num": "11",
-      "category": "dapps",
+      "slug": "loopscale-borrow-shopper",
+      "num": "17",
+      "featured": false,
+      "category": "products",
       "name": "Loopscale Borrow Shopper",
+      "shortDescription": "Consumer-facing borrow-routing app for finding and signing fixed-rate loan routes.",
       "desc": "Consumer-facing Next.js app for finding fixed-rate borrow routes on Loopscale, reviewing the best visible route, and signing the final loan transaction.",
       "stack": ["Next.js", "TypeScript", "Solana", "Loopscale API"],
       "meta": "Fixed-rate borrow flow · Route review · Wallet signing",
-      "github": "https://github.com/Some1Uknow/loopscale"
+      "github": "https://github.com/Some1Uknow/loopscale",
+      "chains": ["Solana"],
+      "summary": "Product layer for DeFi routing with an emphasis on clarity before transaction signing.",
+      "overview": "This app helps users discover visible fixed-rate borrow opportunities and move cleanly into transaction signing.",
+      "problem": "Borrow-routing UX often hides decision context or pushes users into opaque flows too quickly.",
+      "solution": "I built a route-review experience that surfaces the best path clearly before the wallet-signing step.",
+      "role": "Frontend and product workflow engineer.",
+      "features": [
+        "Borrow-route discovery",
+        "Best-route review UX",
+        "Wallet signing handoff",
+        "Loopscale API integration"
+      ],
+      "architecture": [
+        "Next.js frontend",
+        "TypeScript integration layer",
+        "Loopscale API consumption",
+        "Solana wallet action flow"
+      ],
+      "challenges": [
+        "Explaining route quality clearly",
+        "Keeping transaction prep simple for users",
+        "Balancing speed with enough decision context"
+      ],
+      "outcomes": [
+        "Consumer-facing DeFi routing app",
+        "Good example of product-minded wallet UX"
+      ]
     },
-   
     {
-      "num": "12",
-      "category": "dapps",
+      "slug": "ezdeploy",
+      "num": "18",
+      "featured": false,
+      "category": "rust-infra",
       "name": "EzDeploy",
+      "shortDescription": "Self-hosted deployment platform that turns Git pushes into live URLs with isolated builds and logs.",
       "desc": "Self-hosted deployment platform. Push to GitHub, get a live URL on a unique subdomain. Isolated Docker build container per deploy, real-time log streaming.",
       "stack": ["TypeScript", "Docker", "CI/CD"],
       "meta": "Zero-config deploys · Real-time logs · Unique subdomains",
-      "github": "https://github.com/Some1Uknow/ezdeploy"
+      "github": "https://github.com/Some1Uknow/ezdeploy",
+      "chains": ["Infra"],
+      "summary": "Developer-platform build showing infra and product workflow design outside pure blockchain contexts.",
+      "overview": "EzDeploy is a self-hosted platform for converting Git pushes into isolated deploys with live logs and unique URLs.",
+      "problem": "Deploy tooling is often overkill for small teams or underpowered for self-hosted workflows.",
+      "solution": "I built a platform that automates the critical deploy path with container isolation and operator-visible runtime logs.",
+      "role": "Platform engineer across build orchestration and deploy UX.",
+      "features": [
+        "GitHub-triggered deployments",
+        "Unique subdomain provisioning",
+        "Per-deploy isolated Docker builds",
+        "Real-time log streaming"
+      ],
+      "architecture": [
+        "TypeScript orchestration layer",
+        "Docker-based build isolation",
+        "Deployment status and logging flow",
+        "Self-hosted operator model"
+      ],
+      "challenges": [
+        "Making self-hosted deploys feel simple",
+        "Surfacing useful logs without noise",
+        "Managing build isolation ergonomically"
+      ],
+      "outcomes": [
+        "Full developer-platform proof of work",
+        "Broader evidence of backend and platform engineering"
+      ]
     },
     {
-      "num": "13",
-      "category": "dapps",
+      "slug": "one-click-indexer",
+      "num": "19",
+      "featured": false,
+      "category": "products",
       "name": "One Click Indexer",
+      "shortDescription": "Generator that turns a Solana program ID into a runnable SQD indexer starter project.",
       "desc": "Turn a Solana program ID into a runnable SQD indexer in one flow. Paste a program ID, inspect live Portal samples, generate a starter indexer, preview the files, and export the whole project as a ZIP.",
-      "stack": [
-        "Next.js 16",
-        "React 19",
-        "SQD Portal",
-        "SQD Pipes",
-        "Vercel Blob"
-      ],
+      "stack": ["Next.js 16", "React 19", "SQD Portal", "SQD Pipes", "Vercel Blob"],
       "meta": "SQD indexer generator · Live data sampling · ZIP export",
       "github": "https://github.com/Some1Uknow/one-click-indexer",
       "live": "https://one-click-indexer.raghav.codes",
-      "liveLabel": "demo"
+      "liveLabel": "demo",
+      "chains": ["Solana"],
+      "summary": "Developer tooling product focused on compressing chain-data setup into a single guided flow.",
+      "overview": "One Click Indexer helps developers bootstrap a chain-data pipeline by turning a program ID into a previewable starter indexer.",
+      "problem": "Indexer setup is still too manual for many builders, especially when they just want to inspect a program and start collecting data.",
+      "solution": "I created a single flow that samples live data, generates starter files, previews output, and exports a ready-to-run package.",
+      "role": "Product engineer across frontend generation flow and tooling integrations.",
+      "features": [
+        "Program-ID-driven generation",
+        "Live Portal sample inspection",
+        "Generated starter indexer preview",
+        "ZIP export for handoff"
+      ],
+      "architecture": [
+        "Next.js 16 app",
+        "React 19 UI layer",
+        "SQD Portal and Pipes integrations",
+        "Blob-backed export handling"
+      ],
+      "challenges": [
+        "Reducing indexer complexity without hiding the important moving parts",
+        "Generating useful starter output from sparse input",
+        "Keeping the workflow fast enough for exploratory use"
+      ],
+      "outcomes": [
+        "Strong developer-tooling product",
+        "Good bridge between blockchain data and product UX"
+      ]
     },
     {
-      "num": "14",
-      "category": "dapps",
+      "slug": "yield-sol",
+      "num": "20",
+      "featured": false,
+      "category": "products",
       "name": "yield.sol",
+      "shortDescription": "Non-custodial stablecoin yield interface for marginfi-based earning flows on Solana.",
       "desc": "Earn yield on your USD stablecoins, right from your wallet. A non-custodial frontend for earning APY on USDC, USDT, PYUSD, and USDS through marginfi on Solana.",
       "stack": ["Next.js", "Solana", "marginfi SDK", "TypeScript"],
       "meta": "Stablecoin yield · Non-custodial · Multi-wallet support",
       "github": "https://github.com/Some1Uknow/yield-sol",
       "live": "https://yield-sol.raghav.codes",
-      "liveLabel": "demo"
+      "liveLabel": "demo",
+      "chains": ["Solana"],
+      "summary": "Consumer-facing DeFi product focused on simple stablecoin yield access from the wallet layer.",
+      "overview": "yield.sol packages marginfi-powered stablecoin earning into a clean wallet-connected surface for end users.",
+      "problem": "Yield products often expose protocol complexity directly instead of translating it into a simple consumer flow.",
+      "solution": "I built a non-custodial frontend that keeps the user journey focused on deposit intent, supported assets, and wallet execution.",
+      "role": "Frontend and product integration engineer.",
+      "features": [
+        "Wallet-connected stablecoin yield flow",
+        "Support for multiple dollar-denominated assets",
+        "marginfi integration",
+        "Consumer-facing non-custodial UX"
+      ],
+      "architecture": [
+        "Next.js frontend",
+        "TypeScript app logic",
+        "marginfi SDK integration",
+        "Solana wallet interaction flow"
+      ],
+      "challenges": [
+        "Simplifying yield mechanics for end users",
+        "Keeping wallet flows concise and trustworthy",
+        "Presenting supported assets clearly"
+      ],
+      "outcomes": [
+        "Simple stablecoin-yield product demo",
+        "Another strong example of wallet-first product engineering"
+      ]
     }
   ],
   "writing": [],
@@ -269,25 +902,25 @@
     {
       "num": "01",
       "title": "Solana Foundation Grant — $5,000",
-      "desc": "Top 2% from 250+ submissions. Funded LearnSolana.",
+      "desc": "Top 2% from 250+ submissions. Funded LearnSol.",
       "year": "2025"
     },
     {
       "num": "02",
       "title": "Colosseum Codex Feature",
-      "desc": "Highlighted in official Solana newsletter for developer education impact.",
+      "desc": "Highlighted in the official Solana newsletter for developer education impact.",
       "year": "2025"
     },
     {
       "num": "03",
       "title": "Smart India Hackathon — 1st Place (₹100,000)",
-      "desc": "Team Leader. Top 0.375% from 80,000+ teams nationwide.",
+      "desc": "Team lead. Top 0.375% from 80,000+ teams nationwide.",
       "year": "2024"
     },
     {
-      "num": "06",
+      "num": "04",
       "title": "Superteam India Member",
-      "desc": "Active contributor to Solana ecosystem and developer community.",
+      "desc": "Active contributor to the Solana ecosystem and developer community.",
       "year": "Ongoing"
     }
   ],

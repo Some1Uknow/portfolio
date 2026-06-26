@@ -89,6 +89,95 @@ export const globalStyles = `
     outline-offset: 4px;
     border-radius: 4px;
   }
+  .project-tile {
+    display: grid;
+    gap: 18px;
+    min-height: 248px;
+    padding: 26px;
+    border: 1px solid var(--color-border-soft);
+    background: var(--color-surface);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+  }
+  .project-tile:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-text);
+    background: var(--color-surface-hover);
+    box-shadow: var(--shadow-soft);
+  }
+  .project-tile:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+  .project-tile--featured {
+    min-height: 276px;
+    padding: 30px;
+  }
+  .project-archive {
+    border: 1px solid var(--color-border-soft);
+    background: var(--color-surface);
+  }
+  .project-archive[open] {
+    background: var(--color-surface-elevated);
+  }
+  .project-archive__summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 22px 24px;
+    cursor: pointer;
+  }
+  .project-archive__summary::-webkit-details-marker {
+    display: none;
+  }
+  .project-archive__summary:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+  .project-archive__chevron {
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-text);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .project-archive[open] .project-archive__chevron {
+    transform: rotate(45deg);
+    background: var(--color-surface-hover);
+  }
+  .project-archive__body {
+    padding: 0 24px 24px;
+  }
+  .project-page-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 38px;
+    padding: 0 14px;
+    border: 1px solid var(--color-border-soft);
+    background: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-size: 10px;
+    transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  }
+  .project-page-link:hover {
+    border-color: var(--color-text);
+    background: var(--color-surface-hover);
+    transform: translateY(-1px);
+  }
+  .project-page-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
   .writing-row:hover > div:first-child > div:first-child { color: var(--color-soft); transition: color 0.2s; }
   .oss-org-card:hover {
     transform: translateY(-2px);
@@ -156,18 +245,26 @@ export const globalStyles = `
     .exp-row { grid-template-columns: 1fr 1fr !important; }
     .exp-row > *:last-child { text-align: left !important; }
     .oss-org-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-    .projects-grid--products { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+    .project-page-grid { grid-template-columns: 1fr !important; }
+    .project-compact-grid { grid-template-columns: 1fr !important; }
   }
   @media (max-width: 640px) {
     .exp-row { grid-template-columns: 1fr !important; gap: 10px !important; }
     .exp-row > *:last-child { text-align: left !important; }
-    .projects-grid { grid-template-columns: 1fr !important; }
-    .projects-grid--products { grid-template-columns: 1fr !important; }
+    .projects-tile-grid { grid-template-columns: 1fr !important; }
     .oss-row { grid-template-columns: 1fr !important; }
     .oss-org-grid { grid-template-columns: 1fr !important; }
     .skills-grid { grid-template-columns: 1fr !important; }
     .writing-row { grid-template-columns: 1fr !important; }
     .writing-row > *:last-child { display: none; }
+    .project-tile { padding: 22px; min-height: 0; }
+    .project-tile--featured { padding: 24px; }
+    .project-archive__summary {
+      padding: 18px;
+    }
+    .project-archive__body {
+      padding: 0 18px 18px;
+    }
     .theme-toggle {
       right: 16px;
     }

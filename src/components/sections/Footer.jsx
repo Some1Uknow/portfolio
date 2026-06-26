@@ -1,6 +1,6 @@
-import siteContent from "../../content/siteContent.json"
+import siteContent from "../../content/siteContent.js"
 
-const { footerLinks } = siteContent
+const { footerLinks, hero } = siteContent
 
 export default function Footer() {
   return (
@@ -28,7 +28,7 @@ export default function Footer() {
           color: "var(--color-text)",
         }}
       >
-        raghav sharma
+        {hero.name}
       </div>
 
       <div
@@ -59,7 +59,7 @@ export default function Footer() {
           className="footer-note"
           style={{ fontSize: 10, color: "var(--color-faint)", marginTop: 12, letterSpacing: "0.06em" }}
         >
-          New Delhi, IN — Available worldwide
+          {hero.location} — {hero.availability}
         </div>
       </div>
     </footer>

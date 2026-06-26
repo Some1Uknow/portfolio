@@ -1,4 +1,4 @@
-import siteContent from "../../content/siteContent.json"
+import siteContent from "../../content/siteContent.js"
 
 const heroItems = [
   { style: { opacity: 0, animation: "fadeUp 0.7s ease 0.05s forwards" } },
@@ -7,7 +7,7 @@ const heroItems = [
   { style: { opacity: 0, animation: "fadeUp 0.8s ease 0.44s forwards" } },
 ]
 
-const { links } = siteContent
+const { hero, links } = siteContent
 
 export default function Hero() {
   return (
@@ -48,7 +48,9 @@ export default function Hero() {
             boxShadow: "0 0 0 6px var(--color-accent-glow)",
           }}
         />
-        <span>Protocol Engineer & Developer Relations — New Delhi, IN</span>
+        <span>
+          {hero.eyebrow} — {hero.location}
+        </span>
       </p>
 
       <h1
@@ -65,10 +67,22 @@ export default function Hero() {
           ...heroItems[1].style,
         }}
       >
-        raghav sharma
+        {hero.name}
       </h1>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0 0", marginBottom: 16, ...heroItems[2].style }}>
+      <p
+        style={{
+          maxWidth: 720,
+          color: "var(--color-muted)",
+          lineHeight: 1.8,
+          marginBottom: 24,
+          ...heroItems[2].style,
+        }}
+      >
+        {hero.availability}
+      </p>
+
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0 0", marginBottom: 16, ...heroItems[3].style }}>
         {links.map((link) => (
           <a
             key={link.label}

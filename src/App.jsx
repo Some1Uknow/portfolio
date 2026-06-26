@@ -1,37 +1,25 @@
 import Cursor from "./components/Cursor.jsx"
-import About from "./components/sections/About.jsx"
-import Awards from "./components/sections/Awards.jsx"
-import Experience from "./components/sections/Experience.jsx"
-import Footer from "./components/sections/Footer.jsx"
-import Hero from "./components/sections/Hero.jsx"
-import Oss from "./components/sections/Oss.jsx"
-import Projects from "./components/sections/Projects.jsx"
+import HomePage from "./components/pages/HomePage.jsx"
+import ProjectPage from "./components/pages/ProjectPage.jsx"
 import ThemeToggle from "./components/ui/ThemeToggle.jsx"
-import { globalStyles, PAD } from "./styles/globalStyles.js"
+import { globalStyles } from "./styles/globalStyles.js"
 import { ThemeProvider } from "./theme/ThemeProvider.jsx"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 export default function App() {
   return (
     <ThemeProvider>
       <style>{globalStyles}</style>
 
-      <Cursor />
-      <ThemeToggle />
-
-      <div style={{ padding: `0 ${PAD}` }}>
-        <Hero />
-        <About />
-        <Experience />
-      </div>
-
-      <Projects />
-      <Oss />
-
-      <div style={{ padding: `0 ${PAD}` }}>
-        <Awards />
-      </div>
-
-      <Footer />
+      <BrowserRouter>
+        <Cursor />
+        <ThemeToggle />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/projects/:slug" element={<ProjectPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }

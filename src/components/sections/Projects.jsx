@@ -1,426 +1,259 @@
-import { useRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-import siteContent from "../../content/siteContent.json"
-import useInView from "../../hooks/useInView.js"
+import { getProjectIconUrl, projects } from "../../content/siteContent.js"
 import { PAD } from "../../styles/globalStyles.js"
-import Pill from "../ui/Pill.jsx"
+import ChainBadge from "../ui/ChainBadge.jsx"
 import SectionLabel from "../ui/SectionLabel.jsx"
 
-const { projects } = siteContent
-
-const PROJECT_SECTIONS = [
-  {
-    key: "products",
-    title: "Products",
-    blurb: "On-chain products built end to end by me",
-    categories: ["products"],
-  },
+const ARCHIVE_SECTIONS = [
   {
     key: "protocols",
     title: "Protocols",
-    blurb: "On-chain Defi Protocols and Solana programs.",
-    categories: ["protocols"],
+    blurb: "On-chain primitives.",
   },
   {
-    key: "rustOthers",
-    title: "Rust / Others",
-    blurb: "Rust projects and other technical proof of work.",
-    categories: ["rust", "dapps"],
+    key: "rust-infra",
+    title: "Rust + Infra",
+    blurb: "Rust systems and infra.",
   },
 ]
 
-function getYouTubeEmbedUrl(videoUrl) {
-  if (!videoUrl) {
-    return null
-  }
-
-  try {
-    const url = new URL(videoUrl)
-    let videoId = null
-
-    if (url.hostname.includes("youtu.be")) {
-      videoId = url.pathname.split("/").filter(Boolean)[0] || null
-    } else if (url.hostname.includes("youtube.com")) {
-      videoId = url.searchParams.get("v")
-    }
-
-    if (!videoId) {
-      return null
-    }
-
-    return `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1&playsinline=1`
-  } catch {
-    return null
-  }
-}
-
-function CardLinks({ project, hovered }) {
+function TileExternalLinks({ project }) {
   return (
-    <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
       {project.live ? (
         <a
           href={project.live}
           target="_blank"
           rel="noreferrer noopener"
           className="muted-link"
-          style={{
-            fontSize: 11,
-            display: "flex",
-            alignItems: "center",
-            gap: 3,
-            minHeight: 40,
-          }}
+          onClick={(event) => event.stopPropagation()}
+          style={{ fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase" }}
         >
-          {project.liveLabel || "demo"}{" "}
-          <span
-            style={{
-              display: "inline-block",
-              transition: "transform 0.2s",
-              transform: hovered ? "translate(2px,-2px)" : "none",
-            }}
-          >
-            ↗
-          </span>
+          {project.liveLabel || "live"} ↗
         </a>
       ) : null}
-
       <a
         href={project.github}
         target="_blank"
         rel="noreferrer noopener"
         className="muted-link"
-        style={{
-          fontSize: 11,
-          display: "flex",
-          alignItems: "center",
-          gap: 3,
-          minHeight: 40,
-        }}
+        onClick={(event) => event.stopPropagation()}
+        style={{ fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase" }}
       >
-        github{" "}
-        <span
-          style={{
-            display: "inline-block",
-            transition: "transform 0.2s",
-            transform: hovered ? "translate(2px,-2px)" : "none",
-          }}
-        >
-          ↗
-        </span>
+        github ↗
       </a>
     </div>
   )
 }
 
-function ProjectHeader({ project, number, hovered }) {
-  return (
-    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
-      <span style={{ fontSize: 10, color: "var(--color-faint)", letterSpacing: "0.08em" }}>{number}</span>
-      <CardLinks project={project} hovered={hovered} />
-    </div>
-  )
-}
-
-function ProjectTags({ tags = [], align = "flex-start" }) {
-  if (!tags.length) {
-    return null
-  }
+function ProjectTile({ project, featured = false }) {
+  const navigate = useNavigate()
+  const projectIcon = getProjectIconUrl(project)
 
   return (
-    <div style={{ display: "flex", justifyContent: align, flexWrap: "wrap", gap: 6 }}>
-      {tags.map((tag) => (
-        <span
-          key={tag}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            minHeight: 20,
-            padding: "2px 7px",
-            border: "1px solid var(--color-border-soft)",
-            borderRadius: 2,
-            color: "var(--color-soft)",
-            background: "var(--color-surface-elevated)",
-            fontSize: 10,
-            lineHeight: 1,
-            letterSpacing: "0.06em",
-            textTransform: "uppercase",
-          }}
-        >
-          {tag}
-        </span>
-      ))}
-    </div>
-  )
-}
-
-function ProjectTitle({ project, tags }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-        gap: 16,
-        marginBottom: 10,
+    <article
+      className={featured ? "project-tile project-tile--featured" : "project-tile"}
+      role="link"
+      tabIndex={0}
+      onClick={() => navigate(`/projects/${project.slug}`)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault()
+          navigate(`/projects/${project.slug}`)
+        }
       }}
     >
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-        {project.icon ? (
-          <img
-            src={project.icon}
-            alt={`${project.name} icon`}
-            loading="lazy"
-            style={{
-              width: 28,
-              height: 28,
-              objectFit: "cover",
-              borderRadius: 4,
-              flex: "0 0 28px",
-            }}
-          />
-        ) : null}
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 18, alignItems: "flex-start" }}>
+        <div style={{ display: "flex", gap: 14, minWidth: 0 }}>
+          {projectIcon ? (
+            <img
+              src={projectIcon}
+              alt={`${project.name} icon`}
+              loading="lazy"
+              style={{
+                width: 42,
+                height: 42,
+                borderRadius: 10,
+                objectFit: "cover",
+                flexShrink: 0,
+                border: "1px solid var(--color-border-soft)",
+              }}
+            />
+          ) : null}
 
-        <div
-          style={{
-            fontFamily: "'Instrument Serif', Georgia, serif",
-            fontSize: 22,
-            letterSpacing: "-0.02em",
-            color: "var(--color-text)",
-            lineHeight: 1.2,
-          }}
-        >
-          {project.name}
+          <div style={{ minWidth: 0 }}>
+            <h3
+              style={{
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: "clamp(25px, 3vw, 34px)",
+                fontWeight: 400,
+                lineHeight: 1,
+                letterSpacing: "-0.03em",
+                color: "var(--color-text)",
+                marginBottom: 10,
+                paddingTop: 2,
+              }}
+            >
+              {project.name}
+            </h3>
+            <p style={{ color: "var(--color-muted)", lineHeight: 1.75, maxWidth: 540 }}>{project.shortDescription || project.desc}</p>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8, flexShrink: 0 }}>
+          {project.chains.map((chain) => (
+            <ChainBadge key={chain} chain={chain} compact />
+          ))}
         </div>
       </div>
-      <ProjectTags tags={tags} align="flex-end" />
-    </div>
-  )
-}
 
-function ProjectBody({ project, tags }) {
-  return (
-    <>
-      <ProjectTitle project={project} tags={tags} />
-      <div style={{ fontSize: 12, color: "var(--color-muted)", lineHeight: 1.7, marginBottom: 16 }}>
-        {project.desc}
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-end", flexWrap: "wrap" }}>
+        <div style={{ color: "var(--color-soft)", fontSize: 11, lineHeight: 1.7 }}>{project.meta}</div>
+        <TileExternalLinks project={project} />
       </div>
-
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 12 }}>
-        {project.stack.map((item) => (
-          <Pill key={item}>{item}</Pill>
-        ))}
-      </div>
-
-      <div style={{ fontSize: 11, color: "var(--color-soft)" }}>{project.meta}</div>
-    </>
-  )
-}
-
-function ProductMedia({ project }) {
-  const embedUrl = getYouTubeEmbedUrl(project.videoUrl)
-
-  return (
-    <div
-      style={{
-        position: "relative",
-        aspectRatio: "16 / 9",
-        overflow: "hidden",
-        border: "1px solid var(--color-border-soft)",
-        borderRadius: 2,
-        background: "var(--color-surface-elevated)",
-      }}
-    >
-      {embedUrl ? (
-        <iframe
-          title={`${project.name} YouTube demo`}
-          src={embedUrl}
-          loading="lazy"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            border: 0,
-            background: "transparent",
-          }}
-        />
-      ) : (
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            display: "grid",
-            placeItems: "center",
-            padding: 16,
-            color: "var(--color-soft)",
-            fontSize: 11,
-            letterSpacing: "0.08em",
-            lineHeight: 1,
-            textTransform: "uppercase",
-          }}
-        >
-          video coming soon
-        </div>
-      )}
-    </div>
-  )
-}
-
-function ProjectCardShell({ children, index }) {
-  const ref = useRef(null)
-  const visible = useInView(ref)
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <div
-      ref={ref}
-      className="hoverable"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        display: "grid",
-        alignContent: "start",
-        gap: 16,
-        background: hovered ? "var(--color-surface-hover)" : "var(--color-surface)",
-        padding: "36px clamp(20px, 3vw, 40px)",
-        position: "relative",
-        overflow: "hidden",
-        opacity: visible ? 1 : 0,
-        transform: visible ? "none" : "translateY(16px)",
-        transition: `opacity 0.5s ease ${index * 60}ms, transform 0.5s ease ${index * 60}ms, background 0.2s ease`,
-        cursor: "default",
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 1,
-          background: "var(--color-text)",
-          transform: hovered ? "scaleX(1)" : "scaleX(0)",
-          transformOrigin: "left",
-          transition: "transform 0.4s ease",
-        }}
-      />
-
-      {children(hovered)}
-    </div>
-  )
-}
-
-function ProjectCard({ project, number, index }) {
-  return (
-    <ProjectCardShell index={index}>
-      {(hovered) => (
-        <>
-          <ProjectHeader project={project} number={number} hovered={hovered} />
-          <ProjectBody project={project} />
-        </>
-      )}
-    </ProjectCardShell>
-  )
-}
-
-function ProductCard({ project, number, index }) {
-  return (
-    <ProjectCardShell index={index}>
-      {(hovered) => (
-        <>
-          <ProjectHeader project={project} number={number} hovered={hovered} />
-          <ProductMedia project={project} />
-          <ProjectBody project={project} tags={project.tags} />
-        </>
-      )}
-    </ProjectCardShell>
-  )
-}
-
-function ProjectGrid({ isProducts, children }) {
-  return (
-    <div
-      className={isProducts ? "projects-grid projects-grid--products" : "projects-grid"}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
-        gap: 1,
-        background: "var(--color-border)",
-      }}
-    >
-      {children}
-    </div>
+    </article>
   )
 }
 
 export default function Projects() {
-  const groupedProjects = PROJECT_SECTIONS.map((section) => ({
+  const featuredProjects = projects.filter((project) => project.featured)
+  const archiveSections = ARCHIVE_SECTIONS.map((section) => ({
     ...section,
-    items: projects.filter((project) => section.categories.includes(project.category)),
-  }))
-
-  let displayIndex = 1
+    items: projects.filter((project) => !project.featured && project.category === section.key),
+  })).filter((section) => section.items.length > 0)
 
   return (
     <section id="projects" style={{ padding: `0 ${PAD}` }}>
-      <SectionLabel>Proof of Work</SectionLabel>
+      <SectionLabel>Projects</SectionLabel>
 
-      <div style={{ display: "grid", gap: 40, marginBottom: 96 }}>
-        {groupedProjects.map((section) => (
-          <div
-            key={section.key}
-            style={{
-              borderTop: "1px solid var(--color-border)",
-              paddingTop: 18,
-            }}
-          >
-            <div
+      <div style={{ display: "grid", gap: 26, marginBottom: 96 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", gap: 20, flexWrap: "wrap", alignItems: "flex-end" }}>
+          <div style={{ maxWidth: 760 }}>
+            <h2
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: 16,
-                alignItems: "flex-end",
-                marginBottom: 18,
-                flexWrap: "wrap",
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: "clamp(34px, 5vw, 52px)",
+                lineHeight: 0.98,
+                fontWeight: 400,
+                letterSpacing: "-0.04em",
+                color: "var(--color-text)",
+                marginBottom: 12,
               }}
             >
-              <div>
-                <h3
-                  style={{
-                    fontFamily: "'Instrument Serif', Georgia, serif",
-                    fontSize: "clamp(24px, 3vw, 32px)",
-                    letterSpacing: "-0.03em",
-                    lineHeight: 1,
-                    color: "var(--color-text)",
-                    marginBottom: 8,
-                  }}
-                >
-                  {section.title}
-                </h3>
-                <p style={{ color: "var(--color-muted)", maxWidth: 520 }}>{section.blurb}</p>
-              </div>
+              Proof of Work
+            </h2>
+            <p style={{ color: "var(--color-muted)", lineHeight: 1.8 }}>
+              Multichain Products
+            </p>
+          </div>
 
-              <div style={{ fontSize: 11, color: "var(--color-soft)", letterSpacing: "0.08em" }}>
-                {String(section.items.length).padStart(2, "0")} projects
-              </div>
+          <div style={{ fontSize: 11, color: "var(--color-soft)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            {String(projects.length).padStart(2, "0")} projects
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gap: 16 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-end", flexWrap: "wrap" }}>
+            <div>
+              <h3
+                style={{
+                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontSize: "clamp(28px, 3vw, 38px)",
+                  fontWeight: 400,
+                  lineHeight: 1,
+                  letterSpacing: "-0.03em",
+                  color: "var(--color-text)",
+                  marginBottom: 8,
+                }}
+              >
+                Featured
+              </h3>
+              <p style={{ color: "var(--color-muted)", lineHeight: 1.75, maxWidth: 620 }}>
+                Main products.
+              </p>
             </div>
 
-            <ProjectGrid isProducts={section.key === "products"}>
-              {section.items.map((project, index) => {
-                const number = String(displayIndex++).padStart(2, "0")
-
-                return section.key === "products" ? (
-                  <ProductCard key={project.github} project={project} number={number} index={index} />
-                ) : (
-                  <ProjectCard key={project.github} project={project} number={number} index={index} />
-                )
-              })}
-            </ProjectGrid>
+            <div style={{ fontSize: 11, color: "var(--color-soft)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              {String(featuredProjects.length).padStart(2, "0")} featured
+            </div>
           </div>
-        ))}
+
+          <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18 }}>
+            {featuredProjects.map((project) => (
+              <ProjectTile key={project.slug} project={project} featured />
+            ))}
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gap: 14 }}>
+          <div>
+            <h3
+              style={{
+                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontSize: "clamp(28px, 3vw, 38px)",
+                fontWeight: 400,
+                lineHeight: 1,
+                letterSpacing: "-0.03em",
+                color: "var(--color-text)",
+                marginBottom: 8,
+              }}
+            >
+              Archive
+            </h3>
+            <p style={{ color: "var(--color-muted)", lineHeight: 1.75, maxWidth: 620 }}>
+              Everything else.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gap: 12 }}>
+            {archiveSections.map((section) => (
+              <details key={section.key} className="project-archive">
+                <summary className="project-archive__summary">
+                  <div>
+                    <div
+                      style={{
+                        fontFamily: "'Instrument Serif', Georgia, serif",
+                        fontSize: "clamp(24px, 2.6vw, 32px)",
+                        lineHeight: 1,
+                        letterSpacing: "-0.03em",
+                        color: "var(--color-text)",
+                        marginBottom: 6,
+                      }}
+                    >
+                      {section.title}
+                    </div>
+                    <p style={{ color: "var(--color-muted)", lineHeight: 1.7, maxWidth: 620 }}>{section.blurb}</p>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
+                    <span
+                      style={{
+                        fontSize: 11,
+                        color: "var(--color-soft)",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      {String(section.items.length).padStart(2, "0")} projects
+                    </span>
+                    <span className="project-archive__chevron" aria-hidden="true">
+                      +
+                    </span>
+                  </div>
+                </summary>
+
+                <div className="project-archive__body">
+                  <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18 }}>
+                    {section.items.map((project) => (
+                      <ProjectTile key={project.slug} project={project} />
+                    ))}
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

@@ -259,43 +259,48 @@
       "featured": true,
       "category": "products",
       "name": "Buy Me Some Tokens",
-      "shortDescription": "Tipping and identity layer for AI agents on 0G with agent-owned wallets, profiles, and direct onchain tips.",
-      "desc": "Tipping and identity layer for AI agents on 0G where profiles live on 0G Storage, registration settles on 0G Galileo EVM, and agents receive direct tips into self-managed wallets.",
-      "stack": ["Next.js 16", "React 19", "PostgreSQL", "Solidity", "0G Storage SDK"],
-      "tags": [],
-      "meta": "Agent tipping · 0G Storage · Galileo EVM",
+      "shortDescription": "Base-native USDC tipping and identity layer for AI agents with onchain profiles, agent wallets, and direct tips.",
+      "desc": "Buy Me Some Tokens is a Base-native identity and USDC tipping product for AI agents. Agents register wallet-backed profiles onchain, profile and message content is anchored with IPFS-backed keccak256 hashes, and humans or agents can send canonical USDC tips through a dedicated tip jar contract.",
+      "stack": ["Next.js 16", "React 19", "PostgreSQL", "Solidity", "Base", "USDC", "IPFS", "viem"],
+      "tags": ["AI agents", "Base", "USDC", "onchain identity", "agent wallets"],
+      "meta": "Agent tipping · Base · USDC · IPFS",
       "github": "https://github.com/Some1Uknow/buymesometokens",
       "icon": "https://buymesometokens.vercel.app/favicon.ico",
       "live": "https://buymesometokens.vercel.app",
       "chains": ["Base"],
-      "summary": "Base native agent identity and tipping product that treats agents as economic actors with self-managed wallets and operator-linked dashboards.",
-      "overview": "Buy Me Some Tokens is an identity and tipping layer for AI agents built on the Base, combining storage-backed profiles, direct tipping, and durable operator access.",
-      "problem": "AI agents are usually treated like temporary chat sessions rather than persistent economic actors that can own identity, receive value, and manage relationships.",
-      "solution": "I built a product where agents onboard with their own wallets, register onchain, publish profiles through 0G Storage, receive direct tips, and expose a durable dashboard path for operators.",
-      "role": "Full-stack blockchain product engineer across app flows, storage integration, database projection, and smart-contract-backed agent registration.",
+      "summary": "Base-native agent identity and USDC tipping product that treats agents as persistent economic actors with wallet-backed profiles and operator-linked dashboards.",
+      "overview": "Buy Me Some Tokens gives AI agents durable public identities, wallet ownership, direct USDC tipping, and human operator dashboards. The product uses Base for registration and canonical tip events, PostgreSQL for app projections, and IPFS-backed content hashes for profiles and messages.",
+      "problem": "AI agents are usually treated like temporary chat sessions rather than persistent economic actors that can own identity, receive value, and build public reputation.",
+      "solution": "I built a product where agents onboard with Base-compatible wallets, register onchain, publish IPFS-backed profiles, receive direct USDC tips, expose public tip feeds, and give operators durable dashboard access without taking custody of agent funds.",
+      "role": "Full-stack blockchain product engineer across frontend flows, API design, PostgreSQL projections, IPFS content anchoring, and Solidity contracts for agent registration and USDC tipping.",
       "features": [
-        "Agent registration and profile claims on 0G Galileo EVM",
-        "0G Storage-backed agent profiles and public tip messages",
-        "Self-managed agent wallets with direct tip reception",
-        "Dashboard claim-link flow for human operators"
+        "Agent registration and wallet-backed profile claims on Base",
+        "USDC-only canonical tipping through USDCTipJar",
+        "IPFS-backed agent profiles and public tip message hashes",
+        "Public agent directory ranked by tip activity",
+        "Dashboard claim-link flow for human operators",
+        "Authenticated agent APIs for discovery, tips, thanks, and prepared transactions"
       ],
       "architecture": [
         "Next.js 16 app with UI, API routes, and hosted skill endpoints",
-        "PostgreSQL projection layer for feeds, links, and dashboard state",
-        "0G Storage for profile and message blobs",
-        "Solidity contracts for registration and tipping on 0G Galileo EVM"
+        "PostgreSQL projection layer for feeds, links, tokens, dashboard state, and spending policies",
+        "IPFS storage adapter with local keccak256 content hashes",
+        "Solidity AgentRegistry and USDCTipJar contracts on Base",
+        "Indexer that syncs USDCTipJar events by chain, contract, and event name"
       ],
       "challenges": [
         "Separating agent wallet ownership from operator dashboard access safely",
-        "Blending storage-backed identity with EVM-settled registration and tipping",
-        "Keeping the onboarding flow workable for both humans and agent runtimes"
+        "Keeping canonical tips onchain while storing rich profile/message content offchain",
+        "Designing an onboarding flow that works for both humans and agent runtimes",
+        "Moving from native-token tips to USDC approval and transfer semantics"
       ],
       "outcomes": [
-        "Working 0G-native tipping and identity prototype",
-        "Clear multichain proof beyond Solana and Avalanche",
-        "Strong case study for agent wallets and chain-backed agent profiles"
+        "Base-native USDC tipping and identity prototype",
+        "Clear agent-wallet case study with onchain registration and public reputation",
+        "Production-shaped architecture for agent profiles, dashboards, and indexed tip feeds"
       ]
     },
+
     {
       "slug": "pigeon",
       "num": "06",

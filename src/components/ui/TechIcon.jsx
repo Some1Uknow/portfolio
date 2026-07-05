@@ -10,10 +10,15 @@ import {
 } from "react-icons/si"
 import { FaAws } from "react-icons/fa"
 
+const CHAIN_ICON_SIZE = 12
+
 const techIconMap = {
   rust: { Icon: SiRust, color: "var(--color-text)" },
   solana: { Icon: SiSolana, color: "#14f195" },
   "solana rpc": { Icon: SiSolana, color: "#14f195" },
+  avalanche: { src: "https://cryptologos.cc/logos/avalanche-avax-logo.svg" },
+  stellar: { src: "https://cryptologos.cc/logos/stellar-xlm-logo.svg" },
+  base: { src: "https://www.base.org/favicon.ico" },
   typescript: { Icon: SiTypescript, color: "#3178c6" },
   postgres: { Icon: SiPostgresql, color: "#336791" },
   postgresql: { Icon: SiPostgresql, color: "#336791" },
@@ -37,6 +42,18 @@ export default function TechIcon({ label, size = 11 }) {
   }
 
   const { Icon, color } = match
+
+  if (match.src) {
+    return (
+      <img
+        src={match.src}
+        alt=""
+        width={CHAIN_ICON_SIZE}
+        height={CHAIN_ICON_SIZE}
+        style={{ flexShrink: 0, display: "block", objectFit: "contain" }}
+      />
+    )
+  }
 
   return <Icon aria-hidden="true" size={size} color={color} style={{ flexShrink: 0 }} />
 }

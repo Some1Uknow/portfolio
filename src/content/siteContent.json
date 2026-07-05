@@ -1,8 +1,8 @@
 {
   "hero": {
-    "eyebrow": "Blockchain Engineer Across SVM + EVM",
+    "eyebrow": "product engineer, blockchain and ai",
     "location": "New Delhi, IN",
-    "availability": "Building across Solana, Avalanche, 0G, and Stellar.",
+    "availability": "Building multichain products and AI agents",
     "name": "raghav sharma"
   },
   "links": [
@@ -21,12 +21,12 @@
   ],
   "aboutParagraphs": [
     "I build blockchain products across SVM and EVM stacks, from protocol logic and chain-aware backend systems to polished product surfaces that users can actually ship with.",
-    "Most of my work today sits at the intersection of product engineering, protocol design, and developer tooling. I mainly build on Solana, Avalanche, 0G, and Stellar, and I care about making complex chain workflows feel operationally simple."
+    "I also like building products that utilize AI and blockchain to increase agentic economy, deeply researching agentic economy these days"
   ],
   "aboutStack": [
     "Solana",
     "Avalanche",
-    "0G",
+    "Base",
     "Stellar",
     "Rust",
     "Go",
@@ -267,7 +267,7 @@
       "github": "https://github.com/Some1Uknow/buymesometokens",
       "icon": "https://buymesometokens.vercel.app/favicon.ico",
       "live": "https://buymesometokens.vercel.app",
-      "chains": ["0G"],
+      "chains": ["Base"],
       "summary": "0G-native agent identity and tipping product that treats agents as economic actors with self-managed wallets and operator-linked dashboards.",
       "overview": "Buy Me Some Tokens is an identity and tipping layer for AI agents built on the 0G stack, combining storage-backed profiles, direct tipping, and durable operator access.",
       "problem": "AI agents are usually treated like temporary chat sessions rather than persistent economic actors that can own identity, receive value, and manage relationships.",

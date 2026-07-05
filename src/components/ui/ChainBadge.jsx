@@ -2,11 +2,14 @@ const CHAIN_CONFIG = {
   Solana: {
     src: "https://cdn.simpleicons.org/solana",
   },
+  Base: {
+    src: "https://www.base.org/favicon.ico",
+  },
   Avalanche: {
-    src: "https://build.avax.network/favicon.ico",
+    src: "https://cryptologos.cc/logos/avalanche-avax-logo.svg",
   },
   Stellar: {
-    src: "https://cdn.simpleicons.org/stellar",
+    src: "https://cryptologos.cc/logos/stellar-xlm-logo.svg",
   },
   "0G": {
     src: "https://docs.0g.ai/img/logo.svg",

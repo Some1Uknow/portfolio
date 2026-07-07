@@ -4,8 +4,6 @@ export const projects = siteContent.projects
 
 const KNOWN_ICON_URLS = {
   learnsol: "https://www.learnsol.site/icon.png",
-  avalaunch: "https://avalaunch.raghav.codes/favicon.png",
-  agentpay: "https://agentpay-mcp.vercel.app/icon.png",
   "buy-me-some-tokens": "https://buymesometokens.vercel.app/logo.png",
 }
 

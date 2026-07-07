@@ -25,9 +25,7 @@
   ],
   "aboutStack": [
     "Solana",
-    "Avalanche",
     "Base",
-    "Stellar",
     "Rust",
     "Go",
     "TypeScript",
@@ -167,95 +165,8 @@
       ]
     },
     {
-      "slug": "avalaunch",
-      "num": "03",
-      "featured": true,
-      "category": "products",
-      "name": "AvaLaunch",
-      "shortDescription": "AI agent that turns plain-English intent into a deterministic Avalanche L1 launch and management workflow.",
-      "desc": "AI agent for end-to-end L1 launch and management, turning plain English into a working Avalanche network with a deterministic launch plan.",
-      "stack": ["Next.js", "TypeScript", "Go", "Avalanche"],
-      "tags": [],
-      "meta": "AI agent · L1 deployment · Avalanche",
-      "github": "https://github.com/Some1Uknow/avalaunch",
-      "live": "https://avalaunch.raghav.codes",
-      "icon": "https://avalaunch.raghav.codes/favicon.png",
-      "videoUrl": "https://youtu.be/pjHCG2Lso0A",
-      "chains": ["Avalanche"],
-      "summary": "Multichain positioning anchor: productized infrastructure for launching Avalanche L1s through an AI workflow.",
-      "overview": "AvaLaunch is an AI-assisted control surface for bootstrapping and managing Avalanche L1 networks through guided inputs and deterministic execution planning.",
-      "problem": "Launching an Avalanche L1 usually requires fragmented docs, careful infra sequencing, and operator experience that most product teams do not have in-house.",
-      "solution": "I translated launch intent into a structured execution plan, then built the product and backend flow needed to guide builders from idea to configured network.",
-      "role": "End-to-end builder across product UX, orchestration logic, and infrastructure-facing backend work.",
-      "features": [
-        "Plain-English launch intent capture",
-        "Deterministic launch-plan generation",
-        "Avalanche-specific network configuration workflows",
-        "Operator-facing status and management surface"
-      ],
-      "architecture": [
-        "Next.js frontend for operator workflows",
-        "TypeScript orchestration layer for action planning",
-        "Go services for infra-facing logic",
-        "Avalanche-specific configuration and execution pipeline"
-      ],
-      "challenges": [
-        "Making a complex infra flow understandable for product teams",
-        "Reducing ambiguity in AI-assisted launch planning",
-        "Mapping chain-specific launch requirements into reliable product steps"
-      ],
-      "outcomes": [
-        "Production-style Avalanche workflow demo",
-        "Clear proof of EVM-side product engineering depth",
-        "Reusable model for chain-specific operator tooling"
-      ]
-    },
-    {
-      "slug": "agentpay",
-      "num": "04",
-      "featured": true,
-      "category": "products",
-      "name": "AgentPay",
-      "shortDescription": "Agent-payment control surface that lets AI agents buy paid APIs with guardrails and onchain proof on Avalanche Fuji.",
-      "desc": "Agent-payment workspace for AI agents to buy paid APIs through x402, enforce policy-controlled spend, and write reputation proof on Avalanche Fuji.",
-      "stack": ["Next.js", "OpenAI", "x402", "Solidity", "Avalanche"],
-      "tags": [],
-      "meta": "Paid APIs · Spend guardrails · Fuji proof",
-      "github": "https://github.com/Some1Uknow/AgentPay",
-      "icon": "https://agentpay-mcp.vercel.app/favicon.ico",
-      "live": "https://agentpay-mcp.vercel.app",
-      "chains": ["Avalanche"],
-      "summary": "Avalanche-side agent commerce product where policy checks, x402 payments, and reputation writes turn API spend into a controllable workflow.",
-      "overview": "AgentPay gives AI agents a way to discover paid APIs, request payment safely, execute paid tool calls, and leave a verifiable onchain trust trail on Avalanche Fuji.",
-      "problem": "Agents need access to live and specialized APIs, but direct wallet access without policy limits creates obvious overspend and trust problems.",
-      "solution": "I built a workflow where the model chooses tools, deterministic policy checks gate spend, x402 settles payment, and successful calls write validation and reputation proof onchain.",
-      "role": "Product engineer across frontend, agent workflow, payment integration, and smart-contract-backed trust primitives.",
-      "features": [
-        "Model-driven paid API selection with allowance policy checks",
-        "x402-protected API purchase flow",
-        "Avalanche Fuji reputation and validation proof writes",
-        "Operator-visible receipts, rejected providers, and spend trace"
-      ],
-      "architecture": [
-        "Next.js app with agent console, registry views, and API routes",
-        "OpenAI-powered agent loop for paid tool selection",
-        "x402 payment integration for API unlocking",
-        "Solidity registries on Avalanche Fuji for identity, reputation, and validation"
-      ],
-      "challenges": [
-        "Keeping agent autonomy while preventing uncontrolled spend",
-        "Making paid API calls observable and explainable to operators",
-        "Bridging offchain inference and onchain trust proof cleanly"
-      ],
-      "outcomes": [
-        "Working Avalanche Fuji prototype",
-        "Paid API agent loop with policy-gated spend",
-        "Onchain receipts and reputation proof tied to successful calls"
-      ]
-    },
-    {
       "slug": "buy-me-some-tokens",
-      "num": "05",
+      "num": "03",
       "featured": true,
       "category": "products",
       "name": "Buy Me Some Tokens",
@@ -303,7 +214,7 @@
 
     {
       "slug": "pigeon",
-      "num": "06",
+      "num": "04",
       "featured": false,
       "category": "products",
       "name": "Pigeon",
@@ -347,7 +258,7 @@
     },
     {
       "slug": "cpmm",
-      "num": "07",
+      "num": "05",
       "featured": false,
       "category": "protocols",
       "name": "CPMM",
@@ -387,7 +298,7 @@
     },
     {
       "slug": "escrow",
-      "num": "08",
+      "num": "06",
       "featured": false,
       "category": "protocols",
       "name": "Escrow",
@@ -426,7 +337,7 @@
     },
     {
       "slug": "flash-loan",
-      "num": "09",
+      "num": "07",
       "featured": false,
       "category": "protocols",
       "name": "Flash Loan",
@@ -465,7 +376,7 @@
     },
     {
       "slug": "pinocchio-vault",
-      "num": "10",
+      "num": "08",
       "featured": false,
       "category": "protocols",
       "name": "Pinocchio Vault",
@@ -504,7 +415,7 @@
     },
     {
       "slug": "mpmc-queue",
-      "num": "11",
+      "num": "09",
       "featured": false,
       "category": "rust-infra",
       "name": "MPMC Queue",
@@ -544,7 +455,7 @@
     },
     {
       "slug": "solana-txn-tui",
-      "num": "12",
+      "num": "10",
       "featured": false,
       "category": "rust-infra",
       "name": "solana-txn-tui",
@@ -585,7 +496,7 @@
     },
     {
       "slug": "observer",
-      "num": "13",
+      "num": "11",
       "featured": false,
       "category": "rust-infra",
       "name": "Observer",
@@ -624,7 +535,7 @@
     },
     {
       "slug": "omniscanner",
-      "num": "14",
+      "num": "12",
       "featured": false,
       "category": "rust-infra",
       "name": "Omniscanner",
@@ -663,7 +574,7 @@
     },
     {
       "slug": "rayscan",
-      "num": "15",
+      "num": "13",
       "featured": false,
       "category": "products",
       "name": "Rayscan",
@@ -702,7 +613,7 @@
     },
     {
       "slug": "pixelmart",
-      "num": "16",
+      "num": "14",
       "featured": false,
       "category": "products",
       "name": "PixelMart",
@@ -743,7 +654,7 @@
     },
     {
       "slug": "loopscale-borrow-shopper",
-      "num": "17",
+      "num": "15",
       "featured": false,
       "category": "products",
       "name": "Loopscale Borrow Shopper",
@@ -782,7 +693,7 @@
     },
     {
       "slug": "ezdeploy",
-      "num": "18",
+      "num": "16",
       "featured": false,
       "category": "rust-infra",
       "name": "EzDeploy",
@@ -821,7 +732,7 @@
     },
     {
       "slug": "one-click-indexer",
-      "num": "19",
+      "num": "17",
       "featured": false,
       "category": "products",
       "name": "One Click Indexer",
@@ -862,7 +773,7 @@
     },
     {
       "slug": "yield-sol",
-      "num": "20",
+      "num": "18",
       "featured": false,
       "category": "products",
       "name": "yield.sol",

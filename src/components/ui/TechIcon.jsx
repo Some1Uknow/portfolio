@@ -16,8 +16,6 @@ const techIconMap = {
   rust: { Icon: SiRust, color: "var(--color-text)" },
   solana: { Icon: SiSolana, color: "#14f195" },
   "solana rpc": { Icon: SiSolana, color: "#14f195" },
-  avalanche: { src: "https://cryptologos.cc/logos/avalanche-avax-logo.svg" },
-  stellar: { src: "https://cryptologos.cc/logos/stellar-xlm-logo.svg" },
   base: { src: "https://www.base.org/favicon.ico" },
   typescript: { Icon: SiTypescript, color: "#3178c6" },
   postgres: { Icon: SiPostgresql, color: "#336791" },

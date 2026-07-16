@@ -1,11 +1,16 @@
 import {
   SiDjango,
   SiDocker,
+  SiFastify,
+  SiIpfs,
   SiNextdotjs,
+  SiOpenai,
   SiPostgresql,
   SiReact,
+  SiRedis,
   SiRust,
   SiSolana,
+  SiSolidity,
   SiTypescript,
 } from "react-icons/si"
 import { FaAws } from "react-icons/fa"
@@ -21,11 +26,17 @@ const techIconMap = {
   postgres: { Icon: SiPostgresql, color: "#336791" },
   postgresql: { Icon: SiPostgresql, color: "#336791" },
   pgvector: { Icon: SiPostgresql, color: "#336791" },
+  redis: { Icon: SiRedis, color: "#ff4438" },
   docker: { Icon: SiDocker, color: "#2496ed" },
+  fastify: { Icon: SiFastify, color: "var(--color-text)" },
   react: { Icon: SiReact, color: "#61dafb" },
   "next.js": { Icon: SiNextdotjs, color: "var(--color-text)" },
-  django: { Icon: SiDjango, color: "#092e20" },
+  django: { Icon: SiDjango, color: "#44b78b" },
   aws: { Icon: FaAws, color: "#ff9900" },
+  ai: { Icon: SiOpenai, color: "var(--color-text)" },
+  "ai agents": { Icon: SiOpenai, color: "var(--color-text)" },
+  solidity: { Icon: SiSolidity, color: "var(--color-text)" },
+  ipfs: { Icon: SiIpfs, color: "#65c2cb" },
 }
 
 function resolveIcon(label) {

@@ -26,14 +26,21 @@
     "I care about making hard things feel simple."
   ],
   "aboutStack": [
-    "Solana",
-    "Base",
-    "Rust",
-    "Go",
     "TypeScript",
+    "Rust",
     "Next.js",
-    "Protocol Design",
-    "Product Engineering"
+    "React",
+    "AWS",
+    "Redis",
+    "Postgres",
+    "Docker",
+    "Fastify",
+    "Django",
+    "AI Agents",
+    "Solidity",
+    "IPFS",
+    "Solana",
+    "Base"
   ],
   "experience": [
     {

@@ -1,24 +1,22 @@
-import siteContent from "../../content/siteContent.js"
+import Link from "next/link"
+
+import { blogPath, formatDate } from "../../lib/site.js"
 import FadeIn from "../ui/FadeIn.jsx"
 import SectionLabel from "../ui/SectionLabel.jsx"
 
-const { writing } = siteContent
-
-export default function Writing() {
-  if (writing.length === 0) {
+export default function Writing({ posts = [] }) {
+  if (posts.length === 0) {
     return null
   }
 
   return (
     <section id="writing">
-      <SectionLabel>Writing & Content</SectionLabel>
+      <SectionLabel>Writing</SectionLabel>
       <div style={{ paddingBottom: 32 }}>
-        {writing.map((entry, index) => (
-          <FadeIn key={entry.title} delay={index * 50}>
-            <a
-              href={entry.href}
-              target={entry.href ? "_blank" : undefined}
-              rel={entry.href ? "noreferrer" : undefined}
+        {posts.map((post, index) => (
+          <FadeIn key={post.slug} delay={index * 50}>
+            <Link
+              href={blogPath(post.slug)}
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr auto",
@@ -42,9 +40,9 @@ export default function Writing() {
                     marginBottom: 5,
                   }}
                 >
-                  {entry.title}
+                  {post.title}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--color-soft)" }}>{entry.tags}</div>
+                <div style={{ fontSize: 11, color: "var(--color-soft)" }}>{post.tags.join(" · ")}</div>
               </div>
               <div
                 style={{
@@ -56,9 +54,9 @@ export default function Writing() {
                   whiteSpace: "nowrap",
                 }}
               >
-                {entry.platform}
+                {formatDate(post.publishedAt)} · {post.readingTime.text}
               </div>
-            </a>
+            </Link>
           </FadeIn>
         ))}
       </div>

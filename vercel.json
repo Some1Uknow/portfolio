@@ -1,4 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.raghav.codes"
+        }
+      ],
+      "destination": "https://raghav.codes/$1",
+      "permanent": true
+    }
+  ]
 }

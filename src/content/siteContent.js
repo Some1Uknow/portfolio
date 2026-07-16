@@ -1,4 +1,4 @@
-import siteContent from "./siteContent.json"
+import siteContent from "./siteContent.json" with { type: "json" }
 
 export const projects = siteContent.projects
 

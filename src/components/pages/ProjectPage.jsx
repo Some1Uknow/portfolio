@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import siteContent, { getProjectIconUrl } from "../../content/siteContent.js"
+import { blogPath } from "../../lib/site.js"
 import { PAD } from "../../styles/globalStyles.js"
 import ChainBadge from "../ui/ChainBadge.jsx"
 import Pill from "../ui/Pill.jsx"
@@ -55,16 +56,18 @@ function CompactCard({ title, children }) {
   )
 }
 
-function ProjectPageBody({ project }) {
+function ProjectPageBody({ project, relatedPosts }) {
   const projectIcon = getProjectIconUrl(project)
   const highlights = [...(project.features ?? []), ...(project.outcomes ?? [])].slice(0, 5)
 
   return (
     <main style={{ padding: `0 ${PAD} 72px`, minHeight: "100vh" }}>
-      <div style={{ paddingTop: "max(32px, env(safe-area-inset-top))", paddingBottom: 48 }}>
-        <Link href="/" className="muted-link" style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-          ← back to portfolio
-        </Link>
+      <div className="breadcrumb-nav" style={{ paddingTop: "max(32px, env(safe-area-inset-top))", paddingBottom: 48 }} aria-label="Breadcrumb">
+        <Link href="/">Home</Link>
+        <span aria-hidden="true">/</span>
+        <Link href="/#projects">Work</Link>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{project.name}</span>
       </div>
 
       <section
@@ -83,6 +86,8 @@ function ProjectPageBody({ project }) {
                 <img
                   src={projectIcon}
                   alt={`${project.name} icon`}
+                  width="44"
+                  height="44"
                   style={{ width: 44, height: 44, borderRadius: 10, objectFit: "cover", border: "1px solid var(--color-border-soft)" }}
                 />
               ) : null}
@@ -165,18 +170,40 @@ function ProjectPageBody({ project }) {
           </CompactCard>
         </aside>
       </div>
+
+      {relatedPosts.length > 0 ? (
+        <section style={{ marginTop: 48, maxWidth: 760 }} aria-labelledby="related-writing-title">
+          <div style={{ fontSize: 10, color: "var(--color-soft)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
+            Related writing
+          </div>
+          <h2
+            id="related-writing-title"
+            style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 400, lineHeight: 1, letterSpacing: "-0.03em", marginBottom: 14 }}
+          >
+            Notes connected to this work
+          </h2>
+          <div style={{ display: "grid", gap: 10 }}>
+            {relatedPosts.map((post) => (
+              <Link key={post.slug} href={blogPath(post.slug)} className="related-work-link">
+                <span>{post.title}</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </main>
   )
 }
 
-export default function ProjectPage({ project }) {
+export default function ProjectPage({ project, relatedPosts = [] }) {
   return (
     <>
-      <ProjectPageBody project={project} />
+      <ProjectPageBody project={project} relatedPosts={relatedPosts} />
       <footer style={{ borderTop: "1px solid var(--color-border)" }}>
         <div style={{ padding: `28px ${PAD}`, display: "flex", justifyContent: "space-between", gap: 18, flexWrap: "wrap", color: "var(--color-soft)", fontSize: 11, letterSpacing: "0.06em" }}>
           <span>{siteContent.hero.name}</span>
-          <span>{siteContent.hero.availability}</span>
+          <span>{siteContent.hero.location}</span>
         </div>
       </footer>
     </>

@@ -2,6 +2,14 @@ import Link from "next/link"
 
 import { PAD } from "../src/styles/globalStyles.js"
 
+export const metadata = {
+  title: "Page not found",
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
+
 export default function NotFound() {
   return (
     <main style={{ padding: `72px ${PAD}`, minHeight: "100vh", display: "grid", alignContent: "start", gap: 18 }}>
@@ -21,7 +29,7 @@ export default function NotFound() {
         Project not found
       </h1>
       <p style={{ maxWidth: 560, color: "var(--color-muted)", lineHeight: 1.8 }}>
-        The requested project page does not exist yet. Return to the main portfolio to browse the available case studies.
+        This page does not exist. Return to the portfolio to browse available case studies and writing.
       </p>
     </main>
   )

@@ -1,15 +1,43 @@
 import "./globals.css"
 
-import AppShell from "../src/components/AppShell.jsx"
+import ThemeControls from "../src/components/ThemeControls.jsx"
+import VercelMetrics from "../src/components/VercelMetrics.jsx"
+import { SITE_URL } from "../src/lib/site.js"
 
 export const metadata = {
-  title: "Raghav Sharma — Protocol & Backend Engineer",
-  description: "Portfolio of Raghav Sharma, a Rust, Solana, and DeFi engineer.",
-  metadataBase: new URL("https://raghav.codes"),
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Raghav Sharma — Software Engineer",
+    template: "%s | Raghav Sharma",
+  },
+  description:
+    "Raghav Sharma is a software engineer building backend systems, developer tools, AI products, and blockchain infrastructure with Rust and TypeScript.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Raghav Sharma — Protocol & Backend Engineer",
-    description: "Rust · Solana · DeFi",
-    images: ["/og.png"],
+    type: "website",
+    url: "/",
+    title: "Raghav Sharma — Software Engineer",
+    description:
+      "Backend systems, developer tools, AI products, and blockchain infrastructure built with Rust and TypeScript.",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@raghavdotsol",
+    site: "@raghavdotsol",
   },
   icons: {
     icon: "/favicon.svg",
@@ -40,7 +68,9 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
-        <AppShell>{children}</AppShell>
+        <ThemeControls />
+        <div className="app-content">{children}</div>
+        <VercelMetrics />
       </body>
     </html>
   )

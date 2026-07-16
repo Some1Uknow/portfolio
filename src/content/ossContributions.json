@@ -1,0 +1,59 @@
+{
+  "syncedAt": "2026-07-16T20:13:11.629Z",
+  "pullRequests": [
+    {
+      "id": 4462578114,
+      "title": "feat: add learn-solana skill",
+      "url": "https://github.com/sendaifun/skills/pull/66",
+      "repo": {
+        "owner": "sendaifun",
+        "name": "skills",
+        "fullName": "sendaifun/skills"
+      },
+      "status": "open",
+      "isDraft": false,
+      "createdAt": "2026-05-17T06:54:53Z",
+      "updatedAt": "2026-05-20T09:58:54Z",
+      "mergedAt": null,
+      "commentCount": 0,
+      "contributionType": "Feature",
+      "summary": "Summary Adds the learnsolana skill for teaching Solana concepts from first principles with examples, exercises, diagrams, tables, and optional single page HTML explainers. Changes Added skills/learnsolana Added supportin"
+    },
+    {
+      "id": 4479528264,
+      "title": "Bind transaction PDAs to proposals",
+      "url": "https://github.com/Turbin3/pinocchio-multisig/pull/40",
+      "repo": {
+        "owner": "Turbin3",
+        "name": "pinocchio-multisig",
+        "fullName": "Turbin3/pinocchio-multisig"
+      },
+      "status": "open",
+      "isDraft": false,
+      "createdAt": "2026-05-19T17:23:16Z",
+      "updatedAt": "2026-05-19T17:23:16Z",
+      "mergedAt": null,
+      "commentCount": 0,
+      "contributionType": "Contribution",
+      "summary": "Summary of the changes Derive transaction PDAs from the proposal address. Require authorized multisig creator to initialize transaction bytes. Reject transaction creation after any votes are counted. Validate proposal/tr"
+    },
+    {
+      "id": 4218322907,
+      "title": "Fix quicknode skill description length",
+      "url": "https://github.com/quiknode-labs/blockchain-skills/pull/16",
+      "repo": {
+        "owner": "quiknode-labs",
+        "name": "blockchain-skills",
+        "fullName": "quiknode-labs/blockchain-skills"
+      },
+      "status": "merged",
+      "isDraft": false,
+      "createdAt": "2026-04-07T14:20:43Z",
+      "updatedAt": "2026-04-08T07:14:28Z",
+      "mergedAt": "2026-04-08T07:14:28Z",
+      "commentCount": 1,
+      "contributionType": "Bug Fix",
+      "summary": "Issue 15 reports that Codex skips this skill because the frontmatter description in skills/quicknodeskill/SKILL.md exceeds the 1024character limit. This PR shortens that description to 1023 characters so the skill can lo"
+    }
+  ]
+}

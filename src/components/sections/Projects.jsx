@@ -1,11 +1,10 @@
-"use client"
-
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 import { getProjectIconUrl, projects } from "../../content/siteContent.js"
 import { PAD } from "../../styles/globalStyles.js"
 import ChainBadge from "../ui/ChainBadge.jsx"
 import SectionLabel from "../ui/SectionLabel.jsx"
+import ProjectArchive from "./ProjectArchive.jsx"
 
 const ARCHIVE_SECTIONS = [
   {
@@ -18,6 +17,11 @@ const ARCHIVE_SECTIONS = [
     title: "Rust + Infra",
     blurb: "Rust systems and infra.",
   },
+  {
+    key: "products",
+    title: "Products",
+    blurb: "Product experiments and developer-facing tools.",
+  },
 ]
 
 function TileExternalLinks({ project }) {
@@ -29,7 +33,6 @@ function TileExternalLinks({ project }) {
           target="_blank"
           rel="noreferrer noopener"
           className="muted-link"
-          onClick={(event) => event.stopPropagation()}
           style={{ fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase" }}
         >
           {project.liveLabel || "live"} ↗
@@ -40,7 +43,6 @@ function TileExternalLinks({ project }) {
         target="_blank"
         rel="noreferrer noopener"
         className="muted-link"
-        onClick={(event) => event.stopPropagation()}
         style={{ fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase" }}
       >
         github ↗
@@ -50,21 +52,11 @@ function TileExternalLinks({ project }) {
 }
 
 function ProjectTile({ project, featured = false }) {
-  const router = useRouter()
   const projectIcon = getProjectIconUrl(project)
 
   return (
     <article
       className={featured ? "project-tile project-tile--featured" : "project-tile"}
-      role="link"
-      tabIndex={0}
-      onClick={() => router.push(`/projects/${project.slug}`)}
-      onKeyDown={(event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault()
-          router.push(`/projects/${project.slug}`)
-        }
-      }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", gap: 18, alignItems: "flex-start" }}>
         <div style={{ display: "flex", gap: 14, minWidth: 0 }}>
@@ -72,6 +64,8 @@ function ProjectTile({ project, featured = false }) {
             <img
               src={projectIcon}
               alt={`${project.name} icon`}
+              width="42"
+              height="42"
               loading="lazy"
               style={{
                 width: 42,
@@ -97,7 +91,9 @@ function ProjectTile({ project, featured = false }) {
                 paddingTop: 2,
               }}
             >
-              {project.name}
+              <Link href={`/projects/${project.slug}`} className="project-title-link">
+                {project.name}
+              </Link>
             </h3>
             <p style={{ color: "var(--color-muted)", lineHeight: 1.75, maxWidth: 540 }}>{project.shortDescription || project.desc}</p>
           </div>
@@ -111,7 +107,9 @@ function ProjectTile({ project, featured = false }) {
       </div>
 
       <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-end", flexWrap: "wrap" }}>
-        <div style={{ color: "var(--color-soft)", fontSize: 11, lineHeight: 1.7 }}>{project.meta}</div>
+        <Link href={`/projects/${project.slug}`} className="project-case-study-link">
+          Read case study <span aria-hidden="true">→</span>
+        </Link>
         <TileExternalLinks project={project} />
       </div>
     </article>
@@ -146,7 +144,7 @@ export default function Projects() {
               Proof of Work
             </h2>
             <p style={{ color: "var(--color-muted)", lineHeight: 1.8 }}>
-              Multichain Products
+              Software projects across backend systems, developer tools, AI, and blockchain.
             </p>
           </div>
 
@@ -172,7 +170,7 @@ export default function Projects() {
                 Featured
               </h3>
               <p style={{ color: "var(--color-muted)", lineHeight: 1.75, maxWidth: 620 }}>
-                Main products.
+                Selected products with live links, source code, and implementation detail.
               </p>
             </div>
 
@@ -204,55 +202,24 @@ export default function Projects() {
               Archive
             </h3>
             <p style={{ color: "var(--color-muted)", lineHeight: 1.75, maxWidth: 620 }}>
-              Everything else.
+              Protocol experiments, Rust systems work, developer tooling, and product prototypes.
             </p>
           </div>
 
           <div style={{ display: "grid", gap: 12 }}>
             {archiveSections.map((section) => (
-              <details key={section.key} className="project-archive">
-                <summary className="project-archive__summary">
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: "'Instrument Serif', Georgia, serif",
-                        fontSize: "clamp(24px, 2.6vw, 32px)",
-                        lineHeight: 1,
-                        letterSpacing: "-0.03em",
-                        color: "var(--color-text)",
-                        marginBottom: 6,
-                      }}
-                    >
-                      {section.title}
-                    </div>
-                    <p style={{ color: "var(--color-muted)", lineHeight: 1.7, maxWidth: 620 }}>{section.blurb}</p>
-                  </div>
-
-                  <div style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
-                    <span
-                      style={{
-                        fontSize: 11,
-                        color: "var(--color-soft)",
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {String(section.items.length).padStart(2, "0")} projects
-                    </span>
-                    <span className="project-archive__chevron" aria-hidden="true">
-                      +
-                    </span>
-                  </div>
-                </summary>
-
-                <div className="project-archive__body">
-                  <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18 }}>
-                    {section.items.map((project) => (
-                      <ProjectTile key={project.slug} project={project} />
-                    ))}
-                  </div>
+              <ProjectArchive
+                key={section.key}
+                blurb={section.blurb}
+                count={section.items.length}
+                title={section.title}
+              >
+                <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18 }}>
+                  {section.items.map((project) => (
+                    <ProjectTile key={project.slug} project={project} />
+                  ))}
                 </div>
-              </details>
+              </ProjectArchive>
             ))}
           </div>
         </div>

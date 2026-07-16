@@ -1,9 +1,8 @@
 {
   "hero": {
-    "eyebrow": "product engineer, blockchain and ai",
+    "eyebrow": "software engineer",
     "location": "New Delhi, IN",
-    "availability": "Building multichain products and AI agents",
-    "name": "raghav sharma"
+    "name": "Raghav Sharma"
   },
   "links": [
     { "label": "email", "href": "mailto:raghu250407@gmail.com" },
@@ -17,11 +16,14 @@
       "href": "https://linkedin.com/in/raghavsharmaweb3",
       "external": true
     },
-    { "label": "x", "href": "https://x.com/raghavdotsol", "external": true }
+    { "label": "x", "href": "https://x.com/raghavdotsol", "external": true },
+    { "label": "writing", "href": "/blog" }
   ],
   "aboutParagraphs": [
-    "I build blockchain products across SVM and EVM stacks, from protocol logic and chain-aware backend systems to polished product surfaces that users can actually ship with.",
-    "I also like building products that utilize AI and blockchain to increase agentic economy, deeply researching agentic economy these days"
+    "tldr; learnt by building things on the internet.",
+    "I like systems. The kind with sharp edges, hidden state, and a reason to exist.",
+    "I write Rust and TypeScript. Usually for AI agents, blockchain products, and anything else.",
+    "I care about making hard things feel simple."
   ],
   "aboutStack": [
     "Solana",
@@ -36,6 +38,7 @@
   "experience": [
     {
       "company": "LearnSol",
+      "logo": "https://www.learnsol.site/icon.png",
       "role": "Founder & Lead Engineer",
       "date": "Oct 2025 – Mar 2026",
       "location": "Remote",
@@ -50,6 +53,7 @@
     },
     {
       "company": "FOSSEE, IIT Bombay",
+      "logo": "https://fossee.in/sites/all/themes/software_responsive_theme/img/logo.png",
       "role": "Software Engineering Intern",
       "date": "Feb 2025 – Jun 2025",
       "location": "Remote",
@@ -63,6 +67,7 @@
     },
     {
       "company": "Debales AI",
+      "logo": "https://debales.ai/images/debale-new-logo/debales-logo.png",
       "role": "Software Engineering Intern",
       "date": "Jul 2024 – Sep 2024",
       "location": "Katy, Texas (Remote)",

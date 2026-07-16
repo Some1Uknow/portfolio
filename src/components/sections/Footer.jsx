@@ -59,7 +59,7 @@ export default function Footer() {
           className="footer-note"
           style={{ fontSize: 10, color: "var(--color-faint)", marginTop: 12, letterSpacing: "0.06em" }}
         >
-          {hero.location} — {hero.availability}
+          {hero.location}
         </div>
       </div>
     </footer>

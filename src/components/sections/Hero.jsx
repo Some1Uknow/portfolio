@@ -1,4 +1,5 @@
 import siteContent from "../../content/siteContent.js"
+import { SiOpenai } from "react-icons/si"
 
 const heroItems = [
   { style: { opacity: 0, animation: "fadeUp 0.7s ease 0.05s forwards" } },
@@ -70,17 +71,21 @@ export default function Hero() {
         {hero.name}
       </h1>
 
-      <p
+      <div
+        className="hero-status"
+        aria-label="Currently cooking something with OpenAI Codex"
         style={{
-          maxWidth: 720,
-          color: "var(--color-muted)",
-          lineHeight: 1.8,
           marginBottom: 24,
           ...heroItems[2].style,
         }}
       >
-        {hero.availability}
-      </p>
+        <span className="hero-status__dot" aria-hidden="true" />
+        <span>cooking something with</span>
+        <span className="hero-status__codex">
+          <SiOpenai aria-hidden="true" size={13} />
+          Codex
+        </span>
+      </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0 0", marginBottom: 16, ...heroItems[3].style }}>
         {links.map((link) => (

@@ -29,7 +29,7 @@ export default function ProjectArchive({ blurb, children, count, title }) {
       </button>
 
       <div className="project-archive__body" id={panelId}>
-        <div className="project-archive__panel" aria-hidden={!isOpen} {...(!isOpen ? { inert: "" } : {})}>
+        <div className="project-archive__panel" aria-hidden={!isOpen} inert={!isOpen}>
           <div className="project-archive__body-content">{children}</div>
         </div>
       </div>

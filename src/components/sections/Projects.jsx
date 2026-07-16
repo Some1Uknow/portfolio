@@ -1,4 +1,6 @@
-import { useNavigate } from "react-router-dom"
+"use client"
+
+import { useRouter } from "next/navigation"
 
 import { getProjectIconUrl, projects } from "../../content/siteContent.js"
 import { PAD } from "../../styles/globalStyles.js"
@@ -48,7 +50,7 @@ function TileExternalLinks({ project }) {
 }
 
 function ProjectTile({ project, featured = false }) {
-  const navigate = useNavigate()
+  const router = useRouter()
   const projectIcon = getProjectIconUrl(project)
 
   return (
@@ -56,11 +58,11 @@ function ProjectTile({ project, featured = false }) {
       className={featured ? "project-tile project-tile--featured" : "project-tile"}
       role="link"
       tabIndex={0}
-      onClick={() => navigate(`/projects/${project.slug}`)}
+      onClick={() => router.push(`/projects/${project.slug}`)}
       onKeyDown={(event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault()
-          navigate(`/projects/${project.slug}`)
+          router.push(`/projects/${project.slug}`)
         }
       }}
     >

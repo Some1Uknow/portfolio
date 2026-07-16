@@ -42,6 +42,8 @@ export default function Cursor() {
   return (
     <div
       ref={cursorRef}
+      className="custom-cursor"
+      aria-hidden="true"
       style={{
         position: "fixed",
         pointerEvents: "none",
@@ -51,9 +53,10 @@ export default function Cursor() {
         background: "var(--color-text)",
         borderRadius: "50%",
         transform: "translate(-50%,-50%)",
-        transition: "width 0.2s ease, height 0.2s ease, opacity 0.2s ease",
+        transition: "width 0.2s ease, height 0.2s ease, opacity 0.2s ease, background-color 0.2s ease",
         opacity: expanded ? 0.12 : 1,
         mixBlendMode: "difference",
+        willChange: "left, top, width, height",
       }}
     />
   )

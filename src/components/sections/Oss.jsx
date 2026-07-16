@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useMemo, useState } from "react"
 import {
   FiAlertCircle,
@@ -490,16 +492,6 @@ export default function Oss() {
     () => organizations.find((organization) => organization.login === selectedOrganizationLogin) || null,
     [organizations, selectedOrganizationLogin],
   )
-
-  useEffect(() => {
-    if (!selectedOrganizationLogin) {
-      return
-    }
-
-    if (!organizations.some((organization) => organization.login === selectedOrganizationLogin)) {
-      setSelectedOrganizationLogin(null)
-    }
-  }, [organizations, selectedOrganizationLogin])
 
   return (
     <>

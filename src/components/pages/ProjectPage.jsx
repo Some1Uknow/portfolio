@@ -1,6 +1,6 @@
-import { Link, useParams } from "react-router-dom"
+import Link from "next/link"
 
-import siteContent, { getProjectBySlug, getProjectIconUrl } from "../../content/siteContent.js"
+import siteContent, { getProjectIconUrl } from "../../content/siteContent.js"
 import { PAD } from "../../styles/globalStyles.js"
 import ChainBadge from "../ui/ChainBadge.jsx"
 import Pill from "../ui/Pill.jsx"
@@ -62,7 +62,7 @@ function ProjectPageBody({ project }) {
   return (
     <main style={{ padding: `0 ${PAD} 72px`, minHeight: "100vh" }}>
       <div style={{ paddingTop: "max(32px, env(safe-area-inset-top))", paddingBottom: 48 }}>
-        <Link to="/" className="muted-link" style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+        <Link href="/" className="muted-link" style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
           ← back to portfolio
         </Link>
       </div>
@@ -169,38 +169,10 @@ function ProjectPageBody({ project }) {
   )
 }
 
-function ProjectNotFound() {
-  return (
-    <main style={{ padding: `72px ${PAD}`, minHeight: "100vh", display: "grid", alignContent: "start", gap: 18 }}>
-      <Link to="/" className="muted-link" style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase" }}>
-        ← back to portfolio
-      </Link>
-      <h1
-        style={{
-          fontFamily: "'Instrument Serif', Georgia, serif",
-          fontSize: "clamp(40px, 8vw, 72px)",
-          lineHeight: 0.95,
-          fontWeight: 400,
-          letterSpacing: "-0.04em",
-          color: "var(--color-text)",
-        }}
-      >
-        Project not found
-      </h1>
-      <p style={{ maxWidth: 560, color: "var(--color-muted)", lineHeight: 1.8 }}>
-        The requested project page does not exist yet. Return to the main portfolio to browse the available case studies.
-      </p>
-    </main>
-  )
-}
-
-export default function ProjectPage() {
-  const { slug } = useParams()
-  const project = getProjectBySlug(slug)
-
+export default function ProjectPage({ project }) {
   return (
     <>
-      {project ? <ProjectPageBody project={project} /> : <ProjectNotFound />}
+      <ProjectPageBody project={project} />
       <footer style={{ borderTop: "1px solid var(--color-border)" }}>
         <div style={{ padding: `28px ${PAD}`, display: "flex", justifyContent: "space-between", gap: 18, flexWrap: "wrap", color: "var(--color-soft)", fontSize: 11, letterSpacing: "0.06em" }}>
           <span>{siteContent.hero.name}</span>

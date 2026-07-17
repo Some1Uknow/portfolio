@@ -11,7 +11,7 @@ export default function Writing({ posts = [] }) {
 
   return (
     <section id="writing">
-      <SectionLabel>Writing</SectionLabel>
+      <SectionLabel as="h2">Writing</SectionLabel>
       <div style={{ paddingBottom: 32 }}>
         {posts.map((post, index) => (
           <FadeIn key={post.slug} delay={index * 50}>
@@ -31,17 +31,18 @@ export default function Writing({ posts = [] }) {
               className="writing-row hoverable"
             >
               <div>
-                <div
+                <h3
                   style={{
-                    fontFamily: "'Instrument Serif', Georgia, serif",
+                    fontFamily: "var(--font-instrument-serif), Georgia, serif",
                     fontSize: 18,
                     letterSpacing: "-0.01em",
                     color: "var(--color-text)",
                     marginBottom: 5,
+                    fontWeight: 400,
                   }}
                 >
                   {post.title}
-                </div>
+                </h3>
                 <div style={{ fontSize: 11, color: "var(--color-soft)" }}>{post.tags.join(" · ")}</div>
               </div>
               <div

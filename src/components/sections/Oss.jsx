@@ -32,15 +32,15 @@ export default function Oss() {
 
   return (
     <section id="oss" style={{ padding: `0 ${PAD}` }}>
-      <SectionLabel>Open source</SectionLabel>
+      <SectionLabel as="h2">Open source</SectionLabel>
 
       <div style={{ marginBottom: 96 }}>
         <div style={{ borderTop: "1px solid var(--color-border)", paddingTop: 18, marginBottom: 18 }}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-end", flexWrap: "wrap" }}>
             <div>
-              <h2
+              <h3
                 style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
                   fontSize: "clamp(24px, 3vw, 32px)",
                   letterSpacing: "-0.03em",
                   lineHeight: 1,
@@ -49,7 +49,7 @@ export default function Oss() {
                 }}
               >
                 Contribution record
-              </h2>
+              </h3>
               <p style={{ color: "var(--color-muted)", maxWidth: 600 }}>
                 A committed snapshot of public pull requests. Each item links to its original GitHub evidence.
               </p>

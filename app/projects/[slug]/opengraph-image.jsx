@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 import { notFound } from "next/navigation"
 
-import { getProjectBySlug } from "../../../src/content/siteContent.js"
+import { getProjectBySlug, projects } from "../../../src/content/siteContent.js"
 
 export const size = {
   width: 1200,
@@ -9,6 +9,12 @@ export const size = {
 }
 export const contentType = "image/png"
 export const alt = "Project case study by Raghav Sharma"
+
+export const dynamicParams = false
+
+export function generateStaticParams() {
+  return projects.map(({ slug }) => ({ slug }))
+}
 
 export default async function OpenGraphImage({ params }) {
   const { slug } = await params

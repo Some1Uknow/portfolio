@@ -67,6 +67,7 @@ function ProjectTile({ project, featured = false }) {
               width="42"
               height="42"
               loading="lazy"
+              decoding="async"
               style={{
                 width: 42,
                 height: 42,
@@ -81,7 +82,7 @@ function ProjectTile({ project, featured = false }) {
           <div style={{ minWidth: 0 }}>
             <h3
               style={{
-                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontFamily: "var(--font-instrument-serif), Georgia, serif",
                 fontSize: "clamp(25px, 3vw, 34px)",
                 fontWeight: 400,
                 lineHeight: 1,
@@ -132,7 +133,7 @@ export default function Projects() {
           <div style={{ maxWidth: 760 }}>
             <h2
               style={{
-                fontFamily: "'Instrument Serif', Georgia, serif",
+                fontFamily: "var(--font-instrument-serif), Georgia, serif",
                 fontSize: "clamp(34px, 5vw, 52px)",
                 lineHeight: 0.98,
                 fontWeight: 400,
@@ -158,7 +159,7 @@ export default function Projects() {
             <div>
               <h3
                 style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
                   fontSize: "clamp(28px, 3vw, 38px)",
                   fontWeight: 400,
                   lineHeight: 1,
@@ -190,7 +191,7 @@ export default function Projects() {
           <div>
             <h3
               style={{
-                fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
                 fontSize: "clamp(28px, 3vw, 38px)",
                 fontWeight: 400,
                 lineHeight: 1,

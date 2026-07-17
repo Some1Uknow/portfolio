@@ -31,7 +31,7 @@ function ChainIcon({ chain }) {
       }}
     >
       {config.src ? (
-        <img src={config.src} alt="" width="14" height="14" style={{ display: "block", objectFit: "contain" }} />
+        <img src={config.src} alt="" width="14" height="14" loading="lazy" decoding="async" style={{ display: "block", objectFit: "contain" }} />
       ) : (
         <span style={{ fontSize: 10, color: "var(--color-soft)", lineHeight: 1 }}>{config.label}</span>
       )}

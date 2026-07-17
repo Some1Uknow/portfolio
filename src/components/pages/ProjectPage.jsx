@@ -41,16 +41,18 @@ function CompactCard({ title, children }) {
         background: "var(--color-surface)",
       }}
     >
-      <div
+      <h2
         style={{
           fontSize: 10,
           color: "var(--color-soft)",
           letterSpacing: "0.1em",
           textTransform: "uppercase",
+          fontWeight: 400,
+          lineHeight: 1.3,
         }}
       >
         {title}
-      </div>
+      </h2>
       {children}
     </section>
   )
@@ -62,13 +64,13 @@ function ProjectPageBody({ project, relatedPosts }) {
 
   return (
     <main style={{ padding: `0 ${PAD} 72px`, minHeight: "100vh" }}>
-      <div className="breadcrumb-nav" style={{ paddingTop: "max(32px, env(safe-area-inset-top))", paddingBottom: 48 }} aria-label="Breadcrumb">
+      <nav className="breadcrumb-nav" style={{ paddingTop: "max(32px, env(safe-area-inset-top))", paddingBottom: 48 }} aria-label="Breadcrumb">
         <Link href="/">Home</Link>
         <span aria-hidden="true">/</span>
         <Link href="/#projects">Work</Link>
         <span aria-hidden="true">/</span>
         <span aria-current="page">{project.name}</span>
-      </div>
+      </nav>
 
       <section
         style={{
@@ -88,6 +90,7 @@ function ProjectPageBody({ project, relatedPosts }) {
                   alt={`${project.name} icon`}
                   width="44"
                   height="44"
+                  decoding="async"
                   style={{ width: 44, height: 44, borderRadius: 10, objectFit: "cover", border: "1px solid var(--color-border-soft)" }}
                 />
               ) : null}
@@ -101,7 +104,7 @@ function ProjectPageBody({ project, relatedPosts }) {
             <div>
               <h1
                 style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
                   fontSize: "clamp(38px, 7vw, 72px)",
                   lineHeight: 0.96,
                   fontWeight: 400,
@@ -160,13 +163,13 @@ function ProjectPageBody({ project, relatedPosts }) {
           </CompactCard>
 
           <CompactCard title="Highlights">
-            <div style={{ display: "grid", gap: 10 }}>
+            <ul style={{ display: "grid", gap: 10, listStyle: "none" }}>
               {highlights.map((item) => (
-                <div key={item} style={{ color: "var(--color-muted)", lineHeight: 1.7 }}>
+                <li key={item} style={{ color: "var(--color-muted)", lineHeight: 1.7 }}>
                   {item}
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </CompactCard>
         </aside>
       </div>
@@ -178,7 +181,7 @@ function ProjectPageBody({ project, relatedPosts }) {
           </div>
           <h2
             id="related-writing-title"
-            style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 400, lineHeight: 1, letterSpacing: "-0.03em", marginBottom: 14 }}
+            style={{ fontFamily: "var(--font-instrument-serif), Georgia, serif", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 400, lineHeight: 1, letterSpacing: "-0.03em", marginBottom: 14 }}
           >
             Notes connected to this work
           </h2>

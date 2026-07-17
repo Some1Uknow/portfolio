@@ -10,6 +10,8 @@ export const size = {
 export const contentType = "image/png"
 export const alt = "Technical writing by Raghav Sharma"
 
+export const dynamicParams = false
+
 export async function generateStaticParams() {
   const posts = await getPublishedPosts()
   return posts.map((post) => ({ slug: post.slug }))

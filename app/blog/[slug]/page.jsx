@@ -28,9 +28,8 @@ function textFromChildren(children) {
   return ""
 }
 
-function ArticleHeading({ level, children }) {
+function ArticleHeading({ id, level, children }) {
   const title = textFromChildren(children)
-  const id = headingId(title)
 
   const content = (
     <>
@@ -44,9 +43,21 @@ function ArticleHeading({ level, children }) {
   return level === 2 ? <h2 id={id}>{content}</h2> : <h3 id={id}>{content}</h3>
 }
 
-const mdxComponents = {
-  h2: (props) => <ArticleHeading level={2} {...props} />,
-  h3: (props) => <ArticleHeading level={3} {...props} />,
+function createMdxComponents() {
+  const headingOccurrences = new Map()
+
+  function getHeadingId(children) {
+    const baseId = headingId(textFromChildren(children))
+    const occurrence = headingOccurrences.get(baseId) || 0
+    headingOccurrences.set(baseId, occurrence + 1)
+
+    return occurrence ? `${baseId}-${occurrence}` : baseId
+  }
+
+  return {
+    h2: (props) => <ArticleHeading level={2} {...props} id={getHeadingId(props.children)} />,
+    h3: (props) => <ArticleHeading level={3} {...props} id={getHeadingId(props.children)} />,
+  }
 }
 
 export async function generateStaticParams() {
@@ -102,7 +113,7 @@ export default async function BlogPostPage({ params }) {
   const [{ content }, tableOfContents] = await Promise.all([
     compileMDX({
       source: post.source,
-      components: mdxComponents,
+      components: createMdxComponents(),
       options: {
         mdxOptions: {
           remarkPlugins: [remarkGfm],

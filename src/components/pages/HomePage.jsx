@@ -11,19 +11,21 @@ import { PAD } from "../../styles/globalStyles.js"
 export default function HomePage({ latestPosts }) {
   return (
     <>
-      <div style={{ padding: `0 ${PAD}` }}>
-        <Hero />
-        <About />
-        <Experience />
-      </div>
+      <main>
+        <div style={{ padding: `0 ${PAD}` }}>
+          <Hero />
+          <About />
+          <Experience />
+        </div>
 
-      <Projects />
-      <Oss />
+        <Projects />
+        <Oss />
 
-      <div style={{ padding: `0 ${PAD}` }}>
-        <Writing posts={latestPosts} />
-        <Awards />
-      </div>
+        <div style={{ padding: `0 ${PAD}` }}>
+          <Writing posts={latestPosts} />
+          <Awards />
+        </div>
+      </main>
 
       <Footer />
     </>

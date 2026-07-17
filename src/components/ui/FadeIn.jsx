@@ -1,20 +1,11 @@
-"use client"
-
-import { useRef } from "react"
-
-import useInView from "../../hooks/useInView.js"
-
 export default function FadeIn({ children, delay = 0, x = 0, y = 12, style = {} }) {
-  const ref = useRef(null)
-  const visible = useInView(ref)
-
   return (
     <div
-      ref={ref}
+      className="fade-in"
       style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "none" : `translate(${x}px, ${y}px)`,
-        transition: `opacity 0.55s ease ${delay}ms, transform 0.55s ease ${delay}ms`,
+        "--fade-delay": `${delay}ms`,
+        "--fade-x": `${x}px`,
+        "--fade-y": `${y}px`,
         ...style,
       }}
     >

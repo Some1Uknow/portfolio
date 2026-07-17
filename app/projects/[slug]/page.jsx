@@ -6,6 +6,8 @@ import { getPublishedPosts } from "../../../src/lib/blog.js"
 import { projectPath } from "../../../src/lib/site.js"
 import { JsonLd, projectStructuredData } from "../../../src/lib/structured-data.jsx"
 
+export const dynamicParams = false
+
 export function generateStaticParams() {
   return projects.map(({ slug }) => ({ slug }))
 }

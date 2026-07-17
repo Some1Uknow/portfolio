@@ -3,6 +3,7 @@ export const SITE_NAME = "Raghav Sharma"
 export const PERSON_ID = `${SITE_URL}/#raghav-sharma`
 export const WEBSITE_ID = `${SITE_URL}/#website`
 export const PROFILE_PAGE_ID = `${SITE_URL}/#profile`
+export const SITE_LAST_MODIFIED = "2026-07-17"
 
 export const PERSON_SAME_AS = [
   "https://github.com/some1uknow",

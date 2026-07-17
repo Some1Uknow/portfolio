@@ -1,8 +1,22 @@
 import "./globals.css"
+import { Geist_Mono, Instrument_Serif } from "next/font/google"
 
 import ThemeControls from "../src/components/ThemeControls.jsx"
 import VercelMetrics from "../src/components/VercelMetrics.jsx"
 import { SITE_URL } from "../src/lib/site.js"
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+})
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+  weight: "400",
+  display: "swap",
+})
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -12,9 +26,6 @@ export const metadata = {
   },
   description:
     "Raghav Sharma is a software engineer building backend systems, developer tools, AI products, and blockchain infrastructure with Rust and TypeScript.",
-  alternates: {
-    canonical: "/",
-  },
   robots: {
     index: true,
     follow: true,
@@ -65,7 +76,7 @@ const themeBootstrap = `(() => {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${geistMono.variable} ${instrumentSerif.variable}`}>
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
         <ThemeControls />

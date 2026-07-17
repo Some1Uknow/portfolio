@@ -8,7 +8,7 @@ const { aboutParagraphs, aboutStack } = siteContent
 export default function About() {
   return (
     <section id="about">
-      <SectionLabel paddingTop={32}>About</SectionLabel>
+      <SectionLabel as="h2" paddingTop={32}>About</SectionLabel>
       <div style={{ maxWidth: 760, paddingBottom: 96 }}>
         <FadeIn y={0} x={-8}>
           <div>
@@ -30,17 +30,19 @@ export default function About() {
 
         <FadeIn delay={80} y={8}>
           <div style={{ paddingTop: 18, marginTop: 10, borderTop: "1px solid var(--color-border-soft)" }}>
-            <div
+            <h3
               style={{
                 fontSize: 10,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: "var(--color-soft)",
+                fontWeight: 400,
+                lineHeight: 1.3,
                 marginBottom: 14,
               }}
             >
               Stack
-            </div>
+            </h3>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
               {aboutStack.map((item) => (
                 <Pill key={item}>{item}</Pill>

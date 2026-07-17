@@ -19,7 +19,7 @@ export default function Footer() {
       <div
         className="footer-name"
         style={{
-          fontFamily: "'Instrument Serif', Georgia, serif",
+          fontFamily: "var(--font-instrument-serif), Georgia, serif",
           fontSize: "clamp(28px, 4vw, 40px)",
           lineHeight: 1,
           letterSpacing: "-0.02em",

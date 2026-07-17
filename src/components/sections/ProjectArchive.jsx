@@ -1,22 +1,9 @@
-"use client"
-
-import { useId, useState } from "react"
-
 export default function ProjectArchive({ blurb, children, count, title }) {
-  const [isOpen, setIsOpen] = useState(false)
-  const panelId = useId()
-
   return (
-    <article className={`project-archive${isOpen ? " is-open" : ""}`}>
-      <button
-        aria-controls={panelId}
-        aria-expanded={isOpen}
-        className="project-archive__trigger"
-        onClick={() => setIsOpen((open) => !open)}
-        type="button"
-      >
+    <details className="project-archive">
+      <summary className="project-archive__trigger">
         <span className="project-archive__heading">
-          <span className="project-archive__title">{title}</span>
+          <h3 className="project-archive__title">{title}</h3>
           <span className="project-archive__blurb">{blurb}</span>
         </span>
 
@@ -26,13 +13,13 @@ export default function ProjectArchive({ blurb, children, count, title }) {
             <path d="m6 9 6 6 6-6" />
           </svg>
         </span>
-      </button>
+      </summary>
 
-      <div className="project-archive__body" id={panelId}>
-        <div className="project-archive__panel" aria-hidden={!isOpen} inert={!isOpen}>
+      <div className="project-archive__body">
+        <div className="project-archive__panel">
           <div className="project-archive__body-content">{children}</div>
         </div>
       </div>
-    </article>
+    </details>
   )
 }

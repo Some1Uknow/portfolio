@@ -7,7 +7,7 @@ const { awards } = siteContent
 export default function Awards() {
   return (
     <section id="awards">
-      <SectionLabel>Things I&apos;m proud of</SectionLabel>
+      <SectionLabel as="h2">Things I&apos;m proud of</SectionLabel>
       <div style={{ paddingBottom: 96 }}>
         {awards.map((award, index) => (
           <FadeIn key={award.num} delay={index * 50} x={-10} y={0}>
@@ -24,7 +24,7 @@ export default function Awards() {
             >
               <span
                 style={{
-                  fontFamily: "'Instrument Serif', Georgia, serif",
+                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
                   fontSize: 18,
                   color: "var(--color-faint)",
                   fontStyle: "italic",
@@ -33,7 +33,7 @@ export default function Awards() {
                 {award.num}
               </span>
               <div>
-                <div style={{ fontSize: 13, color: "var(--color-text)", marginBottom: 3 }}>{award.title}</div>
+                <h3 style={{ fontSize: 13, color: "var(--color-text)", fontWeight: 400, lineHeight: 1.5, marginBottom: 3 }}>{award.title}</h3>
                 <div style={{ fontSize: 12, color: "var(--color-muted)", lineHeight: 1.6 }}>{award.desc}</div>
               </div>
               <div style={{ fontSize: 11, color: "var(--color-soft)", whiteSpace: "nowrap", paddingTop: 2 }}>

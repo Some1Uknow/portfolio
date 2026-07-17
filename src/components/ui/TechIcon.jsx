@@ -59,6 +59,8 @@ export default function TechIcon({ label, size = 11 }) {
         alt=""
         width={CHAIN_ICON_SIZE}
         height={CHAIN_ICON_SIZE}
+        loading="lazy"
+        decoding="async"
         style={{ flexShrink: 0, display: "block", objectFit: "contain" }}
       />
     )

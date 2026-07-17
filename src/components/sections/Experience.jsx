@@ -8,7 +8,7 @@ const { experience } = siteContent
 export default function Experience() {
   return (
     <section id="experience">
-      <SectionLabel>Experience</SectionLabel>
+      <SectionLabel as="h2">Experience</SectionLabel>
       <div className="experience-list">
         {experience.map((item, index) => (
           <FadeIn key={item.company} delay={index * 60}>

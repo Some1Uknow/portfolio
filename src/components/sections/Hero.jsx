@@ -2,10 +2,10 @@ import siteContent from "../../content/siteContent.js"
 import { SiOpenai } from "react-icons/si"
 
 const heroItems = [
-  { style: { opacity: 0, animation: "fadeUp 0.7s ease 0.05s forwards" } },
-  { style: { opacity: 0, animation: "fadeUp 0.8s ease 0.18s forwards" } },
-  { style: { opacity: 0, animation: "fadeUp 0.8s ease 0.32s forwards" } },
-  { style: { opacity: 0, animation: "fadeUp 0.8s ease 0.44s forwards" } },
+  { style: { animation: "fadeUp 0.7s ease 0.05s both" } },
+  { style: { animation: "fadeUp 0.8s ease 0.18s both" } },
+  { style: { animation: "fadeUp 0.8s ease 0.32s both" } },
+  { style: { animation: "fadeUp 0.8s ease 0.44s both" } },
 ]
 
 const { hero, links } = siteContent
@@ -56,7 +56,7 @@ export default function Hero() {
 
       <h1
         style={{
-          fontFamily: "'Instrument Serif', Georgia, serif",
+          fontFamily: "var(--font-instrument-serif), Georgia, serif",
           fontSize: "clamp(36px, 6.5vw, 88px)",
           fontWeight: 400,
           lineHeight: 1,

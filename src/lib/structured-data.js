@@ -67,6 +67,7 @@ export function projectStructuredData(project) {
           { "@type": "ListItem", position: 3, name: project.name, item: url },
         ],
       },
+      personSchema,
     ],
   }
 }
@@ -84,12 +85,14 @@ export function blogStructuredData(posts) {
         author: { "@id": PERSON_ID },
         blogPost: posts.map((post) => ({ "@id": `${absoluteUrl(blogPath(post.slug))}#article` })),
       },
+      personSchema,
     ],
   }
 }
 
 export function postStructuredData(post) {
   const url = absoluteUrl(blogPath(post.slug))
+  const image = absoluteUrl(post.ogImage || `${blogPath(post.slug)}/opengraph-image`)
 
   return {
     "@context": "https://schema.org",
@@ -97,7 +100,10 @@ export function postStructuredData(post) {
       {
         "@type": "BlogPosting",
         "@id": `${url}#article`,
-        mainEntityOfPage: url,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": url,
+        },
         headline: post.title,
         description: post.description,
         url,
@@ -105,7 +111,7 @@ export function postStructuredData(post) {
         dateModified: post.updatedAt || post.publishedAt,
         author: { "@id": PERSON_ID },
         publisher: { "@id": PERSON_ID },
-        ...(post.ogImage ? { image: absoluteUrl(post.ogImage) } : {}),
+        image,
       },
       {
         "@type": "BreadcrumbList",
@@ -116,6 +122,7 @@ export function postStructuredData(post) {
           { "@type": "ListItem", position: 3, name: post.title, item: url },
         ],
       },
+      personSchema,
     ],
   }
 }

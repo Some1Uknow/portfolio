@@ -8,7 +8,7 @@ export default function Awards() {
   return (
     <section id="awards">
       <SectionLabel as="h2">Things I&apos;m proud of</SectionLabel>
-      <div style={{ paddingBottom: 96 }}>
+      <div>
         {awards.map((award, index) => (
           <FadeIn key={award.num} delay={index * 50} x={-10} y={0}>
             <div
@@ -33,12 +33,14 @@ export default function Awards() {
                 {award.num}
               </span>
               <div>
-                <h3 style={{ fontSize: 13, color: "var(--color-text)", fontWeight: 400, lineHeight: 1.5, marginBottom: 3 }}>{award.title}</h3>
-                <div style={{ fontSize: 12, color: "var(--color-muted)", lineHeight: 1.6 }}>{award.desc}</div>
+                <h3 style={{ fontSize: 12, color: "var(--color-text)", fontWeight: 400, lineHeight: 1.5, marginBottom: 3 }}>{award.title}</h3>
+                <div style={{ fontSize: 11, color: "var(--color-muted)", lineHeight: 1.55 }}>{award.desc}</div>
               </div>
-              <div style={{ fontSize: 11, color: "var(--color-soft)", whiteSpace: "nowrap", paddingTop: 2 }}>
-                {award.year}
-              </div>
+              {award.year ? (
+                <div style={{ fontSize: 10, color: "var(--color-soft)", whiteSpace: "nowrap", paddingTop: 2 }}>
+                  {award.year}
+                </div>
+              ) : null}
             </div>
           </FadeIn>
         ))}

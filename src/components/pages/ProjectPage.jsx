@@ -1,70 +1,121 @@
 import Link from "next/link"
+import { SiSolana } from "react-icons/si"
 
-import siteContent, { getProjectIconUrl } from "../../content/siteContent.js"
+import siteContent, { getProjectIconUrl, projects } from "../../content/siteContent.js"
 import { blogPath } from "../../lib/site.js"
 import { PAD } from "../../styles/globalStyles.js"
-import ChainBadge from "../ui/ChainBadge.jsx"
 import Pill from "../ui/Pill.jsx"
 
 function ProjectLinks({ project }) {
+  if (!project.live && !project.github) {
+    return null
+  }
+
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+    <div className="project-case__links">
       {project.live ? (
-        <a
-          href={project.live}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="project-page-link"
-        >
+        <a href={project.live} target="_blank" rel="noreferrer noopener" className="project-page-link">
           {project.liveLabel || "live demo"} ↗
         </a>
       ) : null}
-      <a href={project.github} target="_blank" rel="noreferrer noopener" className="project-page-link">
-        github ↗
-      </a>
+      {project.github ? (
+        <a href={project.github} target="_blank" rel="noreferrer noopener" className="project-page-link">
+          github ↗
+        </a>
+      ) : null}
     </div>
   )
 }
 
-function CompactCard({ title, children }) {
+function ProjectIcon({ project }) {
+  if (project.iconKind === "solana") {
+    return (
+      <span className="project-case__icon project-case__icon--solana" aria-hidden="true">
+        <SiSolana size={20} color="#14f195" />
+      </span>
+    )
+  }
+
+  const projectIcon = getProjectIconUrl(project)
+  if (!projectIcon) {
+    return null
+  }
+
+  return (
+    <img
+      src={projectIcon}
+      alt=""
+      width="40"
+      height="40"
+      decoding="async"
+      className="project-case__icon"
+    />
+  )
+}
+
+function SectionBlock({ title, children }) {
   if (!children) {
     return null
   }
 
   return (
-    <section
-      style={{
-        display: "grid",
-        gap: 10,
-        padding: "18px 18px 20px",
-        border: "1px solid var(--color-border-soft)",
-        background: "var(--color-surface)",
-      }}
-    >
-      <h2
-        style={{
-          fontSize: 10,
-          color: "var(--color-soft)",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          fontWeight: 400,
-          lineHeight: 1.3,
-        }}
-      >
-        {title}
+    <section className="project-case__section">
+      <h2 className="project-case__section-label">{title}</h2>
+      <div className="project-case__section-body">{children}</div>
+    </section>
+  )
+}
+
+function BulletList({ items }) {
+  if (!items?.length) {
+    return null
+  }
+
+  return (
+    <ul className="project-case__list">
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  )
+}
+
+function ProtocolList({ protocols }) {
+  if (!protocols.length) {
+    return null
+  }
+
+  return (
+    <section className="project-case__section" aria-labelledby="protocol-list-title">
+      <h2 id="protocol-list-title" className="project-case__section-label">
+        Protocols
       </h2>
-      {children}
+      <div className="project-case__protocol-list">
+        {protocols.map((protocol) => (
+          <Link key={protocol.slug} href={`/projects/${protocol.slug}`} className="project-case__protocol-row">
+            <span className="project-case__protocol-copy">
+              <span className="project-case__protocol-name">{protocol.name}</span>
+              <span className="project-case__protocol-desc">{protocol.shortDescription || protocol.desc}</span>
+            </span>
+            <span aria-hidden="true" className="project-case__protocol-arrow">
+              →
+            </span>
+          </Link>
+        ))}
+      </div>
     </section>
   )
 }
 
 function ProjectPageBody({ project, relatedPosts }) {
-  const projectIcon = getProjectIconUrl(project)
-  const highlights = [...(project.features ?? []), ...(project.outcomes ?? [])].slice(0, 5)
+  const outcomes = project.outcomes ?? []
+  const features = project.features ?? []
+  const architecture = project.architecture ?? []
+  const protocolChildren = project.isProtocolHub ? projects.filter((item) => item.category === "protocols") : []
 
   return (
-    <main style={{ padding: `0 ${PAD} 72px`, minHeight: "100vh" }}>
-      <nav className="breadcrumb-nav" style={{ paddingTop: "max(32px, env(safe-area-inset-top))", paddingBottom: 48 }} aria-label="Breadcrumb">
+    <main className="project-case" style={{ padding: `0 ${PAD} 64px` }}>
+      <nav className="breadcrumb-nav project-case__nav" aria-label="Breadcrumb">
         <Link href="/">Home</Link>
         <span aria-hidden="true">/</span>
         <Link href="/#projects">Work</Link>
@@ -72,122 +123,88 @@ function ProjectPageBody({ project, relatedPosts }) {
         <span aria-current="page">{project.name}</span>
       </nav>
 
-      <section
-        style={{
-          display: "grid",
-          gap: 24,
-          paddingBottom: 36,
-          borderBottom: "1px solid var(--color-border)",
-          marginBottom: 28,
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
-          <div style={{ display: "grid", gap: 16, maxWidth: 760 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-              {projectIcon ? (
-                <img
-                  src={projectIcon}
-                  alt={`${project.name} icon`}
-                  width="44"
-                  height="44"
-                  decoding="async"
-                  style={{ width: 44, height: 44, borderRadius: 10, objectFit: "cover", border: "1px solid var(--color-border-soft)" }}
-                />
+      <header className="project-case__header">
+        <div className="project-case__title-row">
+          <ProjectIcon project={project} />
+          <h1 className="project-case__title">{project.name}</h1>
+        </div>
+
+        <p className="project-case__summary">{project.summary || project.desc}</p>
+
+        {project.meta ? (
+          <div className="project-case__meta-row">
+            <p className="project-case__meta">{project.meta}</p>
+          </div>
+        ) : null}
+
+        <ProjectLinks project={project} />
+
+        {project.stack?.length ? (
+          <div className="project-case__pills project-case__stack">
+            {project.stack.map((item) => (
+              <Pill key={item}>{item}</Pill>
+            ))}
+          </div>
+        ) : null}
+      </header>
+
+      {project.isProtocolHub ? (
+        <ProtocolList protocols={protocolChildren} />
+      ) : (
+        <div className="project-case__body">
+          <SectionBlock title="Overview">
+            <p>{project.overview}</p>
+          </SectionBlock>
+
+          {project.role ? (
+            <SectionBlock title="Role">
+              <p>{project.role}</p>
+            </SectionBlock>
+          ) : null}
+
+          {outcomes.length > 0 ? (
+            <SectionBlock title="Outcomes">
+              <BulletList items={outcomes} />
+            </SectionBlock>
+          ) : null}
+
+          {project.problem || project.solution ? (
+            <div className="project-case__pair">
+              {project.problem ? (
+                <SectionBlock title="Problem">
+                  <p>{project.problem}</p>
+                </SectionBlock>
               ) : null}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {project.chains.map((chain) => (
-                  <ChainBadge key={chain} chain={chain} />
-                ))}
-              </div>
+              {project.solution ? (
+                <SectionBlock title="Solution">
+                  <p>{project.solution}</p>
+                </SectionBlock>
+              ) : null}
             </div>
+          ) : null}
 
-            <div>
-              <h1
-                style={{
-                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
-                  fontSize: "clamp(38px, 7vw, 72px)",
-                  lineHeight: 0.96,
-                  fontWeight: 400,
-                  letterSpacing: "-0.04em",
-                  color: "var(--color-text)",
-                  marginBottom: 12,
-                  paddingTop: 2,
-                }}
-              >
-                {project.name}
-              </h1>
-              <p style={{ maxWidth: 760, fontSize: 15, lineHeight: 1.72, color: "var(--color-muted)" }}>{project.summary || project.desc}</p>
-            </div>
-          </div>
+          {features.length > 0 ? (
+            <SectionBlock title="What I built">
+              <BulletList items={features} />
+            </SectionBlock>
+          ) : null}
 
-          <div style={{ display: "grid", gap: 14, minWidth: "min(100%, 240px)" }}>
-            <ProjectLinks project={project} />
-            <div style={{ fontSize: 12, color: "var(--color-soft)", lineHeight: 1.7 }}>{project.meta}</div>
-            {project.tags?.length ? (
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                {project.tags.map((tag) => (
-                  <Pill key={tag}>{tag}</Pill>
-                ))}
-              </div>
-            ) : null}
-          </div>
+          {architecture.length > 0 ? (
+            <SectionBlock title="Architecture">
+              <BulletList items={architecture} />
+            </SectionBlock>
+          ) : null}
         </div>
-
-        <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-          {project.stack.map((item) => (
-            <Pill key={item}>{item}</Pill>
-          ))}
-        </div>
-      </section>
-
-      <div className="project-page-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(280px, 0.9fr)", gap: 18 }}>
-        <div style={{ display: "grid", gap: 18 }}>
-          <CompactCard title="Overview">
-            <p style={{ color: "var(--color-muted)", lineHeight: 1.8 }}>{project.overview}</p>
-          </CompactCard>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 18 }} className="project-compact-grid">
-            <CompactCard title="Problem">
-              <p style={{ color: "var(--color-muted)", lineHeight: 1.75 }}>{project.problem}</p>
-            </CompactCard>
-
-            <CompactCard title="Solution">
-              <p style={{ color: "var(--color-muted)", lineHeight: 1.75 }}>{project.solution}</p>
-            </CompactCard>
-          </div>
-        </div>
-
-        <aside style={{ display: "grid", gap: 18, alignContent: "start" }}>
-          <CompactCard title="Role">
-            <p style={{ color: "var(--color-muted)", lineHeight: 1.75 }}>{project.role}</p>
-          </CompactCard>
-
-          <CompactCard title="Highlights">
-            <ul style={{ display: "grid", gap: 10, listStyle: "none" }}>
-              {highlights.map((item) => (
-                <li key={item} style={{ color: "var(--color-muted)", lineHeight: 1.7 }}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </CompactCard>
-        </aside>
-      </div>
+      )}
 
       {relatedPosts.length > 0 ? (
-        <section style={{ marginTop: 48, maxWidth: 760 }} aria-labelledby="related-writing-title">
-          <div style={{ fontSize: 10, color: "var(--color-soft)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
+        <section className="project-case__related" aria-labelledby="related-writing-title">
+          <h2 id="related-writing-title" className="project-case__section-label">
             Related writing
-          </div>
-          <h2
-            id="related-writing-title"
-            style={{ fontFamily: "var(--font-instrument-serif), Georgia, serif", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 400, lineHeight: 1, letterSpacing: "-0.03em", marginBottom: 14 }}
-          >
-            Notes connected to this work
           </h2>
-          <div style={{ display: "grid", gap: 10 }}>
+          <div className="project-case__related-list">
             {relatedPosts.map((post) => (
-              <Link key={post.slug} href={blogPath(post.slug)} className="related-work-link">
+              <Link key={post.slug} href={blogPath(post.slug)} className="project-case__related-link">
                 <span>{post.title}</span>
                 <span aria-hidden="true">→</span>
               </Link>
@@ -203,8 +220,8 @@ export default function ProjectPage({ project, relatedPosts = [] }) {
   return (
     <>
       <ProjectPageBody project={project} relatedPosts={relatedPosts} />
-      <footer style={{ borderTop: "1px solid var(--color-border)" }}>
-        <div style={{ padding: `28px ${PAD}`, display: "flex", justifyContent: "space-between", gap: 18, flexWrap: "wrap", color: "var(--color-soft)", fontSize: 11, letterSpacing: "0.06em" }}>
+      <footer className="project-case__footer">
+        <div className="project-case__footer-inner" style={{ padding: `24px ${PAD}` }}>
           <span>{siteContent.hero.name}</span>
           <span>{siteContent.hero.location}</span>
         </div>

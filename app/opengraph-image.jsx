@@ -13,8 +13,8 @@ export default function OpenGraphImage() {
       <div
         style={{
           alignItems: "flex-start",
-          background: "#f5efe5",
-          color: "#151210",
+          background: "#ffffff",
+          color: "#111113",
           display: "flex",
           flexDirection: "column",
           height: "100%",

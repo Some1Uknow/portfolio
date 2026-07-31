@@ -5,6 +5,8 @@ export const projects = siteContent.projects
 const KNOWN_ICON_URLS = {
   learnsol: "https://www.learnsol.site/icon.png",
   "buy-me-some-tokens": "https://buymesometokens.vercel.app/logo.png",
+  // Official-looking Solana mark for the protocols hub tile
+  "solana-protocols": "https://cdn.simpleicons.org/solana/14F195",
 }
 
 export const projectsBySlug = new Map(projects.map((project) => [project.slug, project]))

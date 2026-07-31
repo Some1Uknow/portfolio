@@ -19,17 +19,17 @@ export default function Hero() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        paddingBottom: 24,
-        paddingTop: "max(56px, env(safe-area-inset-top))",
+        paddingBottom: 0,
+        paddingTop: "max(48px, env(safe-area-inset-top))",
       }}
     >
       <p
         style={{
-          fontSize: 11,
+          fontSize: 10,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
           color: "var(--color-muted)",
-          marginBottom: 20,
+          marginBottom: 16,
           display: "flex",
           alignItems: "flex-start",
           gap: 8,
@@ -57,13 +57,13 @@ export default function Hero() {
       <h1
         style={{
           fontFamily: "var(--font-instrument-serif), Georgia, serif",
-          fontSize: "clamp(36px, 6.5vw, 88px)",
+          fontSize: "clamp(28px, 4.8vw, 64px)",
           fontWeight: 400,
           lineHeight: 1,
           letterSpacing: "-0.03em",
           color: "var(--color-text)",
           textTransform: "lowercase",
-          marginBottom: 28,
+          marginBottom: 20,
           whiteSpace: "nowrap",
           ...heroItems[1].style,
         }}
@@ -95,13 +95,13 @@ export default function Hero() {
             target={link.external ? "_blank" : undefined}
             rel={link.external ? "noreferrer" : undefined}
             style={{
-              fontSize: 11,
+              fontSize: 10,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
               color: "var(--color-text)",
               textDecoration: "none",
-              padding: "10px 0",
-              marginRight: 24,
+              padding: "8px 0",
+              marginRight: 20,
               position: "relative",
             }}
             className="hero-link"

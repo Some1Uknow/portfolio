@@ -1,16 +1,16 @@
+"use client"
+
 import { useEffect, useState } from "react"
 
 import { ThemeContext } from "./themeContext.js"
 
 const STORAGE_KEY = "portfolio-theme"
-const LIGHT_THEME_COLOR = "#f5efe5"
-const DARK_THEME_COLOR = "#0d1110"
+const LIGHT_THEME_COLOR = "#ffffff"
+const DARK_THEME_COLOR = "#000000"
+// Fixed default for SSR + first client render so hydration always matches.
+const DEFAULT_THEME = "light"
 
 function getStoredTheme() {
-  if (typeof window === "undefined") {
-    return null
-  }
-
   try {
     const storedTheme = window.localStorage.getItem(STORAGE_KEY)
     return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null
@@ -20,11 +20,16 @@ function getStoredTheme() {
 }
 
 function getSystemTheme() {
-  if (typeof window === "undefined") {
-    return "light"
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+}
+
+function resolveTheme() {
+  const bootTheme = document.documentElement.dataset.theme
+  if (bootTheme === "light" || bootTheme === "dark") {
+    return bootTheme
   }
 
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+  return getStoredTheme() ?? getSystemTheme()
 }
 
 function applyTheme(theme) {
@@ -39,20 +44,24 @@ function applyTheme(theme) {
 }
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    if (typeof document !== "undefined") {
-      const bootTheme = document.documentElement.dataset.theme
-      if (bootTheme === "light" || bootTheme === "dark") {
-        return bootTheme
-      }
-    }
-
-    return getStoredTheme() ?? getSystemTheme()
-  })
-
-  const [manualTheme, setManualTheme] = useState(() => Boolean(getStoredTheme()))
+  const [theme, setTheme] = useState(DEFAULT_THEME)
+  const [manualTheme, setManualTheme] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    const stored = getStoredTheme()
+    const resolved = resolveTheme()
+    setManualTheme(Boolean(stored))
+    setTheme(resolved)
+    applyTheme(resolved)
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted) {
+      return undefined
+    }
+
     applyTheme(theme)
 
     try {
@@ -64,10 +73,12 @@ export function ThemeProvider({ children }) {
     } catch {
       // Ignore storage failures and keep the in-memory theme state.
     }
-  }, [manualTheme, theme])
+
+    return undefined
+  }, [manualTheme, mounted, theme])
 
   useEffect(() => {
-    if (manualTheme || typeof window === "undefined") {
+    if (!mounted || manualTheme) {
       return undefined
     }
 
@@ -83,7 +94,7 @@ export function ThemeProvider({ children }) {
 
     mediaQuery.addListener(handleChange)
     return () => mediaQuery.removeListener(handleChange)
-  }, [manualTheme])
+  }, [manualTheme, mounted])
 
   const toggleTheme = () => {
     setManualTheme(true)
@@ -91,7 +102,7 @@ export function ThemeProvider({ children }) {
   }
 
   return (
-    <ThemeContext.Provider value={{ isDark: theme === "dark", theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDark: theme === "dark", theme, toggleTheme, mounted }}>
       {children}
     </ThemeContext.Provider>
   )

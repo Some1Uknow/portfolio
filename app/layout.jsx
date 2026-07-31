@@ -1,5 +1,6 @@
 import "./globals.css"
 import { Geist_Mono, Instrument_Serif } from "next/font/google"
+import Script from "next/script"
 
 import ThemeControls from "../src/components/ThemeControls.jsx"
 import VercelMetrics from "../src/components/VercelMetrics.jsx"
@@ -58,27 +59,29 @@ export const metadata = {
 export const viewport = {
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5efe5" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1110" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
 }
 
 const themeBootstrap = `(() => {
   try {
-    const saved = localStorage.getItem("portfolio-theme");
-    const theme = saved === "light" || saved === "dark"
+    var saved = localStorage.getItem("portfolio-theme");
+    var theme = saved === "light" || saved === "dark"
       ? saved
       : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
-  } catch {}
+  } catch (e) {}
 })();`
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${geistMono.variable} ${instrumentSerif.variable}`}>
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+        <Script id="portfolio-theme" strategy="beforeInteractive">
+          {themeBootstrap}
+        </Script>
         <ThemeControls />
         <div className="app-content">{children}</div>
         <VercelMetrics />

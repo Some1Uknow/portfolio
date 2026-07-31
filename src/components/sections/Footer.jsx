@@ -1,4 +1,5 @@
 import siteContent from "../../content/siteContent.js"
+import { PAD } from "../../styles/globalStyles.js"
 
 const { footerLinks, hero } = siteContent
 
@@ -12,15 +13,15 @@ export default function Footer() {
         justifyContent: "space-between",
         alignItems: "flex-end",
         flexWrap: "wrap",
-        gap: 32,
-        padding: "48px clamp(24px, 6vw, 96px)",
+        gap: 28,
+        padding: `40px ${PAD}`,
       }}
     >
       <div
         className="footer-name"
         style={{
           fontFamily: "var(--font-instrument-serif), Georgia, serif",
-          fontSize: "clamp(28px, 4vw, 40px)",
+          fontSize: "clamp(22px, 3vw, 32px)",
           lineHeight: 1,
           letterSpacing: "-0.02em",
           fontStyle: "italic",
@@ -41,7 +42,7 @@ export default function Footer() {
           minWidth: 0,
         }}
       >
-        <div className="footer-links" style={{ fontSize: 11, color: "var(--color-muted)", lineHeight: 2.2 }}>
+        <div className="footer-links" style={{ fontSize: 10, color: "var(--color-muted)", lineHeight: 2.1 }}>
           {footerLinks.map((link) => (
             <a
               key={link.label}

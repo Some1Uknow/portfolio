@@ -12,7 +12,7 @@ export default function Writing({ posts = [] }) {
   return (
     <section id="writing">
       <SectionLabel as="h2">Writing</SectionLabel>
-      <div style={{ paddingBottom: 32 }}>
+      <div>
         {posts.map((post, index) => (
           <FadeIn key={post.slug} delay={index * 50}>
             <Link

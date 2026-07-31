@@ -1,5 +1,6 @@
 import About from "../sections/About.jsx"
 import Awards from "../sections/Awards.jsx"
+import ContactCta from "../sections/ContactCta.jsx"
 import Experience from "../sections/Experience.jsx"
 import Footer from "../sections/Footer.jsx"
 import Hero from "../sections/Hero.jsx"
@@ -24,6 +25,7 @@ export default function HomePage({ latestPosts }) {
         <div style={{ padding: `0 ${PAD}` }}>
           <Writing posts={latestPosts} />
           <Awards />
+          <ContactCta />
         </div>
       </main>
 

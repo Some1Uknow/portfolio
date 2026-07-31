@@ -21,6 +21,7 @@ const techIconMap = {
   rust: { Icon: SiRust, color: "var(--color-text)" },
   solana: { Icon: SiSolana, color: "#14f195" },
   "solana rpc": { Icon: SiSolana, color: "#14f195" },
+  anchor: { Icon: SiSolana, color: "#14f195" },
   base: { src: "https://www.base.org/favicon.ico" },
   typescript: { Icon: SiTypescript, color: "#3178c6" },
   postgres: { Icon: SiPostgresql, color: "#336791" },
@@ -30,13 +31,16 @@ const techIconMap = {
   docker: { Icon: SiDocker, color: "#2496ed" },
   fastify: { Icon: SiFastify, color: "var(--color-text)" },
   react: { Icon: SiReact, color: "#61dafb" },
+  "react 19": { Icon: SiReact, color: "#61dafb" },
   "next.js": { Icon: SiNextdotjs, color: "var(--color-text)" },
+  "next.js 16": { Icon: SiNextdotjs, color: "var(--color-text)" },
   django: { Icon: SiDjango, color: "#44b78b" },
   aws: { Icon: FaAws, color: "#ff9900" },
   ai: { Icon: SiOpenai, color: "var(--color-text)" },
   "ai agents": { Icon: SiOpenai, color: "var(--color-text)" },
   solidity: { Icon: SiSolidity, color: "var(--color-text)" },
   ipfs: { Icon: SiIpfs, color: "#65c2cb" },
+  usdc: { Icon: SiSolidity, color: "#2775ca" },
 }
 
 function resolveIcon(label) {

@@ -8,18 +8,18 @@ const { aboutParagraphs, aboutStack } = siteContent
 export default function About() {
   return (
     <section id="about">
-      <SectionLabel as="h2" paddingTop={32}>About</SectionLabel>
-      <div style={{ maxWidth: 760, paddingBottom: 96 }}>
+      <SectionLabel as="h2">About</SectionLabel>
+      <div style={{ maxWidth: 760 }}>
         <FadeIn y={0} x={-8}>
           <div>
             {aboutParagraphs.map((paragraph) => (
               <p
                 key={paragraph}
                 style={{
-                  fontSize: 13,
+                  fontSize: 12,
                   color: "var(--color-muted)",
-                  lineHeight: 1.9,
-                  marginBottom: 18,
+                  lineHeight: 1.85,
+                  marginBottom: 14,
                 }}
               >
                 {paragraph}

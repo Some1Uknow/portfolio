@@ -8,7 +8,7 @@ const x = siteContent.links.find((link) => link.label === "x")?.href || "https:/
 
 export default function ContactCta() {
   return (
-    <section id="contact" style={{ paddingTop: 40, paddingBottom: 48 }}>
+    <section id="contact" aria-labelledby="contact-title" style={{ paddingTop: 40, paddingBottom: 48 }}>
       <div
         style={{
           borderTop: "1px solid var(--color-border-soft)",
@@ -19,7 +19,8 @@ export default function ContactCta() {
           maxWidth: 640,
         }}
       >
-        <p
+        <h2
+          id="contact-title"
           style={{
             fontFamily: "var(--font-instrument-serif), Georgia, serif",
             fontSize: "clamp(20px, 2.8vw, 28px)",
@@ -31,7 +32,7 @@ export default function ContactCta() {
           }}
         >
           want to work together?
-        </p>
+        </h2>
         <p style={{ color: "var(--color-muted)", lineHeight: 1.65, margin: 0, fontSize: 12 }}>
           email me, or hit me up on x / linkedin. no forms.
         </p>

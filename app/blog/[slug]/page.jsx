@@ -133,7 +133,7 @@ export default async function BlogPostPage({ params }) {
         <span aria-hidden="true">/</span>
         <Link href="/blog">Writing</Link>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">Article</span>
+        <span aria-current="page">{post.title}</span>
       </nav>
 
       <header className="article-header">

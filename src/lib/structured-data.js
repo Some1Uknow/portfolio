@@ -2,6 +2,7 @@ import {
   PERSON_ID,
   PERSON_SAME_AS,
   PROFILE_PAGE_ID,
+  SITE_LAST_MODIFIED,
   SITE_NAME,
   SITE_URL,
   WEBSITE_ID,
@@ -15,7 +16,10 @@ export const personSchema = {
   "@id": PERSON_ID,
   name: SITE_NAME,
   url: SITE_URL,
+  description:
+    "Software engineer building backend systems, developer tools, AI products, and blockchain infrastructure with Rust and TypeScript.",
   jobTitle: "Software Engineer",
+  knowsAbout: ["Rust", "TypeScript", "backend systems", "AI agents", "blockchain infrastructure", "Solana"],
   sameAs: PERSON_SAME_AS,
 }
 
@@ -28,12 +32,20 @@ export function homeStructuredData() {
         "@id": WEBSITE_ID,
         name: `${SITE_NAME} — Software Engineer`,
         url: SITE_URL,
+        description:
+          "Portfolio, project case studies, and technical writing from Raghav Sharma, a software engineer working with Rust and TypeScript.",
+        inLanguage: "en",
+        publisher: { "@id": PERSON_ID },
       },
       {
         "@type": "ProfilePage",
         "@id": PROFILE_PAGE_ID,
         url: SITE_URL,
         name: `${SITE_NAME} — Software Engineer`,
+        description:
+          "Portfolio and selected work from Raghav Sharma, a software engineer building backend systems, developer tools, AI products, and blockchain infrastructure.",
+        dateModified: SITE_LAST_MODIFIED,
+        inLanguage: "en",
         mainEntity: { "@id": PERSON_ID },
       },
       personSchema,
@@ -43,6 +55,8 @@ export function homeStructuredData() {
 
 export function projectStructuredData(project) {
   const url = absoluteUrl(projectPath(project.slug))
+  const description = project.shortDescription || project.summary || project.desc
+  const keywords = [...new Set([...(project.stack || []), ...(project.tags || []), ...(project.chains || [])])]
 
   return {
     "@context": "https://schema.org",
@@ -52,7 +66,16 @@ export function projectStructuredData(project) {
         "@id": `${url}#project`,
         name: project.name,
         url,
-        description: project.shortDescription || project.summary || project.desc,
+        description,
+        image: absoluteUrl(`${projectPath(project.slug)}/opengraph-image`),
+        inLanguage: "en",
+        keywords,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": url,
+          url,
+          name: `${project.name} case study | ${SITE_NAME}`,
+        },
         author: { "@id": PERSON_ID },
         codeRepository: project.github,
         programmingLanguage: project.stack,
@@ -82,10 +105,20 @@ export function blogStructuredData(posts) {
         url: `${SITE_URL}/blog`,
         name: "Marginalia",
         description: "Notes from the work by Raghav Sharma.",
+        inLanguage: "en",
         author: { "@id": PERSON_ID },
+        publisher: { "@id": PERSON_ID },
         blogPost: posts.map((post) => ({ "@id": `${absoluteUrl(blogPath(post.slug))}#article` })),
       },
       personSchema,
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/blog#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Writing", item: `${SITE_URL}/blog` },
+        ],
+      },
     ],
   }
 }
@@ -107,10 +140,15 @@ export function postStructuredData(post) {
         headline: post.title,
         description: post.description,
         url,
+        inLanguage: "en",
+        articleSection: post.tags[0],
+        keywords: post.tags,
+        wordCount: post.readingTime?.words,
         datePublished: post.publishedAt,
         dateModified: post.updatedAt || post.publishedAt,
         author: { "@id": PERSON_ID },
         publisher: { "@id": PERSON_ID },
+        isPartOf: { "@id": `${SITE_URL}/blog#blog` },
         image,
       },
       {

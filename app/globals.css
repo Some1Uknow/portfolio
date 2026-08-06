@@ -1,4 +1,6 @@
 :root {
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
+  --font-instrument-serif: Georgia, "Times New Roman";
   /* Light: soft gray gutters, full-white content column */
   --color-bg: #ffffff;
   --color-gutter: #f7f7f8;
@@ -524,8 +526,10 @@ html[data-theme="dark"] .theme-toggle__thumb { transform: translateX(20px); }
 .blog-list__item { border-bottom: 1px solid var(--color-border-soft); display: grid; gap: 7px; padding: 22px 0; }
 .blog-list__meta { color: var(--color-soft); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
 .blog-list__item h2 { font-family: var(--font-instrument-serif), Georgia, serif; font-size: clamp(25px, 3vw, 34px); font-weight: 400; letter-spacing: -0.03em; line-height: 1; }
+.blog-list__description { color: var(--color-muted); font-size: 12px; line-height: 1.7; max-width: 70ch; }
 .blog-list__item h2 a { color: var(--color-text); text-decoration: none; }
 .blog-list__item h2 a:hover { color: var(--color-soft); }
+.writing-description { color: var(--color-muted); font-size: 11px; line-height: 1.6; margin-bottom: 6px; max-width: 64ch; }
 .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag-list > span { border: 1px solid var(--color-border); color: var(--color-soft); display: inline-flex; font-size: 10px; letter-spacing: 0.05em; line-height: 1; padding: 4px 8px; text-transform: uppercase; }
 

@@ -14,12 +14,24 @@ function ProjectLinks({ project }) {
   return (
     <div className="project-case__links">
       {project.live ? (
-        <a href={project.live} target="_blank" rel="noreferrer noopener" className="project-page-link">
+        <a
+          href={project.live}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="project-page-link"
+          aria-label={`Open ${project.name} live demo`}
+        >
           {project.liveLabel || "live demo"} ↗
         </a>
       ) : null}
       {project.github ? (
-        <a href={project.github} target="_blank" rel="noreferrer noopener" className="project-page-link">
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="project-page-link"
+          aria-label={`View ${project.name} source on GitHub`}
+        >
           github ↗
         </a>
       ) : null}

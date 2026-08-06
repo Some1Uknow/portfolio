@@ -1,32 +1,28 @@
 import "./globals.css"
-import { Geist_Mono, Instrument_Serif } from "next/font/google"
 import Script from "next/script"
 
 import ThemeControls from "../src/components/ThemeControls.jsx"
 import VercelMetrics from "../src/components/VercelMetrics.jsx"
-import { SITE_URL } from "../src/lib/site.js"
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-  display: "swap",
-})
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  variable: "--font-instrument-serif",
-  weight: "400",
-  display: "swap",
-})
+import { SITE_NAME, SITE_URL } from "../src/lib/site.js"
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
   title: {
     default: "Raghav Sharma — Software Engineer",
     template: "%s | Raghav Sharma",
   },
   description:
     "Raghav Sharma is a software engineer building backend systems, developer tools, AI products, and blockchain infrastructure with Rust and TypeScript.",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "technology",
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
   robots: {
     index: true,
     follow: true,
@@ -40,16 +36,29 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
+    siteName: SITE_NAME,
+    locale: "en_US",
     url: "/",
     title: "Raghav Sharma — Software Engineer",
     description:
       "Backend systems, developer tools, AI products, and blockchain infrastructure built with Rust and TypeScript.",
-    images: ["/opengraph-image"],
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Raghav Sharma — Software Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     creator: "@raghavdotsol",
     site: "@raghavdotsol",
+    title: "Raghav Sharma — Software Engineer",
+    description:
+      "Backend systems, developer tools, AI products, and blockchain infrastructure built with Rust and TypeScript.",
+    images: ["/opengraph-image"],
   },
   icons: {
     icon: "/favicon.svg",
@@ -77,7 +86,7 @@ const themeBootstrap = `(() => {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geistMono.variable} ${instrumentSerif.variable}`}>
+    <html lang="en" suppressHydrationWarning>
       <body>
         <Script id="portfolio-theme" strategy="beforeInteractive">
           {themeBootstrap}

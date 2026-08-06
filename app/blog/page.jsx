@@ -52,6 +52,7 @@ export default async function BlogIndexPage() {
               <h2>
                 <Link href={blogPath(post.slug)}>{post.title}</Link>
               </h2>
+              <p className="blog-list__description">{post.description}</p>
               <time dateTime={post.publishedAt} className="blog-list__meta">
                 {formatDate(post.publishedAt)}
               </time>

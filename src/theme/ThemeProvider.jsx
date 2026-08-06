@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useSyncExternalStore } from "react"
 
 import { ThemeContext } from "./themeContext.js"
 
@@ -9,6 +9,36 @@ const LIGHT_THEME_COLOR = "#ffffff"
 const DARK_THEME_COLOR = "#000000"
 // Fixed default for SSR + first client render so hydration always matches.
 const DEFAULT_THEME = "light"
+const themeListeners = new Set()
+
+function subscribeTheme(listener) {
+  themeListeners.add(listener)
+  return () => themeListeners.delete(listener)
+}
+
+function notifyThemeChange() {
+  themeListeners.forEach((listener) => listener())
+}
+
+function getThemeSnapshot() {
+  if (typeof document === "undefined") {
+    return DEFAULT_THEME
+  }
+
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light"
+}
+
+function getServerThemeSnapshot() {
+  return DEFAULT_THEME
+}
+
+function getMountedSnapshot() {
+  return true
+}
+
+function getServerMountedSnapshot() {
+  return false
+}
 
 function getStoredTheme() {
   try {
@@ -44,47 +74,21 @@ function applyTheme(theme) {
 }
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(DEFAULT_THEME)
-  const [manualTheme, setManualTheme] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerThemeSnapshot)
+  const mounted = useSyncExternalStore(subscribeTheme, getMountedSnapshot, getServerMountedSnapshot)
 
   useEffect(() => {
-    const stored = getStoredTheme()
-    const resolved = resolveTheme()
-    setManualTheme(Boolean(stored))
-    setTheme(resolved)
-    applyTheme(resolved)
-    setMounted(true)
-  }, [])
-
-  useEffect(() => {
-    if (!mounted) {
-      return undefined
-    }
-
-    applyTheme(theme)
-
-    try {
-      if (manualTheme) {
-        window.localStorage.setItem(STORAGE_KEY, theme)
-      } else {
-        window.localStorage.removeItem(STORAGE_KEY)
-      }
-    } catch {
-      // Ignore storage failures and keep the in-memory theme state.
-    }
-
-    return undefined
-  }, [manualTheme, mounted, theme])
-
-  useEffect(() => {
-    if (!mounted || manualTheme) {
-      return undefined
-    }
+    applyTheme(resolveTheme())
+    notifyThemeChange()
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
     const handleChange = (event) => {
-      setTheme(event.matches ? "dark" : "light")
+      if (getStoredTheme()) {
+        return
+      }
+
+      applyTheme(event.matches ? "dark" : "light")
+      notifyThemeChange()
     }
 
     if (typeof mediaQuery.addEventListener === "function") {
@@ -94,11 +98,19 @@ export function ThemeProvider({ children }) {
 
     mediaQuery.addListener(handleChange)
     return () => mediaQuery.removeListener(handleChange)
-  }, [manualTheme, mounted])
+  }, [])
 
   const toggleTheme = () => {
-    setManualTheme(true)
-    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"))
+    const nextTheme = theme === "dark" ? "light" : "dark"
+    applyTheme(nextTheme)
+
+    try {
+      window.localStorage.setItem(STORAGE_KEY, nextTheme)
+    } catch {
+      // Ignore storage failures and keep the in-memory theme state.
+    }
+
+    notifyThemeChange()
   }
 
   return (

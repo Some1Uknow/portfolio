@@ -3,6 +3,7 @@ import { SiSolana } from "react-icons/si"
 
 import { getProjectIconUrl, projects } from "../../content/siteContent.js"
 import { PAD } from "../../styles/globalStyles.js"
+import ProjectArchive from "./ProjectArchive.jsx"
 import SectionLabel from "../ui/SectionLabel.jsx"
 
 function TileExternalLinks({ project }) {
@@ -14,9 +15,10 @@ function TileExternalLinks({ project }) {
           target="_blank"
           rel="noreferrer noopener"
           className="muted-link"
+          aria-label={`Open ${project.name} live site`}
           style={{ fontSize: 10, letterSpacing: "0.06em", textTransform: "uppercase" }}
         >
-          {project.liveLabel || "live"} ↗
+          {project.liveLabel || "live demo"} ↗
         </a>
       ) : null}
       {project.github ? (
@@ -25,9 +27,10 @@ function TileExternalLinks({ project }) {
           target="_blank"
           rel="noreferrer noopener"
           className="muted-link"
+          aria-label={`View ${project.name} source on GitHub`}
           style={{ fontSize: 10, letterSpacing: "0.06em", textTransform: "uppercase" }}
         >
-          github ↗
+          GitHub ↗
         </a>
       ) : null}
     </div>
@@ -80,9 +83,10 @@ function ProjectIcon({ project, size = 28 }) {
   )
 }
 
-function ProjectTile({ project, compact = false }) {
+function ProjectTile({ project, compact = false, headingLevel = 4 }) {
   const href = project.href || `/projects/${project.slug}`
   const external = Boolean(project.href)
+  const Heading = headingLevel === 3 ? "h3" : "h4"
 
   return (
     <article className={compact ? "project-tile project-tile--compact" : "project-tile"}>
@@ -90,7 +94,7 @@ function ProjectTile({ project, compact = false }) {
         <ProjectIcon project={project} size={compact ? 26 : 28} />
 
         <div style={{ minWidth: 0, flex: 1 }}>
-          <h3
+          <Heading
             style={{
               fontFamily: "var(--font-instrument-serif), Georgia, serif",
               fontSize: compact ? "clamp(15px, 1.6vw, 18px)" : "clamp(16px, 1.8vw, 20px)",
@@ -110,7 +114,7 @@ function ProjectTile({ project, compact = false }) {
                 {project.name}
               </Link>
             )}
-          </h3>
+          </Heading>
           <p
             style={{
               color: "var(--color-muted)",
@@ -130,11 +134,17 @@ function ProjectTile({ project, compact = false }) {
 
       <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
         {external ? (
-          <a href={href} target="_blank" rel="noreferrer noopener" className="project-case-study-link">
-            open <span aria-hidden="true">↗</span>
+          <a
+            href={href}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="project-case-study-link"
+            aria-label={`Open ${project.name}`}
+          >
+            open {project.name} <span aria-hidden="true">↗</span>
           </a>
         ) : (
-          <Link href={href} className="project-case-study-link">
+          <Link href={`/projects/${project.slug}`} className="project-case-study-link">
             {project.ctaLabel || "Read case study"} <span aria-hidden="true">→</span>
           </Link>
         )}
@@ -147,16 +157,18 @@ function ProjectTile({ project, compact = false }) {
 export default function Projects() {
   const productProjects = projects.filter((project) => project.featured)
   const othersProjects = projects.filter((project) => !project.featured && project.category === "rust-infra")
+  const moreProductProjects = projects.filter((project) => !project.featured && project.category === "products")
+  const protocolProjects = projects.filter((project) => project.category === "protocols")
 
   return (
     <section id="projects" style={{ padding: `0 ${PAD}` }}>
-      <SectionLabel>Projects</SectionLabel>
+      <SectionLabel as="h2">Projects</SectionLabel>
 
       <div style={{ display: "grid", gap: 28 }}>
         <div style={{ display: "grid", gap: 14 }}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: 20, flexWrap: "wrap", alignItems: "flex-end" }}>
             <div style={{ maxWidth: 760 }}>
-              <h2
+              <h3
                 style={{
                   fontFamily: "var(--font-instrument-serif), Georgia, serif",
                   fontSize: "clamp(26px, 3.6vw, 40px)",
@@ -168,7 +180,7 @@ export default function Projects() {
                 }}
               >
                 Products
-              </h2>
+              </h3>
             </div>
 
             <div style={{ fontSize: 10, color: "var(--color-soft)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -178,7 +190,7 @@ export default function Projects() {
 
           <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10 }}>
             {productProjects.map((project) => (
-              <ProjectTile key={project.slug} project={project} />
+              <ProjectTile key={project.slug} project={project} headingLevel={4} />
             ))}
           </div>
         </div>
@@ -196,7 +208,7 @@ export default function Projects() {
                 marginBottom: 0,
               }}
             >
-              Others
+              Rust & infrastructure
             </h3>
             <div style={{ fontSize: 10, color: "var(--color-soft)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               {String(othersProjects.length).padStart(2, "0")}
@@ -205,10 +217,38 @@ export default function Projects() {
 
           <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10 }}>
             {othersProjects.map((project) => (
-              <ProjectTile key={project.slug} project={project} compact />
+              <ProjectTile key={project.slug} project={project} compact headingLevel={4} />
             ))}
           </div>
         </div>
+
+        {moreProductProjects.length > 0 ? (
+          <ProjectArchive
+            title="More product work"
+            blurb="Additional products and experiments with live surfaces, source code, or a focused case study."
+            count={moreProductProjects.length}
+          >
+            <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10 }}>
+              {moreProductProjects.map((project) => (
+                <ProjectTile key={project.slug} project={project} compact headingLevel={4} />
+              ))}
+            </div>
+          </ProjectArchive>
+        ) : null}
+
+        {protocolProjects.length > 0 ? (
+          <ProjectArchive
+            title="Solana protocol work"
+            blurb="Rust and Anchor primitives covering AMMs, escrow, flash loans, and tokenized vault custody."
+            count={protocolProjects.length}
+          >
+            <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10 }}>
+              {protocolProjects.map((project) => (
+                <ProjectTile key={project.slug} project={project} compact headingLevel={4} />
+              ))}
+            </div>
+          </ProjectArchive>
+        ) : null}
       </div>
     </section>
   )

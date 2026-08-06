@@ -43,6 +43,7 @@ export default function Writing({ posts = [] }) {
                 >
                   {post.title}
                 </h3>
+                <p className="writing-description">{post.description}</p>
                 <div style={{ fontSize: 11, color: "var(--color-soft)" }}>{post.tags.join(" · ")}</div>
               </div>
               <div

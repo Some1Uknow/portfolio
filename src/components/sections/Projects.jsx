@@ -3,7 +3,6 @@ import { SiSolana } from "react-icons/si"
 
 import { getProjectIconUrl, projects } from "../../content/siteContent.js"
 import { PAD } from "../../styles/globalStyles.js"
-import ProjectArchive from "./ProjectArchive.jsx"
 import SectionLabel from "../ui/SectionLabel.jsx"
 
 function TileExternalLinks({ project }) {
@@ -157,8 +156,6 @@ function ProjectTile({ project, compact = false, headingLevel = 4 }) {
 export default function Projects() {
   const productProjects = projects.filter((project) => project.featured)
   const othersProjects = projects.filter((project) => !project.featured && project.category === "rust-infra")
-  const moreProductProjects = projects.filter((project) => !project.featured && project.category === "products")
-  const protocolProjects = projects.filter((project) => project.category === "protocols")
 
   return (
     <section id="projects" style={{ padding: `0 ${PAD}` }}>
@@ -221,34 +218,6 @@ export default function Projects() {
             ))}
           </div>
         </div>
-
-        {moreProductProjects.length > 0 ? (
-          <ProjectArchive
-            title="More product work"
-            blurb="Additional products and experiments with live surfaces, source code, or a focused case study."
-            count={moreProductProjects.length}
-          >
-            <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10 }}>
-              {moreProductProjects.map((project) => (
-                <ProjectTile key={project.slug} project={project} compact headingLevel={4} />
-              ))}
-            </div>
-          </ProjectArchive>
-        ) : null}
-
-        {protocolProjects.length > 0 ? (
-          <ProjectArchive
-            title="Solana protocol work"
-            blurb="Rust and Anchor primitives covering AMMs, escrow, flash loans, and tokenized vault custody."
-            count={protocolProjects.length}
-          >
-            <div className="projects-tile-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 10 }}>
-              {protocolProjects.map((project) => (
-                <ProjectTile key={project.slug} project={project} compact headingLevel={4} />
-              ))}
-            </div>
-          </ProjectArchive>
-        ) : null}
       </div>
     </section>
   )

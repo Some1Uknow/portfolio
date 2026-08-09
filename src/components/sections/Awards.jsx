@@ -18,8 +18,7 @@ export default function Awards() {
                 gap: 24,
                 alignItems: "start",
                 padding: "22px 0",
-                borderTop: index === 0 ? "1px solid var(--color-border-soft)" : "none",
-                borderBottom: "1px solid var(--color-border-soft)",
+                borderBottom: index === awards.length - 1 ? "none" : "1px solid var(--color-border-soft)",
               }}
             >
               <span

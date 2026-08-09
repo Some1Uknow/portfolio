@@ -4,9 +4,9 @@ import { compileMDX } from "next-mdx-remote/rsc"
 import rehypePrettyCode from "rehype-pretty-code"
 import remarkGfm from "remark-gfm"
 
-import { getPostBySlug, getPublishedPosts, getTableOfContents, headingId } from "../../../src/lib/blog.js"
+import { getPostBySlug, getPublishedPosts, headingId } from "../../../src/lib/blog.js"
 import { projectsBySlug } from "../../../src/content/siteContent.js"
-import { blogPath, formatDate, projectPath } from "../../../src/lib/site.js"
+import { blogPath, projectPath } from "../../../src/lib/site.js"
 import { JsonLd, postStructuredData } from "../../../src/lib/structured-data.jsx"
 import { PAD } from "../../../src/styles/globalStyles.js"
 
@@ -110,19 +110,16 @@ export default async function BlogPostPage({ params }) {
     notFound()
   }
 
-  const [{ content }, tableOfContents] = await Promise.all([
-    compileMDX({
-      source: post.source,
-      components: createMdxComponents(),
-      options: {
-        mdxOptions: {
-          remarkPlugins: [remarkGfm],
-          rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]],
-        },
+  const { content } = await compileMDX({
+    source: post.source,
+    components: createMdxComponents(),
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [[rehypePrettyCode, { theme: "github-dark" }]],
       },
-    }),
-    Promise.resolve(getTableOfContents(post.source)),
-  ])
+    },
+  })
   const relatedProjects = post.relatedProjects.map((projectSlug) => projectsBySlug.get(projectSlug)).filter(Boolean)
 
   return (
@@ -137,42 +134,10 @@ export default async function BlogPostPage({ params }) {
       </nav>
 
       <header className="article-header">
-        <div className="tag-list" aria-label="Article topics">
-          {post.tags.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
         <h1>{post.title}</h1>
-        <p>{post.description}</p>
-        <div className="article-byline">
-          <span>By Raghav Sharma</span>
-          <span aria-hidden="true">·</span>
-          <time dateTime={post.publishedAt}>Published {formatDate(post.publishedAt)}</time>
-          {post.updatedAt ? (
-            <>
-              <span aria-hidden="true">·</span>
-              <time dateTime={post.updatedAt}>Updated {formatDate(post.updatedAt)}</time>
-            </>
-          ) : null}
-          <span aria-hidden="true">·</span>
-          <span>{post.readingTime.text}</span>
-        </div>
       </header>
 
       <div className="article-layout">
-        {tableOfContents.length > 0 ? (
-          <aside className="article-toc" aria-label="Table of contents">
-            <p>On this page</p>
-            <ol>
-              {tableOfContents.map((item) => (
-                <li key={item.id} data-depth={item.depth}>
-                  <a href={`#${item.id}`}>{item.title}</a>
-                </li>
-              ))}
-            </ol>
-          </aside>
-        ) : null}
-
         <article className="prose">{content}</article>
       </div>
 

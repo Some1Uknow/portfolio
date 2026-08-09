@@ -1,9 +1,13 @@
 import Link from "next/link"
 
 import { getPublishedPosts } from "../../src/lib/blog.js"
-import { blogPath, formatDate } from "../../src/lib/site.js"
+import { blogPath } from "../../src/lib/site.js"
 import { JsonLd, blogStructuredData } from "../../src/lib/structured-data.jsx"
 import { PAD } from "../../src/styles/globalStyles.js"
+
+function formatBlogIndexDate(dateString) {
+  return dateString.split("-").reverse().join(" ")
+}
 
 export async function generateMetadata() {
   const posts = await getPublishedPosts()
@@ -40,7 +44,6 @@ export default async function BlogIndexPage() {
       <header className="reading-page__header">
         <p className="eyebrow">Notes</p>
         <h1>Marginalia</h1>
-        <p>Notes from the work, kept close to the margins.</p>
       </header>
 
       {posts.length === 0 ? (
@@ -52,9 +55,8 @@ export default async function BlogIndexPage() {
               <h2>
                 <Link href={blogPath(post.slug)}>{post.title}</Link>
               </h2>
-              <p className="blog-list__description">{post.description}</p>
               <time dateTime={post.publishedAt} className="blog-list__meta">
-                {formatDate(post.publishedAt)}
+                {formatBlogIndexDate(post.publishedAt)}
               </time>
             </article>
           ))}

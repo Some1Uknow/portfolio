@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-import { blogPath, formatDate } from "../../lib/site.js"
+import { blogPath } from "../../lib/site.js"
 import FadeIn from "../ui/FadeIn.jsx"
 import SectionLabel from "../ui/SectionLabel.jsx"
 
@@ -18,45 +18,31 @@ export default function Writing({ posts = [] }) {
             <Link
               href={blogPath(post.slug)}
               style={{
-                display: "grid",
-                gridTemplateColumns: "1fr auto",
-                gap: 24,
-                alignItems: "start",
-                padding: "24px 0",
-                borderBottom: "1px solid var(--color-border-soft)",
-                borderTop: index === 0 ? "1px solid var(--color-border-soft)" : "none",
+                display: "block",
+                padding: "14px 0",
+                borderBottom: index === posts.length - 1 ? "none" : "1px solid var(--color-border-soft)",
                 cursor: "pointer",
                 textDecoration: "none",
               }}
-              className="writing-row hoverable"
+              className="hoverable"
             >
               <div>
                 <h3
                   style={{
                     fontFamily: "var(--font-instrument-serif), Georgia, serif",
-                    fontSize: 18,
-                    letterSpacing: "-0.01em",
+                    fontSize: "clamp(13px, 1.4vw, 15px)",
+                    letterSpacing: "-0.03em",
                     color: "var(--color-text)",
-                    marginBottom: 5,
-                    fontWeight: 400,
+                    marginBottom: 4,
+                    fontWeight: 500,
+                    lineHeight: 1.2,
                   }}
                 >
                   {post.title}
                 </h3>
-                <p className="writing-description">{post.description}</p>
-                <div style={{ fontSize: 11, color: "var(--color-soft)" }}>{post.tags.join(" · ")}</div>
-              </div>
-              <div
-                style={{
-                  fontSize: 10,
-                  letterSpacing: "0.07em",
-                  textTransform: "uppercase",
-                  color: "var(--color-soft)",
-                  paddingTop: 4,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {formatDate(post.publishedAt)} · {post.readingTime.text}
+                <time dateTime={post.publishedAt} className="blog-list__meta">
+                  {post.publishedAt.split("-").reverse().join(" ")}
+                </time>
               </div>
             </Link>
           </FadeIn>

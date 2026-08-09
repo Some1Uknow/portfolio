@@ -1,36 +1,42 @@
 import Link from "next/link"
+import { FiArrowUpRight, FiBookOpen, FiGithub } from "react-icons/fi"
 import { SiSolana } from "react-icons/si"
 
 import { getProjectIconUrl, projects } from "../../content/siteContent.js"
 import { PAD } from "../../styles/globalStyles.js"
 import SectionLabel from "../ui/SectionLabel.jsx"
 
-function TileExternalLinks({ project }) {
+function ProjectActions({ project, external }) {
+  const demoUrl = project.live || (external ? project.href : null)
+
   return (
-    <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-      {project.live ? (
-        <a
-          href={project.live}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="muted-link"
-          aria-label={`Open ${project.name} live site`}
-          style={{ fontSize: 10, letterSpacing: "0.06em", textTransform: "uppercase" }}
-        >
-          {project.liveLabel || "live demo"} ↗
-        </a>
-      ) : null}
+    <div className="project-tile__actions">
       {project.github ? (
         <a
           href={project.github}
           target="_blank"
           rel="noreferrer noopener"
-          className="muted-link"
+          className="project-tile__action"
           aria-label={`View ${project.name} source on GitHub`}
-          style={{ fontSize: 10, letterSpacing: "0.06em", textTransform: "uppercase" }}
         >
-          GitHub ↗
+          <FiGithub aria-hidden="true" size={14} />
         </a>
+      ) : null}
+      {demoUrl ? (
+        <a
+          href={demoUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="project-tile__action"
+          aria-label={`Open ${project.name} ${project.liveLabel || "live demo"}`}
+        >
+          <FiArrowUpRight aria-hidden="true" size={14} />
+        </a>
+      ) : null}
+      {!external ? (
+        <Link href={`/projects/${project.slug}`} className="project-tile__action" aria-label={`Read ${project.name} case study`}>
+          <FiBookOpen aria-hidden="true" size={14} />
+        </Link>
       ) : null}
     </div>
   )
@@ -89,14 +95,14 @@ function ProjectTile({ project, compact = false, headingLevel = 4 }) {
 
   return (
     <article className={compact ? "project-tile project-tile--compact" : "project-tile"}>
-      <div style={{ display: "flex", gap: 10, minWidth: 0, alignItems: "flex-start" }}>
-        <ProjectIcon project={project} size={compact ? 26 : 28} />
-
-        <div style={{ minWidth: 0, flex: 1 }}>
+      <div className="project-tile__top">
+        <div className="project-tile__identity">
+          <ProjectIcon project={project} size={compact ? 26 : 28} />
           <Heading
+            className="project-tile__title"
             style={{
               fontFamily: "var(--font-instrument-serif), Georgia, serif",
-              fontSize: compact ? "clamp(15px, 1.6vw, 18px)" : "clamp(16px, 1.8vw, 20px)",
+              fontSize: compact ? "clamp(14px, 1.4vw, 16px)" : "clamp(15px, 1.5vw, 18px)",
               fontWeight: 400,
               lineHeight: 1.1,
               letterSpacing: "-0.03em",
@@ -114,41 +120,13 @@ function ProjectTile({ project, compact = false, headingLevel = 4 }) {
               </Link>
             )}
           </Heading>
-          <p
-            style={{
-              color: "var(--color-muted)",
-              lineHeight: 1.5,
-              fontSize: compact ? 11 : 12,
-              maxWidth: 520,
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {project.shortDescription || project.desc}
-          </p>
         </div>
+        <ProjectActions project={project} external={external} />
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
-        {external ? (
-          <a
-            href={href}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="project-case-study-link"
-            aria-label={`Open ${project.name}`}
-          >
-            open {project.name} <span aria-hidden="true">↗</span>
-          </a>
-        ) : (
-          <Link href={`/projects/${project.slug}`} className="project-case-study-link">
-            {project.ctaLabel || "Read case study"} <span aria-hidden="true">→</span>
-          </Link>
-        )}
-        <TileExternalLinks project={project} />
-      </div>
+      <p className={compact ? "project-tile__description project-tile__description--compact" : "project-tile__description"}>
+        {project.shortDescription || project.desc}
+      </p>
     </article>
   )
 }

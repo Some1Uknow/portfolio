@@ -1,0 +1,50 @@
+---
+title: "why i stopped using npm and moved to pnpm (and why you probably should too)"
+description: "a practical, opinionated case for moving from npm to pnpm for faster installs, cleaner dependency graphs, monorepos, and safer package scripts."
+publishedAt: "2025-12-29"
+tags: []
+---
+
+<figure>
+  <img src="/blog/why-i-stopped-using-npm-and-moved-to-pnpm/hero.webp" alt="npm and pnpm" />
+</figure>
+
+i used npm for years without really choosing it. it came with node, every tutorial used it, every repo had a `package-lock.json`, and i had bigger things to worry about than the package manager. like why the build was red. or why a dependency that worked yesterday had decided to become a personality disorder today.
+
+then i started working across more projects.
+
+that is when `node_modules` stops feeling like a folder and starts feeling like something living in your machine. every fresh clone asks for another copy of the same universe. react again. typescript again. the same tiny dependency you have already installed in six other repositories, again. you look at your disk one day and realise javascript has quietly moved in, eaten your food, and started paying rent in gigabytes.
+
+npm does cache packages. i know. people always say this as if it settles the conversation. but the shape of the install still feels wasteful when you have a lot of repositories. it keeps making a local dependency tree for each project, and most of the time you are downloading or unpacking some version of a thing you already own somewhere else.
+
+pnpm was the first package manager that made this feel normal to me.
+
+it keeps one content-addressable store on your machine, then links packages into the project that needs them. so if three repos need the same version of a package, your disk does not have to role-play as three disks. it sounds like a small implementation detail until you switch and notice your machine is no longer carrying the same dependency graph around in a dozen different backpacks.
+
+the install speed was the part i expected to care about. the disk usage was the part that annoyed me enough to stay.
+
+with npm, a clean install always felt like a small ritual. run the command. stare at the terminal. see a warning from a package nobody has touched since 2017. wonder if the audit output is trying to help you or emotionally manipulate you. wait for it all to finish because, apparently, the computer needs to rediscover javascript from scratch every time.
+
+first installs still take time. nothing gets around that. but after pnpm has the packages, it gets much less theatrical about the next one. the package is already there. link it. move on. this matters even more in CI, where wasting a few minutes on every run feels harmless until you have wasted a workday watching dependency installs.
+
+the bigger reason i stayed with pnpm is that it is less willing to lie to you.
+
+npm's hoisting can make a badly declared dependency look fine. a package forgets to list something it uses, but that thing happens to be sitting at the top of `node_modules` because another package pulled it in. the app runs. everyone moves on. then a different environment installs the tree a little differently and somebody gets to spend an afternoon asking why production cannot find a package that was never declared in the first place.
+
+pnpm is more annoying here. it makes packages live with what they declared. some libraries break under that pressure, which is not fun when you only wanted to ship a feature. but i would rather find out that a dependency is held together by coincidence before it becomes my problem later. strictness is rude for about twenty minutes. hidden coupling is rude for months.
+
+monorepos made the difference even clearer. nobody wakes up wanting a monorepo. you have a web app, then a shared package, then a script, then another app, and suddenly you are explaining workspace configuration to yourself at 1am like it was always part of the plan.
+
+pnpm's workspaces felt refreshingly boring. one workspace file. one lockfile. a `--filter` flag when you want to work on one package without waking the entire repository up. that is the kind of boring i want from tooling. i do not want a package manager to be a framework, a philosophy, or a group project. i want it to install the right things, quickly, without letting my dependencies become creative.
+
+the security side also changed how i think about install scripts. dependencies are code written by people you do not know, pulled from the internet, often deep inside another dependency you did not choose yourself. letting every package run whatever it wants during install has always felt slightly insane once you stop and think about it. pnpm gives you more control over which build scripts get approved. i like that it makes the question visible instead of pretending the answer is always yes.
+
+the tradeoffs are real. older packages can get weird. some CI setups need a little care. windows has a talent for making filesystem details become a full-time hobby. if you have a very old codebase that only works because npm accidentally made all of its mistakes invisible, the switch can be annoying.
+
+but that annoyance is information.
+
+prettier branding or another package-manager war had nothing to do with it. i moved because my installs got lighter, repeated work stopped feeling repeated, and dependency problems showed up closer to where they were created.
+
+if npm is working for you and you have one small repo, this probably does not need to become a life decision. keep using it. but if you have multiple projects, a monorepo, or a machine that sounds tired whenever you run `npm install`, try pnpm for a week.
+
+you might not go back.

@@ -15,7 +15,7 @@ const frontmatterSchema = z.object({
   description: z.string().trim().min(1),
   publishedAt: z.string().date(),
   updatedAt: z.string().date().optional(),
-  tags: z.array(z.string().trim().min(1)).min(1),
+  tags: z.array(z.string().trim().min(1)).default([]),
   draft: z.boolean().optional().default(false),
   ogImage: z.string().trim().min(1).optional(),
   relatedProjects: z.array(z.string().trim().min(1)).optional().default([]),

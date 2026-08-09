@@ -12,7 +12,6 @@ export default function ContactCta() {
       <div
         style={{
           borderTop: "1px solid var(--color-border-soft)",
-          borderBottom: "1px solid var(--color-border-soft)",
           padding: "28px 0",
           display: "grid",
           gap: 14,

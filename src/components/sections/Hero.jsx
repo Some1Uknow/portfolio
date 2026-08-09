@@ -2,7 +2,6 @@ import siteContent from "../../content/siteContent.js"
 import { SiOpenai } from "react-icons/si"
 
 const heroItems = [
-  { style: { animation: "fadeUp 0.7s ease 0.05s both" } },
   { style: { animation: "fadeUp 0.8s ease 0.18s both" } },
   { style: { animation: "fadeUp 0.8s ease 0.32s both" } },
   { style: { animation: "fadeUp 0.8s ease 0.44s both" } },
@@ -23,49 +22,18 @@ export default function Hero() {
         paddingTop: "max(48px, env(safe-area-inset-top))",
       }}
     >
-      <p
-        style={{
-          fontSize: 10,
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          color: "var(--color-muted)",
-          marginBottom: 16,
-          display: "flex",
-          alignItems: "flex-start",
-          gap: 8,
-          ...heroItems[0].style,
-        }}
-      >
-        <span
-          style={{
-            width: 6,
-            height: 6,
-            background: "var(--color-accent)",
-            borderRadius: "50%",
-            display: "inline-block",
-            animation: "pulseGreen 2s infinite",
-            flexShrink: 0,
-            marginTop: 4,
-            boxShadow: "0 0 0 6px var(--color-accent-glow)",
-          }}
-        />
-        <span>
-          {hero.eyebrow} — {hero.location}
-        </span>
-      </p>
-
       <h1
         style={{
           fontFamily: "var(--font-instrument-serif), Georgia, serif",
-          fontSize: "clamp(28px, 4.8vw, 64px)",
-          fontWeight: 400,
+          fontSize: "clamp(26px, 4vw, 52px)",
+          fontWeight: 500,
           lineHeight: 1,
-          letterSpacing: "-0.03em",
+          letterSpacing: "-0.035em",
           color: "var(--color-text)",
           textTransform: "lowercase",
           marginBottom: 20,
           whiteSpace: "nowrap",
-          ...heroItems[1].style,
+          ...heroItems[0].style,
         }}
       >
         {hero.name}
@@ -76,7 +44,7 @@ export default function Hero() {
         aria-label="Currently cooking something with OpenAI Codex"
         style={{
           marginBottom: 24,
-          ...heroItems[2].style,
+          ...heroItems[1].style,
         }}
       >
         <span className="hero-status__dot" aria-hidden="true" />
@@ -87,7 +55,7 @@ export default function Hero() {
         </span>
       </div>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0 0", marginBottom: 16, ...heroItems[3].style }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0 0", marginBottom: 16, ...heroItems[2].style }}>
         {links.map((link) => (
           <a
             key={link.label}

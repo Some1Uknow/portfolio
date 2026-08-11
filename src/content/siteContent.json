@@ -748,41 +748,49 @@
     {
       "slug": "ezdeploy",
       "num": "16",
-      "featured": false,
-      "category": "rust-infra",
+      "featured": true,
+      "category": "products",
       "name": "EzDeploy",
-      "shortDescription": "A self-hosted deploy tool that turns Git pushes into live URLs.",
-      "desc": "Self-hosted deployment platform. Push to GitHub, get a live URL on a unique subdomain. Isolated Docker build container per deploy, real-time log streaming.",
-      "stack": ["TypeScript", "Docker", "CI/CD"],
-      "meta": "Zero-config deploys · Real-time logs · Unique subdomains",
+      "shortDescription": "A one-click deployment product for publishing static GitHub projects.",
+      "desc": "Deployment platform for turning a compatible public GitHub repository into a shareable static site, with repository checks, isolated one-shot builds, visible deployment phases, and CloudFront delivery.",
+      "stack": ["Next.js", "TypeScript", "AWS Fargate", "S3", "CloudFront", "Postgres"],
+      "meta": "One-click deploys · Isolated builds · Visible progress",
       "github": "https://github.com/Some1Uknow/ezdeploy",
+      "icon": "https://ezdeploy.raghav.codes/icon.svg",
+      "live": "https://ezdeploy.raghav.codes",
+      "liveLabel": "product",
       "chains": ["Infra"],
-      "summary": "A self-hosted deploy tool that turns a Git push into a live app.",
-      "overview": "EzDeploy is a self-hosted platform for converting Git pushes into isolated deploys with live logs and unique URLs.",
-      "problem": "Deploy tooling is often overkill for small teams or underpowered for self-hosted workflows.",
-      "solution": "I built a platform that automates the critical deploy path with container isolation and operator-visible runtime logs.",
-      "role": "Platform engineer across build orchestration and deploy UX.",
+      "summary": "A one-click deployment product that turns a compatible GitHub repository into a live static site.",
+      "overview": "EzDeploy gives developers a focused path from a public GitHub repository to a production URL. It validates repository compatibility, runs the build in an isolated one-shot Fargate task, publishes static output through S3 and CloudFront, and keeps every meaningful phase visible in the dashboard.",
+      "problem": "Publishing a small static project can still force developers through cloud accounts, build infrastructure, storage, CDN configuration, and opaque waiting states when all they need is a reliable URL.",
+      "solution": "I built a deliberately narrow deployment product that checks the repository before launch, orchestrates an ephemeral AWS build, streams real deployment state, and exposes the CloudFront URL only after AWS confirms it is ready.",
+      "role": "Product and platform engineer across UX, application architecture, build orchestration, and AWS infrastructure.",
       "features": [
-        "GitHub-triggered deployments",
-        "Unique subdomain provisioning",
-        "Per-deploy isolated Docker builds",
-        "Real-time log streaming"
+        "GitHub sign-in and public repository discovery",
+        "Pre-deployment framework and static-output compatibility checks",
+        "One-shot isolated Fargate builds that exit after completion",
+        "Visible queue, build, upload, edge-publish, and live phases",
+        "Shareable CloudFront URLs with retained build logs"
       ],
       "architecture": [
-        "TypeScript orchestration layer",
-        "Docker-based build isolation",
-        "Deployment status and logging flow",
-        "Self-hosted operator model"
+        "Next.js frontend and authenticated deployment workspace on Vercel",
+        "TypeScript API and orchestration layer backed by Neon Postgres",
+        "Amazon ECS/Fargate for ephemeral per-deployment build tasks",
+        "S3 for generated artifacts and CloudFront for edge delivery",
+        "Terraform-managed AWS infrastructure with budget monitoring"
       ],
       "challenges": [
-        "Making self-hosted deploys feel simple",
-        "Surfacing useful logs without noise",
-        "Managing build isolation ergonomically"
+        "Keeping a long-running cloud workflow understandable without inventing progress",
+        "Classifying static outputs safely across several frontend frameworks",
+        "Making build isolation reliable while ensuring compute stops after every job",
+        "Constraining the beta architecture and AWS spend without weakening the core flow"
       ],
       "outcomes": [
-        "Full developer-platform proof of work",
-        "Broader evidence of backend and platform engineering"
-      ]
+        "Production deployment product available at ezdeploy.raghav.codes",
+        "End-to-end GitHub-to-CloudFront publishing flow",
+        "Clear product case study spanning frontend UX, backend orchestration, and cloud infrastructure"
+      ],
+      "updatedAt": "2026-08-11"
     },
     {
       "slug": "one-click-indexer",

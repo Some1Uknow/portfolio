@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "preview": "next start",
     "sync:oss": "node scripts/sync-oss.mjs",
-    "test:seo": "node scripts/assert-seo.mjs"
+    "test:seo": "node scripts/assert-seo.mjs",
+    "test:agent": "node scripts/assert-agent-readiness.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

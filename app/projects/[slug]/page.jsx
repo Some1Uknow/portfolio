@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import ProjectPage from "../../../src/components/pages/ProjectPage.jsx"
 import { getProjectBySlug, projects } from "../../../src/content/siteContent.js"
 import { getPublishedPosts } from "../../../src/lib/blog.js"
-import { projectPath } from "../../../src/lib/site.js"
+import { projectPath, SITE_BRAND } from "../../../src/lib/site.js"
 import { JsonLd, projectStructuredData } from "../../../src/lib/structured-data.jsx"
 
 export const dynamicParams = false
@@ -20,7 +20,7 @@ export function generateMetadata({ params }) {
       return {}
     }
 
-    const title = `${project.name} case study | Raghav Sharma`
+    const title = `${project.name} case study | Raghav Sharma — ${SITE_BRAND}`
     const description = project.shortDescription || project.summary || project.desc
     const path = projectPath(project.slug)
 

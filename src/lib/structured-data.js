@@ -2,6 +2,7 @@ import {
   PERSON_ID,
   PERSON_SAME_AS,
   PROFILE_PAGE_ID,
+  SITE_BRAND,
   SITE_LAST_MODIFIED,
   SITE_NAME,
   SITE_URL,
@@ -15,6 +16,7 @@ export const personSchema = {
   "@type": "Person",
   "@id": PERSON_ID,
   name: SITE_NAME,
+  alternateName: SITE_BRAND,
   url: SITE_URL,
   description:
     "Software engineer building backend systems, developer tools, AI products, and blockchain infrastructure with Rust and TypeScript.",
@@ -30,7 +32,8 @@ export function homeStructuredData() {
       {
         "@type": "WebSite",
         "@id": WEBSITE_ID,
-        name: `${SITE_NAME} — Software Engineer`,
+        name: `${SITE_NAME} — ${SITE_BRAND}`,
+        alternateName: SITE_BRAND,
         url: SITE_URL,
         description:
           "Portfolio, project case studies, and technical writing from Raghav Sharma, a software engineer working with Rust and TypeScript.",
@@ -41,7 +44,8 @@ export function homeStructuredData() {
         "@type": "ProfilePage",
         "@id": PROFILE_PAGE_ID,
         url: SITE_URL,
-        name: `${SITE_NAME} — Software Engineer`,
+        name: `${SITE_NAME} — ${SITE_BRAND}`,
+        alternateName: SITE_BRAND,
         description:
           "Portfolio and selected work from Raghav Sharma, a software engineer building backend systems, developer tools, AI products, and blockchain infrastructure.",
         dateModified: SITE_LAST_MODIFIED,

@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og"
 
-export const alt = "Raghav Sharma — Software Engineer"
+import { SITE_BRAND } from "../src/lib/site.js"
+
+export const alt = "Raghav Sharma — Raghav Codes — Software Engineer"
 export const size = {
   width: 1200,
   height: 630,
@@ -24,7 +26,7 @@ export default function OpenGraphImage() {
         }}
       >
         <div style={{ color: "#5e554e", display: "flex", fontSize: 24, letterSpacing: "0.12em", textTransform: "uppercase" }}>
-          Raghav Sharma
+          {SITE_BRAND} / Raghav Sharma
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div style={{ display: "flex", fontFamily: "serif", fontSize: 86, letterSpacing: "-0.05em", lineHeight: 0.95 }}>

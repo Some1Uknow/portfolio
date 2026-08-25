@@ -1,5 +1,6 @@
 import siteContent from "../../content/siteContent.js"
 import { SiOpenai } from "react-icons/si"
+import FadeIn from "../ui/FadeIn.jsx"
 
 const heroItems = [
   { style: { animation: "fadeUp 0.8s ease 0.18s both" } },
@@ -7,7 +8,7 @@ const heroItems = [
   { style: { animation: "fadeUp 0.8s ease 0.44s both" } },
 ]
 
-const { hero, links } = siteContent
+const { hero, links, aboutParagraphs } = siteContent
 
 export default function Hero() {
   return (
@@ -38,6 +39,24 @@ export default function Hero() {
       >
         {hero.name}
       </h1>
+
+      <FadeIn y={0} x={-8}>
+        <div style={{ maxWidth: 760, marginBottom: 20 }}>
+          {aboutParagraphs.map((paragraph) => (
+            <p
+              key={paragraph}
+              style={{
+                fontSize: 12,
+                color: "var(--color-muted)",
+                lineHeight: 1.6,
+                marginBottom: 0,
+              }}
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </FadeIn>
 
       <div
         className="hero-status"

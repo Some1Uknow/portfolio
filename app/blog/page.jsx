@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { getPublishedPosts } from "../../src/lib/blog.js"
-import { blogPath } from "../../src/lib/site.js"
+import { blogPath, SITE_BRAND } from "../../src/lib/site.js"
 import { JsonLd, blogStructuredData } from "../../src/lib/structured-data.jsx"
 import { PAD } from "../../src/styles/globalStyles.js"
 
@@ -14,14 +14,14 @@ export async function generateMetadata() {
   const isEmpty = posts.length === 0
 
   return {
-    title: { absolute: "Marginalia | Raghav Sharma" },
+    title: { absolute: `Marginalia | Raghav Sharma — ${SITE_BRAND}` },
     description: "Technical notes, project write-ups, and engineering evidence from Raghav Sharma.",
     alternates: { canonical: "/blog" },
     robots: isEmpty ? { index: false, follow: true } : { index: true, follow: true },
     openGraph: {
       type: "website",
       url: "/blog",
-      title: "Marginalia | Raghav Sharma",
+      title: `Marginalia | Raghav Sharma — ${SITE_BRAND}`,
       description: "Technical notes, project write-ups, and engineering evidence from Raghav Sharma.",
       images: ["/opengraph-image"],
     },

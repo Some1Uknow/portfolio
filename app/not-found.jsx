@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { SITE_URL } from "../src/lib/site.js"
 import { PAD } from "../src/styles/globalStyles.js"
 
 export const metadata = {
@@ -35,6 +36,17 @@ export default function NotFound() {
       <p style={{ maxWidth: 560, color: "var(--color-muted)", lineHeight: 1.8 }}>
         This page does not exist. Return to the portfolio to browse available case studies and writing.
       </p>
+      <nav aria-label="Where to look next" style={{ display: "grid", gap: 8, maxWidth: 560 }}>
+        <strong style={{ fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 500 }}>
+          Where to look next
+        </strong>
+        <ul style={{ paddingLeft: 18, color: "var(--color-muted)", lineHeight: 1.8 }}>
+          <li><Link href="/">Portfolio</Link> — profile, experience, and selected projects.</li>
+          <li><a href={`${SITE_URL}/llms.txt`}>Agent guide</a> — when to use this portfolio and canonical links.</li>
+          <li><a href={`${SITE_URL}/sitemap.xml`}>Sitemap</a> — indexable page URLs.</li>
+          <li><Link href="/blog">Writing</Link> — technical notes and project write-ups.</li>
+        </ul>
+      </nav>
     </main>
   )
 }

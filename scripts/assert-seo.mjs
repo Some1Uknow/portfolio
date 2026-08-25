@@ -4,7 +4,7 @@ import { readFile } from "node:fs/promises"
 import sitemap from "../app/sitemap.js"
 import { getAllPosts, getPublishedPosts } from "../src/lib/blog.js"
 import { projects } from "../src/content/siteContent.js"
-import { PERSON_ID, SITE_LAST_MODIFIED, SITE_URL, blogPath, projectPath } from "../src/lib/site.js"
+import { PERSON_ID, SITE_BRAND, SITE_LAST_MODIFIED, SITE_URL, blogPath, projectPath } from "../src/lib/site.js"
 import { blogStructuredData, homeStructuredData, postStructuredData, projectStructuredData } from "../src/lib/structured-data.js"
 
 function isCanonicalApexUrl(url) {
@@ -52,6 +52,7 @@ async function main() {
   const homeSchema = homeStructuredData()
   assert.doesNotThrow(() => JSON.parse(JSON.stringify(homeSchema)), "Homepage JSON-LD must serialize.")
   assert.equal(getPersonEntity(homeSchema)["@id"], PERSON_ID, "Homepage must define the stable Person entity.")
+  assert.equal(getPersonEntity(homeSchema).alternateName, SITE_BRAND, "Homepage must expose the stable site brand.")
 
   for (const project of projects) {
     const schema = projectStructuredData(project)

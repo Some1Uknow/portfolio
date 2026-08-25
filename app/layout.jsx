@@ -3,20 +3,20 @@ import Script from "next/script"
 
 import ThemeControls from "../src/components/ThemeControls.jsx"
 import VercelMetrics from "../src/components/VercelMetrics.jsx"
-import { SITE_NAME, SITE_URL } from "../src/lib/site.js"
+import { SITE_BRAND, SITE_NAME, SITE_URL } from "../src/lib/site.js"
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  applicationName: SITE_NAME,
+  applicationName: SITE_BRAND,
   title: {
-    default: "Raghav Sharma — Software Engineer",
-    template: "%s | Raghav Sharma",
+    default: "Raghav Sharma — Raghav Codes | Software Engineer",
+    template: "%s | Raghav Codes",
   },
   description:
-    "Raghav Sharma is a software engineer building backend systems, developer tools, AI products, and blockchain infrastructure with Rust and TypeScript.",
+    "Raghav Codes is the portfolio of Raghav Sharma, a software engineer building backend systems, developer tools, AI products, and blockchain infrastructure with Rust and TypeScript.",
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
-  publisher: SITE_NAME,
+  publisher: SITE_BRAND,
   category: "technology",
   alternates: {
     types: {
@@ -36,10 +36,10 @@ export const metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: SITE_NAME,
+    siteName: SITE_BRAND,
     locale: "en_US",
     url: "/",
-    title: "Raghav Sharma — Software Engineer",
+    title: "Raghav Sharma — Raghav Codes | Software Engineer",
     description:
       "Backend systems, developer tools, AI products, and blockchain infrastructure built with Rust and TypeScript.",
     images: [
@@ -55,7 +55,7 @@ export const metadata = {
     card: "summary_large_image",
     creator: "@raghavdotsol",
     site: "@raghavdotsol",
-    title: "Raghav Sharma — Software Engineer",
+    title: "Raghav Sharma — Raghav Codes | Software Engineer",
     description:
       "Backend systems, developer tools, AI products, and blockchain infrastructure built with Rust and TypeScript.",
     images: ["/opengraph-image"],

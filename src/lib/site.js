@@ -1,5 +1,6 @@
 export const SITE_URL = "https://raghav.codes"
 export const SITE_NAME = "Raghav Sharma"
+export const SITE_BRAND = "Raghav Codes"
 export const PERSON_ID = `${SITE_URL}/#raghav-sharma`
 export const WEBSITE_ID = `${SITE_URL}/#website`
 export const PROFILE_PAGE_ID = `${SITE_URL}/#profile`

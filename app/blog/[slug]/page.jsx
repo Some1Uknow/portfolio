@@ -6,7 +6,7 @@ import remarkGfm from "remark-gfm"
 
 import { getPostBySlug, getPublishedPosts, headingId } from "../../../src/lib/blog.js"
 import { projectsBySlug } from "../../../src/content/siteContent.js"
-import { blogPath, projectPath } from "../../../src/lib/site.js"
+import { blogPath, projectPath, SITE_BRAND } from "../../../src/lib/site.js"
 import { JsonLd, postStructuredData } from "../../../src/lib/structured-data.jsx"
 import { PAD } from "../../../src/styles/globalStyles.js"
 
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }) {
     return {}
   }
 
-  const title = `${post.title} | Raghav Sharma`
+  const title = `${post.title} | Raghav Sharma — ${SITE_BRAND}`
   const path = blogPath(post.slug)
   const image = post.ogImage || `${path}/opengraph-image`
 

@@ -1,0 +1,28 @@
+# Raghav Sharma
+
+> Raghav Sharma is a product engineer who builds developer tools, AI products, and blockchain infrastructure with Rust and TypeScript.
+
+Canonical portfolio: https://raghav.codes/
+
+## Profile
+
+- Founder and lead engineer of LearnSol, a hands-on Solana and Rust learning platform used by 2,200+ developers.
+- Previous software engineering internships at FOSSEE, IIT Bombay and Debales AI.
+- Solana Foundation grant recipient for LearnSol.
+- First place at Smart India Hackathon in 2024.
+- Member of Superteam India.
+
+## Selected work
+
+- LearnSol: https://learnsol.site
+- CipherPay: https://github.com/Some1Uknow/cipherpay
+- Buy Me Some Tokens: https://buymesometokens.vercel.app
+- EzDeploy: https://ezdeploy.raghav.codes
+- GitHub projects and source: https://github.com/some1uknow
+
+## Contact
+
+- Email: mailto:raghu250407@gmail.com
+- GitHub: https://github.com/some1uknow
+- LinkedIn: https://linkedin.com/in/raghavsharmaweb3
+- X: https://x.com/raghavdotsol

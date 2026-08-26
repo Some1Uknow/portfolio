@@ -1,0 +1,31 @@
+import assert from "node:assert/strict"
+import { access, readFile } from "node:fs/promises"
+
+const html = await readFile("dist/index.html", "utf8")
+const notFound = await readFile("dist/404.html", "utf8")
+const sitemap = await readFile("dist/sitemap-0.xml", "utf8")
+const robots = await readFile("dist/robots.txt", "utf8")
+const llms = await readFile("dist/llms.txt", "utf8")
+
+assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1, "Homepage must contain exactly one h1")
+assert.equal((html.match(/rel="canonical"/g) || []).length, 1, "Homepage must contain one canonical")
+assert.match(html, /href="https:\/\/raghav\.codes\/"/)
+assert.match(html, /application\/ld\+json/)
+assert.match(html, /"@type":"Person"/)
+assert.match(html, /"@type":"WebSite"/)
+assert.match(html, /LearnSol/)
+assert.match(html, /CipherPay/)
+assert.match(html, /What started as curiosity slowly turned into an obsession/)
+assert.match(html, /It feels like the next rabbit hole I want to spend a long time exploring\./)
+assert.match(html, /I’m now looking for my first full-time role at an awesome startup/)
+assert.doesNotMatch(html, /<script[^>]+src=/, "Homepage must not ship client JavaScript")
+assert.doesNotMatch(html, /overflow-x:\s*hidden/, "Horizontal overflow must be fixed rather than hidden")
+assert.match(notFound, /noindex, nofollow/)
+assert.match(sitemap, /https:\/\/raghav\.codes\//)
+assert.doesNotMatch(sitemap, /404/)
+assert.match(robots, /Sitemap: https:\/\/raghav\.codes\/sitemap-index\.xml/)
+assert.match(llms, /^# Raghav Sharma/m)
+await access("dist/favicon.svg")
+await access("dist/og.png")
+
+console.log("Build verification passed: metadata, one H1, JSON-LD, sitemap, robots, llms.txt, icons, and zero client JS.")

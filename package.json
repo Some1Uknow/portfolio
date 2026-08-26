@@ -1,41 +1,32 @@
 {
-  "name": "portfolio",
+  "name": "raghav-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "engines": {
-    "node": ">=20.9.0"
+    "node": ">=22.20.0"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
     "lint": "eslint .",
-    "preview": "next start",
-    "sync:oss": "node scripts/sync-oss.mjs",
-    "test:seo": "node scripts/assert-seo.mjs",
-    "test:agent": "node scripts/assert-agent-readiness.mjs"
+    "preview": "astro preview",
+    "test:browser": "node scripts/browser-verify.mjs",
+    "test:seo": "node scripts/verify-build.mjs"
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
+    "@astrojs/sitemap": "^3.6.0",
+    "astro": "^7.2.6",
     "gray-matter": "^4.0.3",
-    "next": "^16.2.10",
-    "next-mdx-remote": "^6.0.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-icons": "^5.6.0",
-    "reading-time": "^1.5.0",
-    "rehype-pretty-code": "^0.14.4",
-    "remark-gfm": "^4.0.1",
-    "zod": "^4.4.3"
+    "marked": "^18.0.11"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@eslint/js": "^9.39.4",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "globals": "^17.4.0"
+    "globals": "^17.4.0",
+    "playwright": "^1.62.1",
+    "typescript": "^5.9.2"
   }
 }

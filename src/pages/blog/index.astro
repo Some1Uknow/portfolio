@@ -1,0 +1,36 @@
+---
+import { readdir, readFile } from "node:fs/promises"
+import path from "node:path"
+import matter from "gray-matter"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+const directory = path.join(process.cwd(), "content/posts")
+const files = (await readdir(directory)).filter((file) => file.endsWith(".mdx"))
+const posts: Array<{ slug: string; title: string; description: string; publishedAt: string }> = await Promise.all(files.map(async (file) => {
+  const source = await readFile(path.join(directory, file), "utf8")
+  const { data } = matter(source)
+  return {
+    slug: file.replace(/\.mdx$/, ""),
+    title: String(data.title),
+    description: String(data.description),
+    publishedAt: String(data.publishedAt),
+  }
+}))
+posts.sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))
+---
+
+<BaseLayout title="Writings — Raghav Sharma" description="Essays and technical notes by Raghav Sharma." canonical="https://raghav.codes/blog/">
+  <main id="main-content" class="page-shell writing-shell">
+    <a class="back-link" href="/">← portfolio</a>
+    <header class="writing-header"><h1>Writings</h1><p>Notes from building things on the internet.</p></header>
+    <section class="writing-list" aria-label="Published writing">
+      {posts.map((post) => (
+        <article>
+          <h2><a href={`/blog/${post.slug}/`}>{post.title}</a></h2>
+          <p>{post.description}</p>
+          <time datetime={post.publishedAt}>{post.publishedAt}</time>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,34 @@
+---
+import { readdir, readFile } from "node:fs/promises"
+import path from "node:path"
+import matter from "gray-matter"
+import { marked } from "marked"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+export async function getStaticPaths() {
+  const directory = path.join(process.cwd(), "content/posts")
+  const files = (await readdir(directory)).filter((file) => file.endsWith(".mdx"))
+  return Promise.all(files.map(async (file) => {
+    const source = await readFile(path.join(directory, file), "utf8")
+    const { data, content } = matter(source)
+    return { params: { slug: file.replace(/\.mdx$/, "") }, props: { data, content } }
+  }))
+}
+
+const { data, content } = Astro.props
+const html = await marked.parse(content)
+const canonical = `https://raghav.codes/blog/${Astro.params.slug}/`
+---
+
+<BaseLayout title={`${data.title} — Raghav Sharma`} description={data.description} canonical={canonical}>
+  <main id="main-content" class="page-shell article-shell">
+    <a class="back-link" href="/blog/">← writings</a>
+    <article>
+      <header class="article-header">
+        <h1>{data.title}</h1>
+        <time datetime={data.publishedAt}>{data.publishedAt}</time>
+      </header>
+      <div class="prose" set:html={html} />
+    </article>
+  </main>
+</BaseLayout>

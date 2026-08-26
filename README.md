@@ -35,7 +35,7 @@ Building the web3 stack one commit at a time. Member at Superteam India. Current
 | Project | Description | Tech |
 |---------|-------------|------|
 | [MPMC Queue](https://github.com/Some1Uknow/mpmc-queue-rust) | Bounded MPMC queue — 72.3M ops/sec, 0 unsafe | Rust, Concurrency |
-| [LearnSol](https://learnsol.io) | Solana/Rust/Anchor learning platform — 2.2K+ users, Received **$5k grant** | Next.js, Rust, pgvector |
+| [LearnSol](https://learnsol.site) | Solana/Rust/Anchor learning platform — 2.2K+ users, Received **$5k grant** | Next.js, Rust, pgvector |
 | [Sournal](https://github.com/Some1Uknow/sournal) | Journal dApp on Solana | Next.js, Rust, Anchor |
 
 ---

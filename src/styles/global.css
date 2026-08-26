@@ -56,10 +56,10 @@ a:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-r
 }
 
 .profile-header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
   min-width: 0;
 }
 
@@ -77,9 +77,13 @@ h1, h2, p { margin: 0; }
 .identity p { margin-top: 0.08rem; color: var(--muted); font-size: 0.94rem; }
 
 .contact-links {
-  display: grid;
-  justify-items: end;
-  gap: 0.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.4rem 1.05rem;
+  width: 100%;
+  margin-top: 1rem;
   font-size: 0.94rem;
   line-height: 1.5;
   min-width: 0;
@@ -92,11 +96,12 @@ h1, h2, p { margin: 0; }
   color: #bdbdbd;
   text-decoration: none;
 }
+.contact-links a:not(:has(.external-mark)) { grid-template-columns: 0.9rem auto; }
 .contact-links svg { width: 0.78rem; height: 0.78rem; fill: currentColor; }
 .contact-links a:hover { color: #fff; }
 .contact-links .external-mark { color: var(--muted); font-size: 0.78rem; }
 
-.narrative { margin-top: 2.6rem; min-width: 0; }
+.narrative { margin-top: 3.5rem; min-width: 0; }
 .narrative h2, .section-label {
   margin-bottom: 0.6rem;
   color: var(--muted);
@@ -119,6 +124,30 @@ footer { margin-top: 1.5rem; color: #666; font-size: 0.82rem; }
 }
 .brand img { width: 0.9em; height: 0.9em; align-self: center; flex: 0 0 auto; object-fit: contain; }
 .brand img.brand-logo--wide { width: 1.15em; }
+.brand.has-preview { position: relative; }
+.brand-preview {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + 0.7rem);
+  left: 50%;
+  width: min(26rem, calc(100vw - 2rem));
+  aspect-ratio: 640 / 416;
+  overflow: hidden;
+  background: #1d1d1d;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 0.35rem);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 0s linear 160ms;
+}
+.brand-preview img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.brand.has-preview:hover .brand-preview,
+.brand.has-preview:focus-visible .brand-preview {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition-delay: 0s;
+}
 .brand--rust { --brand-color: #ce6d45; }
 .brand--typescript { --brand-color: #5d9bd3; }
 .brand--learnsol { --brand-color: #a78bfa; }
@@ -163,9 +192,9 @@ footer { margin-top: 1.5rem; color: #666; font-size: 0.82rem; }
 @media (max-width: 38rem) {
   body { font-size: 14.5px; line-height: 1.62; }
   .page-shell { padding: 3.25rem 1rem 2.5rem; }
-  .profile-header { grid-template-columns: 1fr; gap: 2rem; }
-  .contact-links { justify-items: start; }
-  .narrative { margin-top: 4rem; }
+  .contact-links { gap: 0.4rem 0.9rem; }
+  .brand-preview { width: 13.5rem; }
+  .narrative { margin-top: 3.5rem; }
   .narrative p + p { margin-top: 1rem; }
 }
 
